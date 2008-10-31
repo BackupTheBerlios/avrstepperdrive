@@ -1,0 +1,5220 @@
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 1
+
+
+   1               		.file	"timer.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.section	.debug_abbrev,"",@progbits
+  11               	.Ldebug_abbrev0:
+  12               		.section	.debug_info,"",@progbits
+  13               	.Ldebug_info0:
+  14               		.section	.debug_line,"",@progbits
+  15               	.Ldebug_line0:
+  16               		.text
+  17               	.Ltext0:
+  18               	.global	delay_us
+  19               		.type	delay_us, @function
+  20               	delay_us:
+  21               	.LFB2:
+  22               	.LM1:
+  23               	.LVL0:
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	/* epilogue start */
+  27               	.LM2:
+  28 0000 0895      		ret
+  29               	.LFE2:
+  30               		.size	delay_us, .-delay_us
+  31               	.global	timerInit
+  32               		.type	timerInit, @function
+  33               	timerInit:
+  34               	.LFB3:
+  35               	.LM3:
+  36               	/* prologue: function */
+  37               	/* frame size = 0 */
+  38               	.LM4:
+  39 0002 80E0      		ldi r24,lo8(0)
+  40 0004 90E0      		ldi r25,hi8(0)
+  41               	.L4:
+  42               	.LBB37:
+  43               	.LBB38:
+  44               	.LM5:
+  45 0006 FC01      		movw r30,r24
+  46 0008 EE0F      		lsl r30
+  47 000a FF1F      		rol r31
+  48 000c E050      		subi r30,lo8(-(TimerIntFunc))
+  49 000e F040      		sbci r31,hi8(-(TimerIntFunc))
+  50 0010 1182      		std Z+1,__zero_reg__
+  51 0012 1082      		st Z,__zero_reg__
+  52 0014 0196      		adiw r24,1
+  53               	.LBE38:
+  54               	.LBE37:
+  55               	.LM6:
+  56 0016 8730      		cpi r24,7
+  57 0018 9105      		cpc r25,__zero_reg__
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 2
+
+
+  58 001a 01F4      		brne .L4
+  59               	.LBB39:
+  60               	.LBB40:
+  61               	.LBB41:
+  62               	.LBB42:
+  63               	.LM7:
+  64 001c 83B7      		in r24,83-32
+  65 001e 887F      		andi r24,lo8(-8)
+  66 0020 8260      		ori r24,lo8(2)
+  67 0022 83BF      		out 83-32,r24
+  68               	.LBE42:
+  69               	.LBE41:
+  70               	.LM8:
+  71 0024 12BE      		out 82-32,__zero_reg__
+  72               	.LM9:
+  73 0026 89B7      		in r24,89-32
+  74 0028 8160      		ori r24,lo8(1)
+  75 002a 89BF      		out 89-32,r24
+  76               	.LBB43:
+  77               	.LBB44:
+  78               	.LM10:
+  79 002c 1092 0000 		sts Timer0Reg0,__zero_reg__
+  80 0030 1092 0000 		sts (Timer0Reg0)+1,__zero_reg__
+  81 0034 1092 0000 		sts (Timer0Reg0)+2,__zero_reg__
+  82 0038 1092 0000 		sts (Timer0Reg0)+3,__zero_reg__
+  83               	.LBE44:
+  84               	.LBE43:
+  85               	.LBE40:
+  86               	.LBE39:
+  87               	.LBB45:
+  88               	.LBB46:
+  89               	.LBB47:
+  90               	.LBB48:
+  91               	.LM11:
+  92 003c 8EB5      		in r24,78-32
+  93 003e 887F      		andi r24,lo8(-8)
+  94 0040 8360      		ori r24,lo8(3)
+  95 0042 8EBD      		out 78-32,r24
+  96               	.LBE48:
+  97               	.LBE47:
+  98               	.LM12:
+  99 0044 1DBC      		out 77-32,__zero_reg__
+ 100               	.LM13:
+ 101 0046 1CBC      		out 76-32,__zero_reg__
+ 102               	.LM14:
+ 103 0048 89B7      		in r24,89-32
+ 104 004a 8460      		ori r24,lo8(4)
+ 105 004c 89BF      		out 89-32,r24
+ 106               	.LBE46:
+ 107               	.LBE45:
+ 108               	.LBB49:
+ 109               	.LBB50:
+ 110               	.LBB51:
+ 111               	.LBB52:
+ 112               	.LM15:
+ 113 004e 85B5      		in r24,69-32
+ 114 0050 887F      		andi r24,lo8(-8)
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 3
+
+
+ 115 0052 8460      		ori r24,lo8(4)
+ 116 0054 85BD      		out 69-32,r24
+ 117               	.LBE52:
+ 118               	.LBE51:
+ 119               	.LM16:
+ 120 0056 14BC      		out 68-32,__zero_reg__
+ 121               	.LM17:
+ 122 0058 89B7      		in r24,89-32
+ 123 005a 8064      		ori r24,lo8(64)
+ 124 005c 89BF      		out 89-32,r24
+ 125               	.LBB53:
+ 126               	.LBB54:
+ 127               	.LM18:
+ 128 005e 1092 0000 		sts Timer2Reg0,__zero_reg__
+ 129 0062 1092 0000 		sts (Timer2Reg0)+1,__zero_reg__
+ 130 0066 1092 0000 		sts (Timer2Reg0)+2,__zero_reg__
+ 131 006a 1092 0000 		sts (Timer2Reg0)+3,__zero_reg__
+ 132               	.LBE54:
+ 133               	.LBE53:
+ 134               	.LBE50:
+ 135               	.LBE49:
+ 136               	.LM19:
+ 137               	/* #APP */
+ 138               	 ;  90 "C:\AVRCode\AVRlib/timer.c" 1
+ 139 006e 7894      		sei
+ 140               	 ;  0 "" 2
+ 141               	/* epilogue start */
+ 142               	.LM20:
+ 143               	/* #NOAPP */
+ 144 0070 0895      		ret
+ 145               	.LFE3:
+ 146               		.size	timerInit, .-timerInit
+ 147               	.global	timer0Init
+ 148               		.type	timer0Init, @function
+ 149               	timer0Init:
+ 150               	.LFB4:
+ 151               	.LM21:
+ 152               	/* prologue: function */
+ 153               	/* frame size = 0 */
+ 154               	.LBB55:
+ 155               	.LBB56:
+ 156               	.LM22:
+ 157 0072 83B7      		in r24,83-32
+ 158 0074 887F      		andi r24,lo8(-8)
+ 159 0076 8260      		ori r24,lo8(2)
+ 160 0078 83BF      		out 83-32,r24
+ 161               	.LBE56:
+ 162               	.LBE55:
+ 163               	.LM23:
+ 164 007a 12BE      		out 82-32,__zero_reg__
+ 165               	.LM24:
+ 166 007c 89B7      		in r24,89-32
+ 167 007e 8160      		ori r24,lo8(1)
+ 168 0080 89BF      		out 89-32,r24
+ 169               	.LBB57:
+ 170               	.LBB58:
+ 171               	.LM25:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 4
+
+
+ 172 0082 1092 0000 		sts Timer0Reg0,__zero_reg__
+ 173 0086 1092 0000 		sts (Timer0Reg0)+1,__zero_reg__
+ 174 008a 1092 0000 		sts (Timer0Reg0)+2,__zero_reg__
+ 175 008e 1092 0000 		sts (Timer0Reg0)+3,__zero_reg__
+ 176               	/* epilogue start */
+ 177               	.LBE58:
+ 178               	.LBE57:
+ 179               	.LM26:
+ 180 0092 0895      		ret
+ 181               	.LFE4:
+ 182               		.size	timer0Init, .-timer0Init
+ 183               	.global	timer1Init
+ 184               		.type	timer1Init, @function
+ 185               	timer1Init:
+ 186               	.LFB5:
+ 187               	.LM27:
+ 188               	/* prologue: function */
+ 189               	/* frame size = 0 */
+ 190               	.LBB59:
+ 191               	.LBB60:
+ 192               	.LM28:
+ 193 0094 8EB5      		in r24,78-32
+ 194 0096 887F      		andi r24,lo8(-8)
+ 195 0098 8360      		ori r24,lo8(3)
+ 196 009a 8EBD      		out 78-32,r24
+ 197               	.LBE60:
+ 198               	.LBE59:
+ 199               	.LM29:
+ 200 009c 1DBC      		out 77-32,__zero_reg__
+ 201               	.LM30:
+ 202 009e 1CBC      		out 76-32,__zero_reg__
+ 203               	.LM31:
+ 204 00a0 89B7      		in r24,89-32
+ 205 00a2 8460      		ori r24,lo8(4)
+ 206 00a4 89BF      		out 89-32,r24
+ 207               	/* epilogue start */
+ 208               	.LM32:
+ 209 00a6 0895      		ret
+ 210               	.LFE5:
+ 211               		.size	timer1Init, .-timer1Init
+ 212               	.global	timer2Init
+ 213               		.type	timer2Init, @function
+ 214               	timer2Init:
+ 215               	.LFB6:
+ 216               	.LM33:
+ 217               	/* prologue: function */
+ 218               	/* frame size = 0 */
+ 219               	.LBB61:
+ 220               	.LBB62:
+ 221               	.LM34:
+ 222 00a8 85B5      		in r24,69-32
+ 223 00aa 887F      		andi r24,lo8(-8)
+ 224 00ac 8460      		ori r24,lo8(4)
+ 225 00ae 85BD      		out 69-32,r24
+ 226               	.LBE62:
+ 227               	.LBE61:
+ 228               	.LM35:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 5
+
+
+ 229 00b0 14BC      		out 68-32,__zero_reg__
+ 230               	.LM36:
+ 231 00b2 89B7      		in r24,89-32
+ 232 00b4 8064      		ori r24,lo8(64)
+ 233 00b6 89BF      		out 89-32,r24
+ 234               	.LBB63:
+ 235               	.LBB64:
+ 236               	.LM37:
+ 237 00b8 1092 0000 		sts Timer2Reg0,__zero_reg__
+ 238 00bc 1092 0000 		sts (Timer2Reg0)+1,__zero_reg__
+ 239 00c0 1092 0000 		sts (Timer2Reg0)+2,__zero_reg__
+ 240 00c4 1092 0000 		sts (Timer2Reg0)+3,__zero_reg__
+ 241               	/* epilogue start */
+ 242               	.LBE64:
+ 243               	.LBE63:
+ 244               	.LM38:
+ 245 00c8 0895      		ret
+ 246               	.LFE6:
+ 247               		.size	timer2Init, .-timer2Init
+ 248               	.global	timer0SetPrescaler
+ 249               		.type	timer0SetPrescaler, @function
+ 250               	timer0SetPrescaler:
+ 251               	.LFB7:
+ 252               	.LM39:
+ 253               	.LVL1:
+ 254               	/* prologue: function */
+ 255               	/* frame size = 0 */
+ 256               	.LM40:
+ 257 00ca 93B7      		in r25,83-32
+ 258 00cc 987F      		andi r25,lo8(-8)
+ 259 00ce 982B      		or r25,r24
+ 260 00d0 93BF      		out 83-32,r25
+ 261               	/* epilogue start */
+ 262               	.LM41:
+ 263 00d2 0895      		ret
+ 264               	.LFE7:
+ 265               		.size	timer0SetPrescaler, .-timer0SetPrescaler
+ 266               	.global	timer1SetPrescaler
+ 267               		.type	timer1SetPrescaler, @function
+ 268               	timer1SetPrescaler:
+ 269               	.LFB8:
+ 270               	.LM42:
+ 271               	.LVL2:
+ 272               	/* prologue: function */
+ 273               	/* frame size = 0 */
+ 274               	.LM43:
+ 275 00d4 9EB5      		in r25,78-32
+ 276 00d6 987F      		andi r25,lo8(-8)
+ 277 00d8 982B      		or r25,r24
+ 278 00da 9EBD      		out 78-32,r25
+ 279               	/* epilogue start */
+ 280               	.LM44:
+ 281 00dc 0895      		ret
+ 282               	.LFE8:
+ 283               		.size	timer1SetPrescaler, .-timer1SetPrescaler
+ 284               	.global	timer2SetPrescaler
+ 285               		.type	timer2SetPrescaler, @function
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 6
+
+
+ 286               	timer2SetPrescaler:
+ 287               	.LFB9:
+ 288               	.LM45:
+ 289               	.LVL3:
+ 290               	/* prologue: function */
+ 291               	/* frame size = 0 */
+ 292               	.LM46:
+ 293 00de 95B5      		in r25,69-32
+ 294 00e0 987F      		andi r25,lo8(-8)
+ 295 00e2 982B      		or r25,r24
+ 296 00e4 95BD      		out 69-32,r25
+ 297               	/* epilogue start */
+ 298               	.LM47:
+ 299 00e6 0895      		ret
+ 300               	.LFE9:
+ 301               		.size	timer2SetPrescaler, .-timer2SetPrescaler
+ 302               	.global	timer0GetPrescaler
+ 303               		.type	timer0GetPrescaler, @function
+ 304               	timer0GetPrescaler:
+ 305               	.LFB10:
+ 306               	.LM48:
+ 307               	/* prologue: function */
+ 308               	/* frame size = 0 */
+ 309               	.LBB65:
+ 310               	.LM49:
+ 311 00e8 83B7      		in r24,83-32
+ 312 00ea E82F      		mov r30,r24
+ 313               	.LVL4:
+ 314 00ec F0E0      		ldi r31,lo8(0)
+ 315               	.LVL5:
+ 316 00ee E770      		andi r30,lo8(7)
+ 317 00f0 F070      		andi r31,hi8(7)
+ 318               	.LVL6:
+ 319 00f2 EE0F      		lsl r30
+ 320 00f4 FF1F      		rol r31
+ 321 00f6 E050      		subi r30,lo8(-(TimerPrescaleFactor))
+ 322 00f8 F040      		sbci r31,hi8(-(TimerPrescaleFactor))
+ 323               	/* #APP */
+ 324               	 ;  147 "C:\AVRCode\AVRlib/timer.c" 1
+ 325 00fa 2591      		lpm r18, Z+
+ 326 00fc 3491      		lpm r19, Z
+ 327               		
+ 328               	 ;  0 "" 2
+ 329               	.LVL7:
+ 330               	/* #NOAPP */
+ 331               	.LBE65:
+ 332               	.LM50:
+ 333 00fe C901      		movw r24,r18
+ 334               	.LVL8:
+ 335               	/* epilogue start */
+ 336 0100 0895      		ret
+ 337               	.LFE10:
+ 338               		.size	timer0GetPrescaler, .-timer0GetPrescaler
+ 339               	.global	timer1GetPrescaler
+ 340               		.type	timer1GetPrescaler, @function
+ 341               	timer1GetPrescaler:
+ 342               	.LFB11:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 7
+
+
+ 343               	.LM51:
+ 344               	/* prologue: function */
+ 345               	/* frame size = 0 */
+ 346               	.LBB66:
+ 347               	.LM52:
+ 348 0102 8EB5      		in r24,78-32
+ 349 0104 E82F      		mov r30,r24
+ 350               	.LVL9:
+ 351 0106 F0E0      		ldi r31,lo8(0)
+ 352               	.LVL10:
+ 353 0108 E770      		andi r30,lo8(7)
+ 354 010a F070      		andi r31,hi8(7)
+ 355               	.LVL11:
+ 356 010c EE0F      		lsl r30
+ 357 010e FF1F      		rol r31
+ 358 0110 E050      		subi r30,lo8(-(TimerPrescaleFactor))
+ 359 0112 F040      		sbci r31,hi8(-(TimerPrescaleFactor))
+ 360               	/* #APP */
+ 361               	 ;  153 "C:\AVRCode\AVRlib/timer.c" 1
+ 362 0114 2591      		lpm r18, Z+
+ 363 0116 3491      		lpm r19, Z
+ 364               		
+ 365               	 ;  0 "" 2
+ 366               	.LVL12:
+ 367               	/* #NOAPP */
+ 368               	.LBE66:
+ 369               	.LM53:
+ 370 0118 C901      		movw r24,r18
+ 371               	.LVL13:
+ 372               	/* epilogue start */
+ 373 011a 0895      		ret
+ 374               	.LFE11:
+ 375               		.size	timer1GetPrescaler, .-timer1GetPrescaler
+ 376               	.global	timer2GetPrescaler
+ 377               		.type	timer2GetPrescaler, @function
+ 378               	timer2GetPrescaler:
+ 379               	.LFB12:
+ 380               	.LM54:
+ 381               	/* prologue: function */
+ 382               	/* frame size = 0 */
+ 383               	.LBB67:
+ 384               	.LM55:
+ 385 011c 85B5      		in r24,69-32
+ 386 011e E82F      		mov r30,r24
+ 387               	.LVL14:
+ 388 0120 F0E0      		ldi r31,lo8(0)
+ 389               	.LVL15:
+ 390 0122 E770      		andi r30,lo8(7)
+ 391 0124 F070      		andi r31,hi8(7)
+ 392               	.LVL16:
+ 393 0126 EE0F      		lsl r30
+ 394 0128 FF1F      		rol r31
+ 395 012a E050      		subi r30,lo8(-(TimerRTCPrescaleFactor))
+ 396 012c F040      		sbci r31,hi8(-(TimerRTCPrescaleFactor))
+ 397               	/* #APP */
+ 398               	 ;  163 "C:\AVRCode\AVRlib/timer.c" 1
+ 399 012e 2591      		lpm r18, Z+
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 8
+
+
+ 400 0130 3491      		lpm r19, Z
+ 401               		
+ 402               	 ;  0 "" 2
+ 403               	.LVL17:
+ 404               	/* #NOAPP */
+ 405               	.LBE67:
+ 406               	.LM56:
+ 407 0132 C901      		movw r24,r18
+ 408               	.LVL18:
+ 409               	/* epilogue start */
+ 410 0134 0895      		ret
+ 411               	.LFE12:
+ 412               		.size	timer2GetPrescaler, .-timer2GetPrescaler
+ 413               	.global	timerAttach
+ 414               		.type	timerAttach, @function
+ 415               	timerAttach:
+ 416               	.LFB13:
+ 417               	.LM57:
+ 418               	.LVL19:
+ 419               	/* prologue: function */
+ 420               	/* frame size = 0 */
+ 421               	.LM58:
+ 422 0136 8730      		cpi r24,lo8(7)
+ 423 0138 00F4      		brsh .L27
+ 424               	.LM59:
+ 425 013a E82F      		mov r30,r24
+ 426 013c F0E0      		ldi r31,lo8(0)
+ 427 013e EE0F      		lsl r30
+ 428 0140 FF1F      		rol r31
+ 429 0142 E050      		subi r30,lo8(-(TimerIntFunc))
+ 430 0144 F040      		sbci r31,hi8(-(TimerIntFunc))
+ 431 0146 7183      		std Z+1,r23
+ 432 0148 6083      		st Z,r22
+ 433               	.L27:
+ 434 014a 0895      		ret
+ 435               	.LFE13:
+ 436               		.size	timerAttach, .-timerAttach
+ 437               	.global	timerDetach
+ 438               		.type	timerDetach, @function
+ 439               	timerDetach:
+ 440               	.LFB14:
+ 441               	.LM60:
+ 442               	.LVL20:
+ 443               	/* prologue: function */
+ 444               	/* frame size = 0 */
+ 445               	.LM61:
+ 446 014c 8730      		cpi r24,lo8(7)
+ 447 014e 00F4      		brsh .L30
+ 448               	.LM62:
+ 449 0150 E82F      		mov r30,r24
+ 450 0152 F0E0      		ldi r31,lo8(0)
+ 451 0154 EE0F      		lsl r30
+ 452 0156 FF1F      		rol r31
+ 453 0158 E050      		subi r30,lo8(-(TimerIntFunc))
+ 454 015a F040      		sbci r31,hi8(-(TimerIntFunc))
+ 455 015c 1182      		std Z+1,__zero_reg__
+ 456 015e 1082      		st Z,__zero_reg__
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 9
+
+
+ 457               	.L30:
+ 458 0160 0895      		ret
+ 459               	.LFE14:
+ 460               		.size	timerDetach, .-timerDetach
+ 461               	.global	timerPause
+ 462               		.type	timerPause, @function
+ 463               	timerPause:
+ 464               	.LFB15:
+ 465               	.LM63:
+ 466               	.LVL21:
+ 467 0162 EF92      		push r14
+ 468 0164 FF92      		push r15
+ 469 0166 0F93      		push r16
+ 470 0168 1F93      		push r17
+ 471 016a CF93      		push r28
+ 472 016c DF93      		push r29
+ 473               	/* prologue: function */
+ 474               	/* frame size = 0 */
+ 475 016e EC01      		movw r28,r24
+ 476               	.LM64:
+ 477 0170 12B7      		in r17,82-32
+ 478               	.LVL22:
+ 479               	.LM65:
+ 480 0172 1092 0000 		sts TimerPauseReg,__zero_reg__
+ 481 0176 1092 0000 		sts (TimerPauseReg)+1,__zero_reg__
+ 482 017a 1092 0000 		sts (TimerPauseReg)+2,__zero_reg__
+ 483 017e 1092 0000 		sts (TimerPauseReg)+3,__zero_reg__
+ 484               	.LBB68:
+ 485               	.LBB69:
+ 486               	.LBB70:
+ 487               	.LM66:
+ 488 0182 83B7      		in r24,83-32
+ 489               	.LVL23:
+ 490 0184 E82F      		mov r30,r24
+ 491               	.LVL24:
+ 492 0186 F0E0      		ldi r31,lo8(0)
+ 493               	.LVL25:
+ 494 0188 E770      		andi r30,lo8(7)
+ 495 018a F070      		andi r31,hi8(7)
+ 496               	.LVL26:
+ 497 018c EE0F      		lsl r30
+ 498 018e FF1F      		rol r31
+ 499 0190 E050      		subi r30,lo8(-(TimerPrescaleFactor))
+ 500 0192 F040      		sbci r31,hi8(-(TimerPrescaleFactor))
+ 501               	/* #APP */
+ 502               	 ;  147 "C:\AVRCode\AVRlib/timer.c" 1
+ 503 0194 2591      		lpm r18, Z+
+ 504 0196 3491      		lpm r19, Z
+ 505               		
+ 506               	 ;  0 "" 2
+ 507               	.LVL27:
+ 508               	/* #NOAPP */
+ 509               	.LBE70:
+ 510               	.LBE69:
+ 511               	.LBE68:
+ 512               	.LM67:
+ 513 0198 40E0      		ldi r20,lo8(0)
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 10
+
+
+ 514 019a 50E0      		ldi r21,hi8(0)
+ 515               	.LVL28:
+ 516 019c 60E0      		ldi r22,lo8(7372800)
+ 517 019e 70E8      		ldi r23,hi8(7372800)
+ 518 01a0 80E7      		ldi r24,hlo8(7372800)
+ 519 01a2 90E0      		ldi r25,hhi8(7372800)
+ 520 01a4 0E94 0000 		call __divmodsi4
+ 521               	.LVL29:
+ 522 01a8 B901      		movw r22,r18
+ 523 01aa CA01      		movw r24,r20
+ 524               	.LVL30:
+ 525               	.LM68:
+ 526 01ac 693B      		cpi r22,lo8(429497)
+ 527 01ae 2DE8      		ldi r18,hi8(429497)
+ 528 01b0 7207      		cpc r23,r18
+ 529 01b2 26E0      		ldi r18,hlo8(429497)
+ 530 01b4 8207      		cpc r24,r18
+ 531 01b6 20E0      		ldi r18,hhi8(429497)
+ 532 01b8 9207      		cpc r25,r18
+ 533               	.LVL31:
+ 534 01ba 00F4      		brsh .L32
+ 535 01bc 37E2      		ldi r19,hi8(10001)
+ 536 01be C131      		cpi r28,lo8(10001)
+ 537 01c0 D307      		cpc r29,r19
+ 538 01c2 00F4      		brsh .L32
+ 539               	.LM69:
+ 540 01c4 9E01      		movw r18,r28
+ 541 01c6 40E0      		ldi r20,lo8(0)
+ 542 01c8 50E0      		ldi r21,hi8(0)
+ 543               	.LVL32:
+ 544 01ca 0E94 0000 		call __mulsi3
+ 545               	.LVL33:
+ 546 01ce 28EE      		ldi r18,lo8(1000)
+ 547 01d0 33E0      		ldi r19,hi8(1000)
+ 548 01d2 40E0      		ldi r20,hlo8(1000)
+ 549 01d4 50E0      		ldi r21,hhi8(1000)
+ 550 01d6 0E94 0000 		call __udivmodsi4
+ 551 01da C901      		movw r24,r18
+ 552 01dc DA01      		movw r26,r20
+ 553               	.LVL34:
+ 554 01de BC01      		movw r22,r24
+ 555 01e0 CD01      		movw r24,r26
+ 556               	.LVL35:
+ 557 01e2 00C0      		rjmp .L33
+ 558               	.LVL36:
+ 559               	.L32:
+ 560               	.LM70:
+ 561 01e4 28EE      		ldi r18,lo8(1000)
+ 562 01e6 33E0      		ldi r19,hi8(1000)
+ 563 01e8 40E0      		ldi r20,hlo8(1000)
+ 564 01ea 50E0      		ldi r21,hhi8(1000)
+ 565 01ec 0E94 0000 		call __udivmodsi4
+ 566               	.LVL37:
+ 567 01f0 CA01      		movw r24,r20
+ 568 01f2 B901      		movw r22,r18
+ 569 01f4 9E01      		movw r18,r28
+ 570 01f6 40E0      		ldi r20,lo8(0)
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 11
+
+
+ 571 01f8 50E0      		ldi r21,hi8(0)
+ 572               	.LVL38:
+ 573 01fa 0E94 0000 		call __mulsi3
+ 574 01fe 00C0      		rjmp .L33
+ 575               	.L34:
+ 576               	.LM71:
+ 577 0200 8091 0000 		lds r24,TimerPauseReg
+ 578 0204 9091 0000 		lds r25,(TimerPauseReg)+1
+ 579 0208 A091 0000 		lds r26,(TimerPauseReg)+2
+ 580 020c B091 0000 		lds r27,(TimerPauseReg)+3
+ 581               	.LM72:
+ 582 0210 85B7      		in r24,85-32
+ 583 0212 8F7C      		andi r24,lo8(-49)
+ 584 0214 85BF      		out 85-32,r24
+ 585               	.LM73:
+ 586 0216 85B7      		in r24,85-32
+ 587 0218 8064      		ori r24,lo8(64)
+ 588 021a 85BF      		out 85-32,r24
+ 589               	/* #APP */
+ 590               	 ;  233 "C:\AVRCode\AVRlib/timer.c" 1
+ 591 021c 8895      		sleep
+ 592               		
+ 593               	 ;  0 "" 2
+ 594               	/* #NOAPP */
+ 595 021e 85B7      		in r24,85-32
+ 596 0220 8F7B      		andi r24,lo8(-65)
+ 597 0222 85BF      		out 85-32,r24
+ 598 0224 00C0      		rjmp .L36
+ 599               	.LVL39:
+ 600               	.L33:
+ 601               	.LM74:
+ 602 0226 9B01      		movw r18,r22
+ 603 0228 AC01      		movw r20,r24
+ 604 022a 210F      		add r18,r17
+ 605 022c 311D      		adc r19,__zero_reg__
+ 606 022e 411D      		adc r20,__zero_reg__
+ 607 0230 511D      		adc r21,__zero_reg__
+ 608 0232 7901      		movw r14,r18
+ 609 0234 8A01      		movw r16,r20
+ 610               	.L36:
+ 611 0236 2091 0000 		lds r18,TimerPauseReg
+ 612 023a 3091 0000 		lds r19,(TimerPauseReg)+1
+ 613 023e 4091 0000 		lds r20,(TimerPauseReg)+2
+ 614 0242 5091 0000 		lds r21,(TimerPauseReg)+3
+ 615 0246 82B7      		in r24,82-32
+ 616 0248 90E0      		ldi r25,lo8(0)
+ 617 024a A0E0      		ldi r26,lo8(0)
+ 618 024c B0E0      		ldi r27,hi8(0)
+ 619 024e 542F      		mov r21,r20
+ 620 0250 432F      		mov r20,r19
+ 621 0252 322F      		mov r19,r18
+ 622 0254 2227      		clr r18
+ 623               	.LVL40:
+ 624 0256 822B      		or r24,r18
+ 625 0258 932B      		or r25,r19
+ 626 025a A42B      		or r26,r20
+ 627 025c B52B      		or r27,r21
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 12
+
+
+ 628 025e 8E15      		cp r24,r14
+ 629 0260 9F05      		cpc r25,r15
+ 630 0262 A007      		cpc r26,r16
+ 631 0264 B107      		cpc r27,r17
+ 632 0266 00F0      		brlo .L34
+ 633               	/* epilogue start */
+ 634               	.LM75:
+ 635 0268 DF91      		pop r29
+ 636 026a CF91      		pop r28
+ 637               	.LVL41:
+ 638 026c 1F91      		pop r17
+ 639               	.LVL42:
+ 640 026e 0F91      		pop r16
+ 641 0270 FF90      		pop r15
+ 642 0272 EF90      		pop r14
+ 643 0274 0895      		ret
+ 644               	.LFE15:
+ 645               		.size	timerPause, .-timerPause
+ 646               	.global	timer0ClearOverflowCount
+ 647               		.type	timer0ClearOverflowCount, @function
+ 648               	timer0ClearOverflowCount:
+ 649               	.LFB16:
+ 650               	.LM76:
+ 651               	/* prologue: function */
+ 652               	/* frame size = 0 */
+ 653               	.LM77:
+ 654 0276 1092 0000 		sts Timer0Reg0,__zero_reg__
+ 655 027a 1092 0000 		sts (Timer0Reg0)+1,__zero_reg__
+ 656 027e 1092 0000 		sts (Timer0Reg0)+2,__zero_reg__
+ 657 0282 1092 0000 		sts (Timer0Reg0)+3,__zero_reg__
+ 658               	/* epilogue start */
+ 659               	.LM78:
+ 660 0286 0895      		ret
+ 661               	.LFE16:
+ 662               		.size	timer0ClearOverflowCount, .-timer0ClearOverflowCount
+ 663               	.global	timer0GetOverflowCount
+ 664               		.type	timer0GetOverflowCount, @function
+ 665               	timer0GetOverflowCount:
+ 666               	.LFB17:
+ 667               	.LM79:
+ 668               	/* prologue: function */
+ 669               	/* frame size = 0 */
+ 670               	.LM80:
+ 671 0288 2091 0000 		lds r18,Timer0Reg0
+ 672 028c 3091 0000 		lds r19,(Timer0Reg0)+1
+ 673 0290 4091 0000 		lds r20,(Timer0Reg0)+2
+ 674 0294 5091 0000 		lds r21,(Timer0Reg0)+3
+ 675               	.LM81:
+ 676 0298 B901      		movw r22,r18
+ 677 029a CA01      		movw r24,r20
+ 678               	/* epilogue start */
+ 679 029c 0895      		ret
+ 680               	.LFE17:
+ 681               		.size	timer0GetOverflowCount, .-timer0GetOverflowCount
+ 682               	.global	timer2ClearOverflowCount
+ 683               		.type	timer2ClearOverflowCount, @function
+ 684               	timer2ClearOverflowCount:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 13
+
+
+ 685               	.LFB18:
+ 686               	.LM82:
+ 687               	/* prologue: function */
+ 688               	/* frame size = 0 */
+ 689               	.LM83:
+ 690 029e 1092 0000 		sts Timer2Reg0,__zero_reg__
+ 691 02a2 1092 0000 		sts (Timer2Reg0)+1,__zero_reg__
+ 692 02a6 1092 0000 		sts (Timer2Reg0)+2,__zero_reg__
+ 693 02aa 1092 0000 		sts (Timer2Reg0)+3,__zero_reg__
+ 694               	/* epilogue start */
+ 695               	.LM84:
+ 696 02ae 0895      		ret
+ 697               	.LFE18:
+ 698               		.size	timer2ClearOverflowCount, .-timer2ClearOverflowCount
+ 699               	.global	timer2GetOverflowCount
+ 700               		.type	timer2GetOverflowCount, @function
+ 701               	timer2GetOverflowCount:
+ 702               	.LFB19:
+ 703               	.LM85:
+ 704               	/* prologue: function */
+ 705               	/* frame size = 0 */
+ 706               	.LM86:
+ 707 02b0 2091 0000 		lds r18,Timer2Reg0
+ 708 02b4 3091 0000 		lds r19,(Timer2Reg0)+1
+ 709 02b8 4091 0000 		lds r20,(Timer2Reg0)+2
+ 710 02bc 5091 0000 		lds r21,(Timer2Reg0)+3
+ 711               	.LM87:
+ 712 02c0 B901      		movw r22,r18
+ 713 02c2 CA01      		movw r24,r20
+ 714               	/* epilogue start */
+ 715 02c4 0895      		ret
+ 716               	.LFE19:
+ 717               		.size	timer2GetOverflowCount, .-timer2GetOverflowCount
+ 718               	.global	timer1PWMInit
+ 719               		.type	timer1PWMInit, @function
+ 720               	timer1PWMInit:
+ 721               	.LFB20:
+ 722               	.LM88:
+ 723               	.LVL43:
+ 724               	/* prologue: function */
+ 725               	/* frame size = 0 */
+ 726               	.LM89:
+ 727 02c6 8930      		cpi r24,lo8(9)
+ 728 02c8 01F4      		brne .L46
+ 729               	.LM90:
+ 730 02ca 8FB5      		in r24,79-32
+ 731               	.LVL44:
+ 732 02cc 8260      		ori r24,lo8(2)
+ 733 02ce 8FBD      		out 79-32,r24
+ 734               	.LM91:
+ 735 02d0 8FB5      		in r24,79-32
+ 736 02d2 8E7F      		andi r24,lo8(-2)
+ 737 02d4 00C0      		rjmp .L50
+ 738               	.LVL45:
+ 739               	.L46:
+ 740               	.LM92:
+ 741 02d6 8A30      		cpi r24,lo8(10)
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 14
+
+
+ 742 02d8 01F4      		brne .L48
+ 743               	.LM93:
+ 744 02da 8FB5      		in r24,79-32
+ 745               	.LVL46:
+ 746 02dc 8260      		ori r24,lo8(2)
+ 747 02de 00C0      		rjmp .L51
+ 748               	.LVL47:
+ 749               	.L48:
+ 750               	.LM94:
+ 751 02e0 8FB5      		in r24,79-32
+ 752               	.LVL48:
+ 753 02e2 8D7F      		andi r24,lo8(-3)
+ 754               	.L51:
+ 755 02e4 8FBD      		out 79-32,r24
+ 756               	.LM95:
+ 757 02e6 8FB5      		in r24,79-32
+ 758 02e8 8160      		ori r24,lo8(1)
+ 759               	.L50:
+ 760 02ea 8FBD      		out 79-32,r24
+ 761               	.LM96:
+ 762 02ec 1BBC      		out 75-32,__zero_reg__
+ 763               	.LM97:
+ 764 02ee 1ABC      		out 74-32,__zero_reg__
+ 765               	.LM98:
+ 766 02f0 19BC      		out 73-32,__zero_reg__
+ 767               	.LM99:
+ 768 02f2 18BC      		out 72-32,__zero_reg__
+ 769               	/* epilogue start */
+ 770               	.LM100:
+ 771 02f4 0895      		ret
+ 772               	.LFE20:
+ 773               		.size	timer1PWMInit, .-timer1PWMInit
+ 774               	.global	timer1PWMOff
+ 775               		.type	timer1PWMOff, @function
+ 776               	timer1PWMOff:
+ 777               	.LFB21:
+ 778               	.LM101:
+ 779               	/* prologue: function */
+ 780               	/* frame size = 0 */
+ 781               	.LM102:
+ 782 02f6 8FB5      		in r24,79-32
+ 783 02f8 8D7F      		andi r24,lo8(-3)
+ 784 02fa 8FBD      		out 79-32,r24
+ 785               	.LM103:
+ 786 02fc 8FB5      		in r24,79-32
+ 787 02fe 8E7F      		andi r24,lo8(-2)
+ 788 0300 8FBD      		out 79-32,r24
+ 789               	.LBB71:
+ 790               	.LBB72:
+ 791               	.LM104:
+ 792 0302 8FB5      		in r24,79-32
+ 793 0304 8F77      		andi r24,lo8(127)
+ 794 0306 8FBD      		out 79-32,r24
+ 795               	.LM105:
+ 796 0308 8FB5      		in r24,79-32
+ 797 030a 8F7B      		andi r24,lo8(-65)
+ 798 030c 8FBD      		out 79-32,r24
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 15
+
+
+ 799               	.LBE72:
+ 800               	.LBE71:
+ 801               	.LBB73:
+ 802               	.LBB74:
+ 803               	.LM106:
+ 804 030e 8FB5      		in r24,79-32
+ 805 0310 8F7D      		andi r24,lo8(-33)
+ 806 0312 8FBD      		out 79-32,r24
+ 807               	.LM107:
+ 808 0314 8FB5      		in r24,79-32
+ 809 0316 8F7E      		andi r24,lo8(-17)
+ 810 0318 8FBD      		out 79-32,r24
+ 811               	/* epilogue start */
+ 812               	.LBE74:
+ 813               	.LBE73:
+ 814               	.LM108:
+ 815 031a 0895      		ret
+ 816               	.LFE21:
+ 817               		.size	timer1PWMOff, .-timer1PWMOff
+ 818               	.global	timer1PWMAOn
+ 819               		.type	timer1PWMAOn, @function
+ 820               	timer1PWMAOn:
+ 821               	.LFB22:
+ 822               	.LM109:
+ 823               	/* prologue: function */
+ 824               	/* frame size = 0 */
+ 825               	.LM110:
+ 826 031c 8FB5      		in r24,79-32
+ 827 031e 8068      		ori r24,lo8(-128)
+ 828 0320 8FBD      		out 79-32,r24
+ 829               	.LM111:
+ 830 0322 8FB5      		in r24,79-32
+ 831 0324 8F7B      		andi r24,lo8(-65)
+ 832 0326 8FBD      		out 79-32,r24
+ 833               	/* epilogue start */
+ 834               	.LM112:
+ 835 0328 0895      		ret
+ 836               	.LFE22:
+ 837               		.size	timer1PWMAOn, .-timer1PWMAOn
+ 838               	.global	timer1PWMBOn
+ 839               		.type	timer1PWMBOn, @function
+ 840               	timer1PWMBOn:
+ 841               	.LFB23:
+ 842               	.LM113:
+ 843               	/* prologue: function */
+ 844               	/* frame size = 0 */
+ 845               	.LM114:
+ 846 032a 8FB5      		in r24,79-32
+ 847 032c 8062      		ori r24,lo8(32)
+ 848 032e 8FBD      		out 79-32,r24
+ 849               	.LM115:
+ 850 0330 8FB5      		in r24,79-32
+ 851 0332 8F7E      		andi r24,lo8(-17)
+ 852 0334 8FBD      		out 79-32,r24
+ 853               	/* epilogue start */
+ 854               	.LM116:
+ 855 0336 0895      		ret
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 16
+
+
+ 856               	.LFE23:
+ 857               		.size	timer1PWMBOn, .-timer1PWMBOn
+ 858               	.global	timer1PWMAOff
+ 859               		.type	timer1PWMAOff, @function
+ 860               	timer1PWMAOff:
+ 861               	.LFB24:
+ 862               	.LM117:
+ 863               	/* prologue: function */
+ 864               	/* frame size = 0 */
+ 865               	.LM118:
+ 866 0338 8FB5      		in r24,79-32
+ 867 033a 8F77      		andi r24,lo8(127)
+ 868 033c 8FBD      		out 79-32,r24
+ 869               	.LM119:
+ 870 033e 8FB5      		in r24,79-32
+ 871 0340 8F7B      		andi r24,lo8(-65)
+ 872 0342 8FBD      		out 79-32,r24
+ 873               	/* epilogue start */
+ 874               	.LM120:
+ 875 0344 0895      		ret
+ 876               	.LFE24:
+ 877               		.size	timer1PWMAOff, .-timer1PWMAOff
+ 878               	.global	timer1PWMBOff
+ 879               		.type	timer1PWMBOff, @function
+ 880               	timer1PWMBOff:
+ 881               	.LFB25:
+ 882               	.LM121:
+ 883               	/* prologue: function */
+ 884               	/* frame size = 0 */
+ 885               	.LM122:
+ 886 0346 8FB5      		in r24,79-32
+ 887 0348 8F7D      		andi r24,lo8(-33)
+ 888 034a 8FBD      		out 79-32,r24
+ 889               	.LM123:
+ 890 034c 8FB5      		in r24,79-32
+ 891 034e 8F7E      		andi r24,lo8(-17)
+ 892 0350 8FBD      		out 79-32,r24
+ 893               	/* epilogue start */
+ 894               	.LM124:
+ 895 0352 0895      		ret
+ 896               	.LFE25:
+ 897               		.size	timer1PWMBOff, .-timer1PWMBOff
+ 898               	.global	timer1PWMASet
+ 899               		.type	timer1PWMASet, @function
+ 900               	timer1PWMASet:
+ 901               	.LFB26:
+ 902               	.LM125:
+ 903               	.LVL49:
+ 904               	/* prologue: function */
+ 905               	/* frame size = 0 */
+ 906               	.LM126:
+ 907 0354 9BBD      		out (74)+1-32,r25
+ 908 0356 8ABD      		out 74-32,r24
+ 909               	/* epilogue start */
+ 910               	.LM127:
+ 911 0358 0895      		ret
+ 912               	.LFE26:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 17
+
+
+ 913               		.size	timer1PWMASet, .-timer1PWMASet
+ 914               	.global	timer1PWMBSet
+ 915               		.type	timer1PWMBSet, @function
+ 916               	timer1PWMBSet:
+ 917               	.LFB27:
+ 918               	.LM128:
+ 919               	.LVL50:
+ 920               	/* prologue: function */
+ 921               	/* frame size = 0 */
+ 922               	.LM129:
+ 923 035a 99BD      		out (72)+1-32,r25
+ 924 035c 88BD      		out 72-32,r24
+ 925               	/* epilogue start */
+ 926               	.LM130:
+ 927 035e 0895      		ret
+ 928               	.LFE27:
+ 929               		.size	timer1PWMBSet, .-timer1PWMBSet
+ 930               	.global	__vector_9
+ 931               		.type	__vector_9, @function
+ 932               	__vector_9:
+ 933               	.LFB28:
+ 934               	.LM131:
+ 935 0360 1F92      		push __zero_reg__
+ 936 0362 0F92      		push r0
+ 937 0364 0FB6      		in r0,__SREG__
+ 938 0366 0F92      		push r0
+ 939 0368 1124      		clr __zero_reg__
+ 940 036a 2F93      		push r18
+ 941 036c 3F93      		push r19
+ 942 036e 4F93      		push r20
+ 943 0370 5F93      		push r21
+ 944 0372 6F93      		push r22
+ 945 0374 7F93      		push r23
+ 946 0376 8F93      		push r24
+ 947 0378 9F93      		push r25
+ 948 037a AF93      		push r26
+ 949 037c BF93      		push r27
+ 950 037e EF93      		push r30
+ 951 0380 FF93      		push r31
+ 952               	/* prologue: Signal */
+ 953               	/* frame size = 0 */
+ 954               	.LM132:
+ 955 0382 8091 0000 		lds r24,Timer0Reg0
+ 956 0386 9091 0000 		lds r25,(Timer0Reg0)+1
+ 957 038a A091 0000 		lds r26,(Timer0Reg0)+2
+ 958 038e B091 0000 		lds r27,(Timer0Reg0)+3
+ 959 0392 0196      		adiw r24,1
+ 960 0394 A11D      		adc r26,__zero_reg__
+ 961 0396 B11D      		adc r27,__zero_reg__
+ 962 0398 8093 0000 		sts Timer0Reg0,r24
+ 963 039c 9093 0000 		sts (Timer0Reg0)+1,r25
+ 964 03a0 A093 0000 		sts (Timer0Reg0)+2,r26
+ 965 03a4 B093 0000 		sts (Timer0Reg0)+3,r27
+ 966               	.LM133:
+ 967 03a8 8091 0000 		lds r24,TimerPauseReg
+ 968 03ac 9091 0000 		lds r25,(TimerPauseReg)+1
+ 969 03b0 A091 0000 		lds r26,(TimerPauseReg)+2
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 18
+
+
+ 970 03b4 B091 0000 		lds r27,(TimerPauseReg)+3
+ 971 03b8 0196      		adiw r24,1
+ 972 03ba A11D      		adc r26,__zero_reg__
+ 973 03bc B11D      		adc r27,__zero_reg__
+ 974 03be 8093 0000 		sts TimerPauseReg,r24
+ 975 03c2 9093 0000 		sts (TimerPauseReg)+1,r25
+ 976 03c6 A093 0000 		sts (TimerPauseReg)+2,r26
+ 977 03ca B093 0000 		sts (TimerPauseReg)+3,r27
+ 978               	.LM134:
+ 979 03ce 8091 0000 		lds r24,TimerIntFunc
+ 980 03d2 9091 0000 		lds r25,(TimerIntFunc)+1
+ 981 03d6 892B      		or r24,r25
+ 982 03d8 01F0      		breq .L68
+ 983               	.LM135:
+ 984 03da E091 0000 		lds r30,TimerIntFunc
+ 985 03de F091 0000 		lds r31,(TimerIntFunc)+1
+ 986 03e2 0995      		icall
+ 987               	.L68:
+ 988               	/* epilogue start */
+ 989               	.LM136:
+ 990 03e4 FF91      		pop r31
+ 991 03e6 EF91      		pop r30
+ 992 03e8 BF91      		pop r27
+ 993 03ea AF91      		pop r26
+ 994 03ec 9F91      		pop r25
+ 995 03ee 8F91      		pop r24
+ 996 03f0 7F91      		pop r23
+ 997 03f2 6F91      		pop r22
+ 998 03f4 5F91      		pop r21
+ 999 03f6 4F91      		pop r20
+ 1000 03f8 3F91      		pop r19
+ 1001 03fa 2F91      		pop r18
+ 1002 03fc 0F90      		pop r0
+ 1003 03fe 0FBE      		out __SREG__,r0
+ 1004 0400 0F90      		pop r0
+ 1005 0402 1F90      		pop __zero_reg__
+ 1006 0404 1895      		reti
+ 1007               	.LFE28:
+ 1008               		.size	__vector_9, .-__vector_9
+ 1009               	.global	__vector_8
+ 1010               		.type	__vector_8, @function
+ 1011               	__vector_8:
+ 1012               	.LFB29:
+ 1013               	.LM137:
+ 1014 0406 1F92      		push __zero_reg__
+ 1015 0408 0F92      		push r0
+ 1016 040a 0FB6      		in r0,__SREG__
+ 1017 040c 0F92      		push r0
+ 1018 040e 1124      		clr __zero_reg__
+ 1019 0410 2F93      		push r18
+ 1020 0412 3F93      		push r19
+ 1021 0414 4F93      		push r20
+ 1022 0416 5F93      		push r21
+ 1023 0418 6F93      		push r22
+ 1024 041a 7F93      		push r23
+ 1025 041c 8F93      		push r24
+ 1026 041e 9F93      		push r25
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 19
+
+
+ 1027 0420 AF93      		push r26
+ 1028 0422 BF93      		push r27
+ 1029 0424 EF93      		push r30
+ 1030 0426 FF93      		push r31
+ 1031               	/* prologue: Signal */
+ 1032               	/* frame size = 0 */
+ 1033               	.LM138:
+ 1034 0428 8091 0000 		lds r24,TimerIntFunc+2
+ 1035 042c 9091 0000 		lds r25,(TimerIntFunc+2)+1
+ 1036 0430 892B      		or r24,r25
+ 1037 0432 01F0      		breq .L71
+ 1038               	.LM139:
+ 1039 0434 E091 0000 		lds r30,TimerIntFunc+2
+ 1040 0438 F091 0000 		lds r31,(TimerIntFunc+2)+1
+ 1041 043c 0995      		icall
+ 1042               	.L71:
+ 1043               	/* epilogue start */
+ 1044               	.LM140:
+ 1045 043e FF91      		pop r31
+ 1046 0440 EF91      		pop r30
+ 1047 0442 BF91      		pop r27
+ 1048 0444 AF91      		pop r26
+ 1049 0446 9F91      		pop r25
+ 1050 0448 8F91      		pop r24
+ 1051 044a 7F91      		pop r23
+ 1052 044c 6F91      		pop r22
+ 1053 044e 5F91      		pop r21
+ 1054 0450 4F91      		pop r20
+ 1055 0452 3F91      		pop r19
+ 1056 0454 2F91      		pop r18
+ 1057 0456 0F90      		pop r0
+ 1058 0458 0FBE      		out __SREG__,r0
+ 1059 045a 0F90      		pop r0
+ 1060 045c 1F90      		pop __zero_reg__
+ 1061 045e 1895      		reti
+ 1062               	.LFE29:
+ 1063               		.size	__vector_8, .-__vector_8
+ 1064               	.global	__vector_4
+ 1065               		.type	__vector_4, @function
+ 1066               	__vector_4:
+ 1067               	.LFB30:
+ 1068               	.LM141:
+ 1069 0460 1F92      		push __zero_reg__
+ 1070 0462 0F92      		push r0
+ 1071 0464 0FB6      		in r0,__SREG__
+ 1072 0466 0F92      		push r0
+ 1073 0468 1124      		clr __zero_reg__
+ 1074 046a 2F93      		push r18
+ 1075 046c 3F93      		push r19
+ 1076 046e 4F93      		push r20
+ 1077 0470 5F93      		push r21
+ 1078 0472 6F93      		push r22
+ 1079 0474 7F93      		push r23
+ 1080 0476 8F93      		push r24
+ 1081 0478 9F93      		push r25
+ 1082 047a AF93      		push r26
+ 1083 047c BF93      		push r27
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 20
+
+
+ 1084 047e EF93      		push r30
+ 1085 0480 FF93      		push r31
+ 1086               	/* prologue: Signal */
+ 1087               	/* frame size = 0 */
+ 1088               	.LM142:
+ 1089 0482 8091 0000 		lds r24,Timer2Reg0
+ 1090 0486 9091 0000 		lds r25,(Timer2Reg0)+1
+ 1091 048a A091 0000 		lds r26,(Timer2Reg0)+2
+ 1092 048e B091 0000 		lds r27,(Timer2Reg0)+3
+ 1093 0492 0196      		adiw r24,1
+ 1094 0494 A11D      		adc r26,__zero_reg__
+ 1095 0496 B11D      		adc r27,__zero_reg__
+ 1096 0498 8093 0000 		sts Timer2Reg0,r24
+ 1097 049c 9093 0000 		sts (Timer2Reg0)+1,r25
+ 1098 04a0 A093 0000 		sts (Timer2Reg0)+2,r26
+ 1099 04a4 B093 0000 		sts (Timer2Reg0)+3,r27
+ 1100               	.LM143:
+ 1101 04a8 8091 0000 		lds r24,TimerIntFunc+10
+ 1102 04ac 9091 0000 		lds r25,(TimerIntFunc+10)+1
+ 1103 04b0 892B      		or r24,r25
+ 1104 04b2 01F0      		breq .L74
+ 1105               	.LM144:
+ 1106 04b4 E091 0000 		lds r30,TimerIntFunc+10
+ 1107 04b8 F091 0000 		lds r31,(TimerIntFunc+10)+1
+ 1108 04bc 0995      		icall
+ 1109               	.L74:
+ 1110               	/* epilogue start */
+ 1111               	.LM145:
+ 1112 04be FF91      		pop r31
+ 1113 04c0 EF91      		pop r30
+ 1114 04c2 BF91      		pop r27
+ 1115 04c4 AF91      		pop r26
+ 1116 04c6 9F91      		pop r25
+ 1117 04c8 8F91      		pop r24
+ 1118 04ca 7F91      		pop r23
+ 1119 04cc 6F91      		pop r22
+ 1120 04ce 5F91      		pop r21
+ 1121 04d0 4F91      		pop r20
+ 1122 04d2 3F91      		pop r19
+ 1123 04d4 2F91      		pop r18
+ 1124 04d6 0F90      		pop r0
+ 1125 04d8 0FBE      		out __SREG__,r0
+ 1126 04da 0F90      		pop r0
+ 1127 04dc 1F90      		pop __zero_reg__
+ 1128 04de 1895      		reti
+ 1129               	.LFE30:
+ 1130               		.size	__vector_4, .-__vector_4
+ 1131               	.global	__vector_6
+ 1132               		.type	__vector_6, @function
+ 1133               	__vector_6:
+ 1134               	.LFB31:
+ 1135               	.LM146:
+ 1136 04e0 1F92      		push __zero_reg__
+ 1137 04e2 0F92      		push r0
+ 1138 04e4 0FB6      		in r0,__SREG__
+ 1139 04e6 0F92      		push r0
+ 1140 04e8 1124      		clr __zero_reg__
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 21
+
+
+ 1141 04ea 2F93      		push r18
+ 1142 04ec 3F93      		push r19
+ 1143 04ee 4F93      		push r20
+ 1144 04f0 5F93      		push r21
+ 1145 04f2 6F93      		push r22
+ 1146 04f4 7F93      		push r23
+ 1147 04f6 8F93      		push r24
+ 1148 04f8 9F93      		push r25
+ 1149 04fa AF93      		push r26
+ 1150 04fc BF93      		push r27
+ 1151 04fe EF93      		push r30
+ 1152 0500 FF93      		push r31
+ 1153               	/* prologue: Signal */
+ 1154               	/* frame size = 0 */
+ 1155               	.LM147:
+ 1156 0502 8091 0000 		lds r24,TimerIntFunc+4
+ 1157 0506 9091 0000 		lds r25,(TimerIntFunc+4)+1
+ 1158 050a 892B      		or r24,r25
+ 1159 050c 01F0      		breq .L77
+ 1160               	.LM148:
+ 1161 050e E091 0000 		lds r30,TimerIntFunc+4
+ 1162 0512 F091 0000 		lds r31,(TimerIntFunc+4)+1
+ 1163 0516 0995      		icall
+ 1164               	.L77:
+ 1165               	/* epilogue start */
+ 1166               	.LM149:
+ 1167 0518 FF91      		pop r31
+ 1168 051a EF91      		pop r30
+ 1169 051c BF91      		pop r27
+ 1170 051e AF91      		pop r26
+ 1171 0520 9F91      		pop r25
+ 1172 0522 8F91      		pop r24
+ 1173 0524 7F91      		pop r23
+ 1174 0526 6F91      		pop r22
+ 1175 0528 5F91      		pop r21
+ 1176 052a 4F91      		pop r20
+ 1177 052c 3F91      		pop r19
+ 1178 052e 2F91      		pop r18
+ 1179 0530 0F90      		pop r0
+ 1180 0532 0FBE      		out __SREG__,r0
+ 1181 0534 0F90      		pop r0
+ 1182 0536 1F90      		pop __zero_reg__
+ 1183 0538 1895      		reti
+ 1184               	.LFE31:
+ 1185               		.size	__vector_6, .-__vector_6
+ 1186               	.global	__vector_7
+ 1187               		.type	__vector_7, @function
+ 1188               	__vector_7:
+ 1189               	.LFB32:
+ 1190               	.LM150:
+ 1191 053a 1F92      		push __zero_reg__
+ 1192 053c 0F92      		push r0
+ 1193 053e 0FB6      		in r0,__SREG__
+ 1194 0540 0F92      		push r0
+ 1195 0542 1124      		clr __zero_reg__
+ 1196 0544 2F93      		push r18
+ 1197 0546 3F93      		push r19
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 22
+
+
+ 1198 0548 4F93      		push r20
+ 1199 054a 5F93      		push r21
+ 1200 054c 6F93      		push r22
+ 1201 054e 7F93      		push r23
+ 1202 0550 8F93      		push r24
+ 1203 0552 9F93      		push r25
+ 1204 0554 AF93      		push r26
+ 1205 0556 BF93      		push r27
+ 1206 0558 EF93      		push r30
+ 1207 055a FF93      		push r31
+ 1208               	/* prologue: Signal */
+ 1209               	/* frame size = 0 */
+ 1210               	.LM151:
+ 1211 055c 8091 0000 		lds r24,TimerIntFunc+6
+ 1212 0560 9091 0000 		lds r25,(TimerIntFunc+6)+1
+ 1213 0564 892B      		or r24,r25
+ 1214 0566 01F0      		breq .L80
+ 1215               	.LM152:
+ 1216 0568 E091 0000 		lds r30,TimerIntFunc+6
+ 1217 056c F091 0000 		lds r31,(TimerIntFunc+6)+1
+ 1218 0570 0995      		icall
+ 1219               	.L80:
+ 1220               	/* epilogue start */
+ 1221               	.LM153:
+ 1222 0572 FF91      		pop r31
+ 1223 0574 EF91      		pop r30
+ 1224 0576 BF91      		pop r27
+ 1225 0578 AF91      		pop r26
+ 1226 057a 9F91      		pop r25
+ 1227 057c 8F91      		pop r24
+ 1228 057e 7F91      		pop r23
+ 1229 0580 6F91      		pop r22
+ 1230 0582 5F91      		pop r21
+ 1231 0584 4F91      		pop r20
+ 1232 0586 3F91      		pop r19
+ 1233 0588 2F91      		pop r18
+ 1234 058a 0F90      		pop r0
+ 1235 058c 0FBE      		out __SREG__,r0
+ 1236 058e 0F90      		pop r0
+ 1237 0590 1F90      		pop __zero_reg__
+ 1238 0592 1895      		reti
+ 1239               	.LFE32:
+ 1240               		.size	__vector_7, .-__vector_7
+ 1241               	.global	__vector_5
+ 1242               		.type	__vector_5, @function
+ 1243               	__vector_5:
+ 1244               	.LFB33:
+ 1245               	.LM154:
+ 1246 0594 1F92      		push __zero_reg__
+ 1247 0596 0F92      		push r0
+ 1248 0598 0FB6      		in r0,__SREG__
+ 1249 059a 0F92      		push r0
+ 1250 059c 1124      		clr __zero_reg__
+ 1251 059e 2F93      		push r18
+ 1252 05a0 3F93      		push r19
+ 1253 05a2 4F93      		push r20
+ 1254 05a4 5F93      		push r21
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 23
+
+
+ 1255 05a6 6F93      		push r22
+ 1256 05a8 7F93      		push r23
+ 1257 05aa 8F93      		push r24
+ 1258 05ac 9F93      		push r25
+ 1259 05ae AF93      		push r26
+ 1260 05b0 BF93      		push r27
+ 1261 05b2 EF93      		push r30
+ 1262 05b4 FF93      		push r31
+ 1263               	/* prologue: Signal */
+ 1264               	/* frame size = 0 */
+ 1265               	.LM155:
+ 1266 05b6 8091 0000 		lds r24,TimerIntFunc+8
+ 1267 05ba 9091 0000 		lds r25,(TimerIntFunc+8)+1
+ 1268 05be 892B      		or r24,r25
+ 1269 05c0 01F0      		breq .L83
+ 1270               	.LM156:
+ 1271 05c2 E091 0000 		lds r30,TimerIntFunc+8
+ 1272 05c6 F091 0000 		lds r31,(TimerIntFunc+8)+1
+ 1273 05ca 0995      		icall
+ 1274               	.L83:
+ 1275               	/* epilogue start */
+ 1276               	.LM157:
+ 1277 05cc FF91      		pop r31
+ 1278 05ce EF91      		pop r30
+ 1279 05d0 BF91      		pop r27
+ 1280 05d2 AF91      		pop r26
+ 1281 05d4 9F91      		pop r25
+ 1282 05d6 8F91      		pop r24
+ 1283 05d8 7F91      		pop r23
+ 1284 05da 6F91      		pop r22
+ 1285 05dc 5F91      		pop r21
+ 1286 05de 4F91      		pop r20
+ 1287 05e0 3F91      		pop r19
+ 1288 05e2 2F91      		pop r18
+ 1289 05e4 0F90      		pop r0
+ 1290 05e6 0FBE      		out __SREG__,r0
+ 1291 05e8 0F90      		pop r0
+ 1292 05ea 1F90      		pop __zero_reg__
+ 1293 05ec 1895      		reti
+ 1294               	.LFE33:
+ 1295               		.size	__vector_5, .-__vector_5
+ 1296               	.global	__vector_3
+ 1297               		.type	__vector_3, @function
+ 1298               	__vector_3:
+ 1299               	.LFB34:
+ 1300               	.LM158:
+ 1301 05ee 1F92      		push __zero_reg__
+ 1302 05f0 0F92      		push r0
+ 1303 05f2 0FB6      		in r0,__SREG__
+ 1304 05f4 0F92      		push r0
+ 1305 05f6 1124      		clr __zero_reg__
+ 1306 05f8 2F93      		push r18
+ 1307 05fa 3F93      		push r19
+ 1308 05fc 4F93      		push r20
+ 1309 05fe 5F93      		push r21
+ 1310 0600 6F93      		push r22
+ 1311 0602 7F93      		push r23
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 24
+
+
+ 1312 0604 8F93      		push r24
+ 1313 0606 9F93      		push r25
+ 1314 0608 AF93      		push r26
+ 1315 060a BF93      		push r27
+ 1316 060c EF93      		push r30
+ 1317 060e FF93      		push r31
+ 1318               	/* prologue: Signal */
+ 1319               	/* frame size = 0 */
+ 1320               	.LM159:
+ 1321 0610 8091 0000 		lds r24,TimerIntFunc+12
+ 1322 0614 9091 0000 		lds r25,(TimerIntFunc+12)+1
+ 1323 0618 892B      		or r24,r25
+ 1324 061a 01F0      		breq .L86
+ 1325               	.LM160:
+ 1326 061c E091 0000 		lds r30,TimerIntFunc+12
+ 1327 0620 F091 0000 		lds r31,(TimerIntFunc+12)+1
+ 1328 0624 0995      		icall
+ 1329               	.L86:
+ 1330               	/* epilogue start */
+ 1331               	.LM161:
+ 1332 0626 FF91      		pop r31
+ 1333 0628 EF91      		pop r30
+ 1334 062a BF91      		pop r27
+ 1335 062c AF91      		pop r26
+ 1336 062e 9F91      		pop r25
+ 1337 0630 8F91      		pop r24
+ 1338 0632 7F91      		pop r23
+ 1339 0634 6F91      		pop r22
+ 1340 0636 5F91      		pop r21
+ 1341 0638 4F91      		pop r20
+ 1342 063a 3F91      		pop r19
+ 1343 063c 2F91      		pop r18
+ 1344 063e 0F90      		pop r0
+ 1345 0640 0FBE      		out __SREG__,r0
+ 1346 0642 0F90      		pop r0
+ 1347 0644 1F90      		pop __zero_reg__
+ 1348 0646 1895      		reti
+ 1349               	.LFE34:
+ 1350               		.size	__vector_3, .-__vector_3
+ 1351               	.global	TimerPrescaleFactor
+ 1352               		.section	.progmem.data,"a",@progbits
+ 1353               		.type	TimerPrescaleFactor, @object
+ 1354               		.size	TimerPrescaleFactor, 12
+ 1355               	TimerPrescaleFactor:
+ 1356 0000 0000      		.word	0
+ 1357 0002 0100      		.word	1
+ 1358 0004 0800      		.word	8
+ 1359 0006 4000      		.word	64
+ 1360 0008 0001      		.word	256
+ 1361 000a 0004      		.word	1024
+ 1362               	.global	TimerRTCPrescaleFactor
+ 1363               		.type	TimerRTCPrescaleFactor, @object
+ 1364               		.size	TimerRTCPrescaleFactor, 16
+ 1365               	TimerRTCPrescaleFactor:
+ 1366 000c 0000      		.word	0
+ 1367 000e 0100      		.word	1
+ 1368 0010 0800      		.word	8
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 25
+
+
+ 1369 0012 2000      		.word	32
+ 1370 0014 4000      		.word	64
+ 1371 0016 8000      		.word	128
+ 1372 0018 0001      		.word	256
+ 1373 001a 0004      		.word	1024
+ 1374               		.lcomm TimerIntFunc,14
+ 1375               		.comm TimerPauseReg,4,1
+ 1376               		.comm Timer0Reg0,4,1
+ 1377               		.comm Timer2Reg0,4,1
+ 1378               		.section	.debug_frame,"",@progbits
+ 1379               	.Lframe0:
+ 1380 0000 0C00 0000 		.long	.LECIE0-.LSCIE0
+ 1381               	.LSCIE0:
+ 1382 0004 FFFF FFFF 		.long	0xffffffff
+ 1383 0008 01        		.byte	0x1
+ 1384 0009 00        		.string	""
+ 1385 000a 01        		.uleb128 0x1
+ 1386 000b 7F        		.sleb128 -1
+ 1387 000c 24        		.byte	0x24
+ 1388 000d 0C        		.byte	0xc
+ 1389 000e 20        		.uleb128 0x20
+ 1390 000f 00        		.uleb128 0x0
+ 1391               		.p2align	2
+ 1392               	.LECIE0:
+ 1393               	.LSFDE0:
+ 1394 0010 0C00 0000 		.long	.LEFDE0-.LASFDE0
+ 1395               	.LASFDE0:
+ 1396 0014 0000 0000 		.long	.Lframe0
+ 1397 0018 0000 0000 		.long	.LFB2
+ 1398 001c 0200 0000 		.long	.LFE2-.LFB2
+ 1399               		.p2align	2
+ 1400               	.LEFDE0:
+ 1401               	.LSFDE2:
+ 1402 0020 0C00 0000 		.long	.LEFDE2-.LASFDE2
+ 1403               	.LASFDE2:
+ 1404 0024 0000 0000 		.long	.Lframe0
+ 1405 0028 0000 0000 		.long	.LFB3
+ 1406 002c 7000 0000 		.long	.LFE3-.LFB3
+ 1407               		.p2align	2
+ 1408               	.LEFDE2:
+ 1409               	.LSFDE4:
+ 1410 0030 0C00 0000 		.long	.LEFDE4-.LASFDE4
+ 1411               	.LASFDE4:
+ 1412 0034 0000 0000 		.long	.Lframe0
+ 1413 0038 0000 0000 		.long	.LFB4
+ 1414 003c 2200 0000 		.long	.LFE4-.LFB4
+ 1415               		.p2align	2
+ 1416               	.LEFDE4:
+ 1417               	.LSFDE6:
+ 1418 0040 0C00 0000 		.long	.LEFDE6-.LASFDE6
+ 1419               	.LASFDE6:
+ 1420 0044 0000 0000 		.long	.Lframe0
+ 1421 0048 0000 0000 		.long	.LFB5
+ 1422 004c 1400 0000 		.long	.LFE5-.LFB5
+ 1423               		.p2align	2
+ 1424               	.LEFDE6:
+ 1425               	.LSFDE8:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 26
+
+
+ 1426 0050 0C00 0000 		.long	.LEFDE8-.LASFDE8
+ 1427               	.LASFDE8:
+ 1428 0054 0000 0000 		.long	.Lframe0
+ 1429 0058 0000 0000 		.long	.LFB6
+ 1430 005c 2200 0000 		.long	.LFE6-.LFB6
+ 1431               		.p2align	2
+ 1432               	.LEFDE8:
+ 1433               	.LSFDE10:
+ 1434 0060 0C00 0000 		.long	.LEFDE10-.LASFDE10
+ 1435               	.LASFDE10:
+ 1436 0064 0000 0000 		.long	.Lframe0
+ 1437 0068 0000 0000 		.long	.LFB7
+ 1438 006c 0A00 0000 		.long	.LFE7-.LFB7
+ 1439               		.p2align	2
+ 1440               	.LEFDE10:
+ 1441               	.LSFDE12:
+ 1442 0070 0C00 0000 		.long	.LEFDE12-.LASFDE12
+ 1443               	.LASFDE12:
+ 1444 0074 0000 0000 		.long	.Lframe0
+ 1445 0078 0000 0000 		.long	.LFB8
+ 1446 007c 0A00 0000 		.long	.LFE8-.LFB8
+ 1447               		.p2align	2
+ 1448               	.LEFDE12:
+ 1449               	.LSFDE14:
+ 1450 0080 0C00 0000 		.long	.LEFDE14-.LASFDE14
+ 1451               	.LASFDE14:
+ 1452 0084 0000 0000 		.long	.Lframe0
+ 1453 0088 0000 0000 		.long	.LFB9
+ 1454 008c 0A00 0000 		.long	.LFE9-.LFB9
+ 1455               		.p2align	2
+ 1456               	.LEFDE14:
+ 1457               	.LSFDE16:
+ 1458 0090 0C00 0000 		.long	.LEFDE16-.LASFDE16
+ 1459               	.LASFDE16:
+ 1460 0094 0000 0000 		.long	.Lframe0
+ 1461 0098 0000 0000 		.long	.LFB10
+ 1462 009c 1A00 0000 		.long	.LFE10-.LFB10
+ 1463               		.p2align	2
+ 1464               	.LEFDE16:
+ 1465               	.LSFDE18:
+ 1466 00a0 0C00 0000 		.long	.LEFDE18-.LASFDE18
+ 1467               	.LASFDE18:
+ 1468 00a4 0000 0000 		.long	.Lframe0
+ 1469 00a8 0000 0000 		.long	.LFB11
+ 1470 00ac 1A00 0000 		.long	.LFE11-.LFB11
+ 1471               		.p2align	2
+ 1472               	.LEFDE18:
+ 1473               	.LSFDE20:
+ 1474 00b0 0C00 0000 		.long	.LEFDE20-.LASFDE20
+ 1475               	.LASFDE20:
+ 1476 00b4 0000 0000 		.long	.Lframe0
+ 1477 00b8 0000 0000 		.long	.LFB12
+ 1478 00bc 1A00 0000 		.long	.LFE12-.LFB12
+ 1479               		.p2align	2
+ 1480               	.LEFDE20:
+ 1481               	.LSFDE22:
+ 1482 00c0 0C00 0000 		.long	.LEFDE22-.LASFDE22
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 27
+
+
+ 1483               	.LASFDE22:
+ 1484 00c4 0000 0000 		.long	.Lframe0
+ 1485 00c8 0000 0000 		.long	.LFB13
+ 1486 00cc 1600 0000 		.long	.LFE13-.LFB13
+ 1487               		.p2align	2
+ 1488               	.LEFDE22:
+ 1489               	.LSFDE24:
+ 1490 00d0 0C00 0000 		.long	.LEFDE24-.LASFDE24
+ 1491               	.LASFDE24:
+ 1492 00d4 0000 0000 		.long	.Lframe0
+ 1493 00d8 0000 0000 		.long	.LFB14
+ 1494 00dc 1600 0000 		.long	.LFE14-.LFB14
+ 1495               		.p2align	2
+ 1496               	.LEFDE24:
+ 1497               	.LSFDE26:
+ 1498 00e0 0C00 0000 		.long	.LEFDE26-.LASFDE26
+ 1499               	.LASFDE26:
+ 1500 00e4 0000 0000 		.long	.Lframe0
+ 1501 00e8 0000 0000 		.long	.LFB15
+ 1502 00ec 1401 0000 		.long	.LFE15-.LFB15
+ 1503               		.p2align	2
+ 1504               	.LEFDE26:
+ 1505               	.LSFDE28:
+ 1506 00f0 0C00 0000 		.long	.LEFDE28-.LASFDE28
+ 1507               	.LASFDE28:
+ 1508 00f4 0000 0000 		.long	.Lframe0
+ 1509 00f8 0000 0000 		.long	.LFB16
+ 1510 00fc 1200 0000 		.long	.LFE16-.LFB16
+ 1511               		.p2align	2
+ 1512               	.LEFDE28:
+ 1513               	.LSFDE30:
+ 1514 0100 0C00 0000 		.long	.LEFDE30-.LASFDE30
+ 1515               	.LASFDE30:
+ 1516 0104 0000 0000 		.long	.Lframe0
+ 1517 0108 0000 0000 		.long	.LFB17
+ 1518 010c 1600 0000 		.long	.LFE17-.LFB17
+ 1519               		.p2align	2
+ 1520               	.LEFDE30:
+ 1521               	.LSFDE32:
+ 1522 0110 0C00 0000 		.long	.LEFDE32-.LASFDE32
+ 1523               	.LASFDE32:
+ 1524 0114 0000 0000 		.long	.Lframe0
+ 1525 0118 0000 0000 		.long	.LFB18
+ 1526 011c 1200 0000 		.long	.LFE18-.LFB18
+ 1527               		.p2align	2
+ 1528               	.LEFDE32:
+ 1529               	.LSFDE34:
+ 1530 0120 0C00 0000 		.long	.LEFDE34-.LASFDE34
+ 1531               	.LASFDE34:
+ 1532 0124 0000 0000 		.long	.Lframe0
+ 1533 0128 0000 0000 		.long	.LFB19
+ 1534 012c 1600 0000 		.long	.LFE19-.LFB19
+ 1535               		.p2align	2
+ 1536               	.LEFDE34:
+ 1537               	.LSFDE36:
+ 1538 0130 0C00 0000 		.long	.LEFDE36-.LASFDE36
+ 1539               	.LASFDE36:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 28
+
+
+ 1540 0134 0000 0000 		.long	.Lframe0
+ 1541 0138 0000 0000 		.long	.LFB20
+ 1542 013c 3000 0000 		.long	.LFE20-.LFB20
+ 1543               		.p2align	2
+ 1544               	.LEFDE36:
+ 1545               	.LSFDE38:
+ 1546 0140 0C00 0000 		.long	.LEFDE38-.LASFDE38
+ 1547               	.LASFDE38:
+ 1548 0144 0000 0000 		.long	.Lframe0
+ 1549 0148 0000 0000 		.long	.LFB21
+ 1550 014c 2600 0000 		.long	.LFE21-.LFB21
+ 1551               		.p2align	2
+ 1552               	.LEFDE38:
+ 1553               	.LSFDE40:
+ 1554 0150 0C00 0000 		.long	.LEFDE40-.LASFDE40
+ 1555               	.LASFDE40:
+ 1556 0154 0000 0000 		.long	.Lframe0
+ 1557 0158 0000 0000 		.long	.LFB22
+ 1558 015c 0E00 0000 		.long	.LFE22-.LFB22
+ 1559               		.p2align	2
+ 1560               	.LEFDE40:
+ 1561               	.LSFDE42:
+ 1562 0160 0C00 0000 		.long	.LEFDE42-.LASFDE42
+ 1563               	.LASFDE42:
+ 1564 0164 0000 0000 		.long	.Lframe0
+ 1565 0168 0000 0000 		.long	.LFB23
+ 1566 016c 0E00 0000 		.long	.LFE23-.LFB23
+ 1567               		.p2align	2
+ 1568               	.LEFDE42:
+ 1569               	.LSFDE44:
+ 1570 0170 0C00 0000 		.long	.LEFDE44-.LASFDE44
+ 1571               	.LASFDE44:
+ 1572 0174 0000 0000 		.long	.Lframe0
+ 1573 0178 0000 0000 		.long	.LFB24
+ 1574 017c 0E00 0000 		.long	.LFE24-.LFB24
+ 1575               		.p2align	2
+ 1576               	.LEFDE44:
+ 1577               	.LSFDE46:
+ 1578 0180 0C00 0000 		.long	.LEFDE46-.LASFDE46
+ 1579               	.LASFDE46:
+ 1580 0184 0000 0000 		.long	.Lframe0
+ 1581 0188 0000 0000 		.long	.LFB25
+ 1582 018c 0E00 0000 		.long	.LFE25-.LFB25
+ 1583               		.p2align	2
+ 1584               	.LEFDE46:
+ 1585               	.LSFDE48:
+ 1586 0190 0C00 0000 		.long	.LEFDE48-.LASFDE48
+ 1587               	.LASFDE48:
+ 1588 0194 0000 0000 		.long	.Lframe0
+ 1589 0198 0000 0000 		.long	.LFB26
+ 1590 019c 0600 0000 		.long	.LFE26-.LFB26
+ 1591               		.p2align	2
+ 1592               	.LEFDE48:
+ 1593               	.LSFDE50:
+ 1594 01a0 0C00 0000 		.long	.LEFDE50-.LASFDE50
+ 1595               	.LASFDE50:
+ 1596 01a4 0000 0000 		.long	.Lframe0
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 29
+
+
+ 1597 01a8 0000 0000 		.long	.LFB27
+ 1598 01ac 0600 0000 		.long	.LFE27-.LFB27
+ 1599               		.p2align	2
+ 1600               	.LEFDE50:
+ 1601               	.LSFDE52:
+ 1602 01b0 0C00 0000 		.long	.LEFDE52-.LASFDE52
+ 1603               	.LASFDE52:
+ 1604 01b4 0000 0000 		.long	.Lframe0
+ 1605 01b8 0000 0000 		.long	.LFB28
+ 1606 01bc A600 0000 		.long	.LFE28-.LFB28
+ 1607               		.p2align	2
+ 1608               	.LEFDE52:
+ 1609               	.LSFDE54:
+ 1610 01c0 0C00 0000 		.long	.LEFDE54-.LASFDE54
+ 1611               	.LASFDE54:
+ 1612 01c4 0000 0000 		.long	.Lframe0
+ 1613 01c8 0000 0000 		.long	.LFB29
+ 1614 01cc 5A00 0000 		.long	.LFE29-.LFB29
+ 1615               		.p2align	2
+ 1616               	.LEFDE54:
+ 1617               	.LSFDE56:
+ 1618 01d0 0C00 0000 		.long	.LEFDE56-.LASFDE56
+ 1619               	.LASFDE56:
+ 1620 01d4 0000 0000 		.long	.Lframe0
+ 1621 01d8 0000 0000 		.long	.LFB30
+ 1622 01dc 8000 0000 		.long	.LFE30-.LFB30
+ 1623               		.p2align	2
+ 1624               	.LEFDE56:
+ 1625               	.LSFDE58:
+ 1626 01e0 0C00 0000 		.long	.LEFDE58-.LASFDE58
+ 1627               	.LASFDE58:
+ 1628 01e4 0000 0000 		.long	.Lframe0
+ 1629 01e8 0000 0000 		.long	.LFB31
+ 1630 01ec 5A00 0000 		.long	.LFE31-.LFB31
+ 1631               		.p2align	2
+ 1632               	.LEFDE58:
+ 1633               	.LSFDE60:
+ 1634 01f0 0C00 0000 		.long	.LEFDE60-.LASFDE60
+ 1635               	.LASFDE60:
+ 1636 01f4 0000 0000 		.long	.Lframe0
+ 1637 01f8 0000 0000 		.long	.LFB32
+ 1638 01fc 5A00 0000 		.long	.LFE32-.LFB32
+ 1639               		.p2align	2
+ 1640               	.LEFDE60:
+ 1641               	.LSFDE62:
+ 1642 0200 0C00 0000 		.long	.LEFDE62-.LASFDE62
+ 1643               	.LASFDE62:
+ 1644 0204 0000 0000 		.long	.Lframe0
+ 1645 0208 0000 0000 		.long	.LFB33
+ 1646 020c 5A00 0000 		.long	.LFE33-.LFB33
+ 1647               		.p2align	2
+ 1648               	.LEFDE62:
+ 1649               	.LSFDE64:
+ 1650 0210 0C00 0000 		.long	.LEFDE64-.LASFDE64
+ 1651               	.LASFDE64:
+ 1652 0214 0000 0000 		.long	.Lframe0
+ 1653 0218 0000 0000 		.long	.LFB34
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 30
+
+
+ 1654 021c 5A00 0000 		.long	.LFE34-.LFB34
+ 1655               		.p2align	2
+ 1656               	.LEFDE64:
+ 1657               		.text
+ 1658               	.Letext0:
+ 1659               		.section	.debug_loc,"",@progbits
+ 1660               	.Ldebug_loc0:
+ 1661               	.LLST9:
+ 1662 0000 FE00 0000 		.long	.LVL7-.Ltext0
+ 1663 0004 0001 0000 		.long	.LVL8-.Ltext0
+ 1664 0008 0600      		.word	0x6
+ 1665 000a 62        		.byte	0x62
+ 1666 000b 93        		.byte	0x93
+ 1667 000c 01        		.uleb128 0x1
+ 1668 000d 63        		.byte	0x63
+ 1669 000e 93        		.byte	0x93
+ 1670 000f 01        		.uleb128 0x1
+ 1671 0010 0000 0000 		.long	0x0
+ 1672 0014 0000 0000 		.long	0x0
+ 1673               	.LLST11:
+ 1674 0018 1801 0000 		.long	.LVL12-.Ltext0
+ 1675 001c 1A01 0000 		.long	.LVL13-.Ltext0
+ 1676 0020 0600      		.word	0x6
+ 1677 0022 62        		.byte	0x62
+ 1678 0023 93        		.byte	0x93
+ 1679 0024 01        		.uleb128 0x1
+ 1680 0025 63        		.byte	0x63
+ 1681 0026 93        		.byte	0x93
+ 1682 0027 01        		.uleb128 0x1
+ 1683 0028 0000 0000 		.long	0x0
+ 1684 002c 0000 0000 		.long	0x0
+ 1685               	.LLST13:
+ 1686 0030 3201 0000 		.long	.LVL17-.Ltext0
+ 1687 0034 3401 0000 		.long	.LVL18-.Ltext0
+ 1688 0038 0600      		.word	0x6
+ 1689 003a 62        		.byte	0x62
+ 1690 003b 93        		.byte	0x93
+ 1691 003c 01        		.uleb128 0x1
+ 1692 003d 63        		.byte	0x63
+ 1693 003e 93        		.byte	0x93
+ 1694 003f 01        		.uleb128 0x1
+ 1695 0040 0000 0000 		.long	0x0
+ 1696 0044 0000 0000 		.long	0x0
+ 1697               	.LLST17:
+ 1698 0048 6201 0000 		.long	.LVL21-.Ltext0
+ 1699 004c 8401 0000 		.long	.LVL23-.Ltext0
+ 1700 0050 0600      		.word	0x6
+ 1701 0052 68        		.byte	0x68
+ 1702 0053 93        		.byte	0x93
+ 1703 0054 01        		.uleb128 0x1
+ 1704 0055 69        		.byte	0x69
+ 1705 0056 93        		.byte	0x93
+ 1706 0057 01        		.uleb128 0x1
+ 1707 0058 8401 0000 		.long	.LVL23-.Ltext0
+ 1708 005c CA01 0000 		.long	.LVL32-.Ltext0
+ 1709 0060 0600      		.word	0x6
+ 1710 0062 6C        		.byte	0x6c
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 31
+
+
+ 1711 0063 93        		.byte	0x93
+ 1712 0064 01        		.uleb128 0x1
+ 1713 0065 6D        		.byte	0x6d
+ 1714 0066 93        		.byte	0x93
+ 1715 0067 01        		.uleb128 0x1
+ 1716 0068 CA01 0000 		.long	.LVL32-.Ltext0
+ 1717 006c DE01 0000 		.long	.LVL34-.Ltext0
+ 1718 0070 0C00      		.word	0xc
+ 1719 0072 62        		.byte	0x62
+ 1720 0073 93        		.byte	0x93
+ 1721 0074 01        		.uleb128 0x1
+ 1722 0075 63        		.byte	0x63
+ 1723 0076 93        		.byte	0x93
+ 1724 0077 01        		.uleb128 0x1
+ 1725 0078 64        		.byte	0x64
+ 1726 0079 93        		.byte	0x93
+ 1727 007a 01        		.uleb128 0x1
+ 1728 007b 65        		.byte	0x65
+ 1729 007c 93        		.byte	0x93
+ 1730 007d 01        		.uleb128 0x1
+ 1731 007e DE01 0000 		.long	.LVL34-.Ltext0
+ 1732 0082 FA01 0000 		.long	.LVL38-.Ltext0
+ 1733 0086 0600      		.word	0x6
+ 1734 0088 6C        		.byte	0x6c
+ 1735 0089 93        		.byte	0x93
+ 1736 008a 01        		.uleb128 0x1
+ 1737 008b 6D        		.byte	0x6d
+ 1738 008c 93        		.byte	0x93
+ 1739 008d 01        		.uleb128 0x1
+ 1740 008e FA01 0000 		.long	.LVL38-.Ltext0
+ 1741 0092 6C02 0000 		.long	.LVL41-.Ltext0
+ 1742 0096 0C00      		.word	0xc
+ 1743 0098 62        		.byte	0x62
+ 1744 0099 93        		.byte	0x93
+ 1745 009a 01        		.uleb128 0x1
+ 1746 009b 63        		.byte	0x63
+ 1747 009c 93        		.byte	0x93
+ 1748 009d 01        		.uleb128 0x1
+ 1749 009e 64        		.byte	0x64
+ 1750 009f 93        		.byte	0x93
+ 1751 00a0 01        		.uleb128 0x1
+ 1752 00a1 65        		.byte	0x65
+ 1753 00a2 93        		.byte	0x93
+ 1754 00a3 01        		.uleb128 0x1
+ 1755 00a4 0000 0000 		.long	0x0
+ 1756 00a8 0000 0000 		.long	0x0
+ 1757               	.LLST18:
+ 1758 00ac 7201 0000 		.long	.LVL22-.Ltext0
+ 1759 00b0 6E02 0000 		.long	.LVL42-.Ltext0
+ 1760 00b4 0100      		.word	0x1
+ 1761 00b6 61        		.byte	0x61
+ 1762 00b7 0000 0000 		.long	0x0
+ 1763 00bb 0000 0000 		.long	0x0
+ 1764               	.LLST19:
+ 1765 00bf BA01 0000 		.long	.LVL31-.Ltext0
+ 1766 00c3 CE01 0000 		.long	.LVL33-.Ltext0
+ 1767 00c7 0C00      		.word	0xc
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 32
+
+
+ 1768 00c9 66        		.byte	0x66
+ 1769 00ca 93        		.byte	0x93
+ 1770 00cb 01        		.uleb128 0x1
+ 1771 00cc 67        		.byte	0x67
+ 1772 00cd 93        		.byte	0x93
+ 1773 00ce 01        		.uleb128 0x1
+ 1774 00cf 68        		.byte	0x68
+ 1775 00d0 93        		.byte	0x93
+ 1776 00d1 01        		.uleb128 0x1
+ 1777 00d2 69        		.byte	0x69
+ 1778 00d3 93        		.byte	0x93
+ 1779 00d4 01        		.uleb128 0x1
+ 1780 00d5 E401 0000 		.long	.LVL36-.Ltext0
+ 1781 00d9 F001 0000 		.long	.LVL37-.Ltext0
+ 1782 00dd 0C00      		.word	0xc
+ 1783 00df 66        		.byte	0x66
+ 1784 00e0 93        		.byte	0x93
+ 1785 00e1 01        		.uleb128 0x1
+ 1786 00e2 67        		.byte	0x67
+ 1787 00e3 93        		.byte	0x93
+ 1788 00e4 01        		.uleb128 0x1
+ 1789 00e5 68        		.byte	0x68
+ 1790 00e6 93        		.byte	0x93
+ 1791 00e7 01        		.uleb128 0x1
+ 1792 00e8 69        		.byte	0x69
+ 1793 00e9 93        		.byte	0x93
+ 1794 00ea 01        		.uleb128 0x1
+ 1795 00eb 0000 0000 		.long	0x0
+ 1796 00ef 0000 0000 		.long	0x0
+ 1797               	.LLST20:
+ 1798 00f3 E201 0000 		.long	.LVL35-.Ltext0
+ 1799 00f7 E401 0000 		.long	.LVL36-.Ltext0
+ 1800 00fb 0C00      		.word	0xc
+ 1801 00fd 68        		.byte	0x68
+ 1802 00fe 93        		.byte	0x93
+ 1803 00ff 01        		.uleb128 0x1
+ 1804 0100 69        		.byte	0x69
+ 1805 0101 93        		.byte	0x93
+ 1806 0102 01        		.uleb128 0x1
+ 1807 0103 6A        		.byte	0x6a
+ 1808 0104 93        		.byte	0x93
+ 1809 0105 01        		.uleb128 0x1
+ 1810 0106 6B        		.byte	0x6b
+ 1811 0107 93        		.byte	0x93
+ 1812 0108 01        		.uleb128 0x1
+ 1813 0109 2602 0000 		.long	.LVL39-.Ltext0
+ 1814 010d 5602 0000 		.long	.LVL40-.Ltext0
+ 1815 0111 0C00      		.word	0xc
+ 1816 0113 66        		.byte	0x66
+ 1817 0114 93        		.byte	0x93
+ 1818 0115 01        		.uleb128 0x1
+ 1819 0116 67        		.byte	0x67
+ 1820 0117 93        		.byte	0x93
+ 1821 0118 01        		.uleb128 0x1
+ 1822 0119 68        		.byte	0x68
+ 1823 011a 93        		.byte	0x93
+ 1824 011b 01        		.uleb128 0x1
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 33
+
+
+ 1825 011c 69        		.byte	0x69
+ 1826 011d 93        		.byte	0x93
+ 1827 011e 01        		.uleb128 0x1
+ 1828 011f 0000 0000 		.long	0x0
+ 1829 0123 0000 0000 		.long	0x0
+ 1830               	.LLST21:
+ 1831 0127 8801 0000 		.long	.LVL25-.Ltext0
+ 1832 012b A801 0000 		.long	.LVL29-.Ltext0
+ 1833 012f 0600      		.word	0x6
+ 1834 0131 6E        		.byte	0x6e
+ 1835 0132 93        		.byte	0x93
+ 1836 0133 01        		.uleb128 0x1
+ 1837 0134 6F        		.byte	0x6f
+ 1838 0135 93        		.byte	0x93
+ 1839 0136 01        		.uleb128 0x1
+ 1840 0137 0000 0000 		.long	0x0
+ 1841 013b 0000 0000 		.long	0x0
+ 1842               	.LLST22:
+ 1843 013f 9801 0000 		.long	.LVL27-.Ltext0
+ 1844 0143 9C01 0000 		.long	.LVL28-.Ltext0
+ 1845 0147 0600      		.word	0x6
+ 1846 0149 62        		.byte	0x62
+ 1847 014a 93        		.byte	0x93
+ 1848 014b 01        		.uleb128 0x1
+ 1849 014c 63        		.byte	0x63
+ 1850 014d 93        		.byte	0x93
+ 1851 014e 01        		.uleb128 0x1
+ 1852 014f 9C01 0000 		.long	.LVL28-.Ltext0
+ 1853 0153 A801 0000 		.long	.LVL29-.Ltext0
+ 1854 0157 0C00      		.word	0xc
+ 1855 0159 62        		.byte	0x62
+ 1856 015a 93        		.byte	0x93
+ 1857 015b 01        		.uleb128 0x1
+ 1858 015c 63        		.byte	0x63
+ 1859 015d 93        		.byte	0x93
+ 1860 015e 01        		.uleb128 0x1
+ 1861 015f 64        		.byte	0x64
+ 1862 0160 93        		.byte	0x93
+ 1863 0161 01        		.uleb128 0x1
+ 1864 0162 65        		.byte	0x65
+ 1865 0163 93        		.byte	0x93
+ 1866 0164 01        		.uleb128 0x1
+ 1867 0165 0000 0000 		.long	0x0
+ 1868 0169 0000 0000 		.long	0x0
+ 1869               	.LLST28:
+ 1870 016d C602 0000 		.long	.LVL43-.Ltext0
+ 1871 0171 CC02 0000 		.long	.LVL44-.Ltext0
+ 1872 0175 0100      		.word	0x1
+ 1873 0177 68        		.byte	0x68
+ 1874 0178 D602 0000 		.long	.LVL45-.Ltext0
+ 1875 017c DC02 0000 		.long	.LVL46-.Ltext0
+ 1876 0180 0100      		.word	0x1
+ 1877 0182 68        		.byte	0x68
+ 1878 0183 E002 0000 		.long	.LVL47-.Ltext0
+ 1879 0187 E202 0000 		.long	.LVL48-.Ltext0
+ 1880 018b 0100      		.word	0x1
+ 1881 018d 68        		.byte	0x68
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 34
+
+
+ 1882 018e 0000 0000 		.long	0x0
+ 1883 0192 0000 0000 		.long	0x0
+ 1884               		.section	.debug_info
+ 1885 0000 0308 0000 		.long	0x803
+ 1886 0004 0200      		.word	0x2
+ 1887 0006 0000 0000 		.long	.Ldebug_abbrev0
+ 1888 000a 04        		.byte	0x4
+ 1889 000b 01        		.uleb128 0x1
+ 1890 000c 0000 0000 		.long	.LASF64
+ 1891 0010 01        		.byte	0x1
+ 1892 0011 0000 0000 		.long	.LASF65
+ 1893 0015 0000 0000 		.long	.Ltext0
+ 1894 0019 0000 0000 		.long	.Letext0
+ 1895 001d 0000 0000 		.long	.Ldebug_line0
+ 1896 0021 02        		.uleb128 0x2
+ 1897 0022 01        		.byte	0x1
+ 1898 0023 06        		.byte	0x6
+ 1899 0024 0000 0000 		.long	.LASF0
+ 1900 0028 02        		.uleb128 0x2
+ 1901 0029 01        		.byte	0x1
+ 1902 002a 08        		.byte	0x8
+ 1903 002b 0000 0000 		.long	.LASF1
+ 1904 002f 03        		.uleb128 0x3
+ 1905 0030 02        		.byte	0x2
+ 1906 0031 05        		.byte	0x5
+ 1907 0032 696E 7400 		.string	"int"
+ 1908 0036 04        		.uleb128 0x4
+ 1909 0037 0000 0000 		.long	.LASF7
+ 1910 003b 03        		.byte	0x3
+ 1911 003c 7C        		.byte	0x7c
+ 1912 003d 4100 0000 		.long	0x41
+ 1913 0041 02        		.uleb128 0x2
+ 1914 0042 02        		.byte	0x2
+ 1915 0043 07        		.byte	0x7
+ 1916 0044 0000 0000 		.long	.LASF2
+ 1917 0048 02        		.uleb128 0x2
+ 1918 0049 04        		.byte	0x4
+ 1919 004a 05        		.byte	0x5
+ 1920 004b 0000 0000 		.long	.LASF3
+ 1921 004f 02        		.uleb128 0x2
+ 1922 0050 04        		.byte	0x4
+ 1923 0051 07        		.byte	0x7
+ 1924 0052 0000 0000 		.long	.LASF4
+ 1925 0056 02        		.uleb128 0x2
+ 1926 0057 08        		.byte	0x8
+ 1927 0058 05        		.byte	0x5
+ 1928 0059 0000 0000 		.long	.LASF5
+ 1929 005d 02        		.uleb128 0x2
+ 1930 005e 08        		.byte	0x8
+ 1931 005f 07        		.byte	0x7
+ 1932 0060 0000 0000 		.long	.LASF6
+ 1933 0064 05        		.uleb128 0x5
+ 1934 0065 01        		.byte	0x1
+ 1935 0066 06        		.byte	0x6
+ 1936 0067 05        		.uleb128 0x5
+ 1937 0068 01        		.byte	0x1
+ 1938 0069 08        		.byte	0x8
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 35
+
+
+ 1939 006a 06        		.uleb128 0x6
+ 1940 006b 7530 3800 		.string	"u08"
+ 1941 006f 02        		.byte	0x2
+ 1942 0070 20        		.byte	0x20
+ 1943 0071 2800 0000 		.long	0x28
+ 1944 0075 06        		.uleb128 0x6
+ 1945 0076 7531 3600 		.string	"u16"
+ 1946 007a 02        		.byte	0x2
+ 1947 007b 22        		.byte	0x22
+ 1948 007c 8000 0000 		.long	0x80
+ 1949 0080 02        		.uleb128 0x2
+ 1950 0081 02        		.byte	0x2
+ 1951 0082 07        		.byte	0x7
+ 1952 0083 0000 0000 		.long	.LASF8
+ 1953 0087 02        		.uleb128 0x2
+ 1954 0088 02        		.byte	0x2
+ 1955 0089 05        		.byte	0x5
+ 1956 008a 0000 0000 		.long	.LASF9
+ 1957 008e 06        		.uleb128 0x6
+ 1958 008f 7533 3200 		.string	"u32"
+ 1959 0093 02        		.byte	0x2
+ 1960 0094 24        		.byte	0x24
+ 1961 0095 4F00 0000 		.long	0x4f
+ 1962 0099 02        		.uleb128 0x2
+ 1963 009a 01        		.byte	0x1
+ 1964 009b 06        		.byte	0x6
+ 1965 009c 0000 0000 		.long	.LASF10
+ 1966 00a0 04        		.uleb128 0x4
+ 1967 00a1 0000 0000 		.long	.LASF11
+ 1968 00a5 01        		.byte	0x1
+ 1969 00a6 2A        		.byte	0x2a
+ 1970 00a7 AB00 0000 		.long	0xab
+ 1971 00ab 07        		.uleb128 0x7
+ 1972 00ac 02        		.byte	0x2
+ 1973 00ad B100 0000 		.long	0xb1
+ 1974 00b1 08        		.uleb128 0x8
+ 1975 00b2 01        		.byte	0x1
+ 1976 00b3 09        		.uleb128 0x9
+ 1977 00b4 01        		.byte	0x1
+ 1978 00b5 0000 0000 		.long	.LASF14
+ 1979 00b9 01        		.byte	0x1
+ 1980 00ba 83        		.byte	0x83
+ 1981 00bb 01        		.byte	0x1
+ 1982 00bc 01        		.byte	0x1
+ 1983 00bd CD00 0000 		.long	0xcd
+ 1984 00c1 0A        		.uleb128 0xa
+ 1985 00c2 0000 0000 		.long	.LASF16
+ 1986 00c6 01        		.byte	0x1
+ 1987 00c7 82        		.byte	0x82
+ 1988 00c8 6A00 0000 		.long	0x6a
+ 1989 00cc 00        		.byte	0x0
+ 1990 00cd 0B        		.uleb128 0xb
+ 1991 00ce 01        		.byte	0x1
+ 1992 00cf 0000 0000 		.long	.LASF66
+ 1993 00d3 01        		.byte	0x1
+ 1994 00d4 91        		.byte	0x91
+ 1995 00d5 01        		.byte	0x1
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 36
+
+
+ 1996 00d6 7500 0000 		.long	0x75
+ 1997 00da 01        		.byte	0x1
+ 1998 00db F800 0000 		.long	0xf8
+ 1999 00df 0C        		.uleb128 0xc
+ 2000 00e0 0D        		.uleb128 0xd
+ 2001 00e1 0000 0000 		.long	.LASF12
+ 2002 00e5 01        		.byte	0x1
+ 2003 00e6 93        		.byte	0x93
+ 2004 00e7 3600 0000 		.long	0x36
+ 2005 00eb 0D        		.uleb128 0xd
+ 2006 00ec 0000 0000 		.long	.LASF13
+ 2007 00f0 01        		.byte	0x1
+ 2008 00f1 93        		.byte	0x93
+ 2009 00f2 3600 0000 		.long	0x36
+ 2010 00f6 00        		.byte	0x0
+ 2011 00f7 00        		.byte	0x0
+ 2012 00f8 09        		.uleb128 0x9
+ 2013 00f9 01        		.byte	0x1
+ 2014 00fa 0000 0000 		.long	.LASF15
+ 2015 00fe 01        		.byte	0x1
+ 2016 00ff 7D        		.byte	0x7d
+ 2017 0100 01        		.byte	0x1
+ 2018 0101 01        		.byte	0x1
+ 2019 0102 1201 0000 		.long	0x112
+ 2020 0106 0A        		.uleb128 0xa
+ 2021 0107 0000 0000 		.long	.LASF16
+ 2022 010b 01        		.byte	0x1
+ 2023 010c 7C        		.byte	0x7c
+ 2024 010d 6A00 0000 		.long	0x6a
+ 2025 0111 00        		.byte	0x0
+ 2026 0112 0E        		.uleb128 0xe
+ 2027 0113 01        		.byte	0x1
+ 2028 0114 0000 0000 		.long	.LASF18
+ 2029 0118 01        		.byte	0x1
+ 2030 0119 FA        		.byte	0xfa
+ 2031 011a 01        		.byte	0x1
+ 2032 011b 01        		.byte	0x1
+ 2033 011c 09        		.uleb128 0x9
+ 2034 011d 01        		.byte	0x1
+ 2035 011e 0000 0000 		.long	.LASF17
+ 2036 0122 01        		.byte	0x1
+ 2037 0123 8A        		.byte	0x8a
+ 2038 0124 01        		.byte	0x1
+ 2039 0125 01        		.byte	0x1
+ 2040 0126 3601 0000 		.long	0x136
+ 2041 012a 0A        		.uleb128 0xa
+ 2042 012b 0000 0000 		.long	.LASF16
+ 2043 012f 01        		.byte	0x1
+ 2044 0130 89        		.byte	0x89
+ 2045 0131 6A00 0000 		.long	0x6a
+ 2046 0135 00        		.byte	0x0
+ 2047 0136 0F        		.uleb128 0xf
+ 2048 0137 01        		.byte	0x1
+ 2049 0138 0000 0000 		.long	.LASF19
+ 2050 013c 01        		.byte	0x1
+ 2051 013d 0801      		.word	0x108
+ 2052 013f 01        		.byte	0x1
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 37
+
+
+ 2053 0140 01        		.byte	0x1
+ 2054 0141 09        		.uleb128 0x9
+ 2055 0142 01        		.byte	0x1
+ 2056 0143 0000 0000 		.long	.LASF20
+ 2057 0147 01        		.byte	0x1
+ 2058 0148 B3        		.byte	0xb3
+ 2059 0149 01        		.byte	0x1
+ 2060 014a 01        		.byte	0x1
+ 2061 014b 5B01 0000 		.long	0x15b
+ 2062 014f 0A        		.uleb128 0xa
+ 2063 0150 0000 0000 		.long	.LASF21
+ 2064 0154 01        		.byte	0x1
+ 2065 0155 B2        		.byte	0xb2
+ 2066 0156 6A00 0000 		.long	0x6a
+ 2067 015a 00        		.byte	0x0
+ 2068 015b 09        		.uleb128 0x9
+ 2069 015c 01        		.byte	0x1
+ 2070 015d 0000 0000 		.long	.LASF22
+ 2071 0161 01        		.byte	0x1
+ 2072 0162 5E        		.byte	0x5e
+ 2073 0163 01        		.byte	0x1
+ 2074 0164 01        		.byte	0x1
+ 2075 0165 7601 0000 		.long	0x176
+ 2076 0169 10        		.uleb128 0x10
+ 2077 016a 7401 0000 		.long	0x174
+ 2078 016e 11        		.uleb128 0x11
+ 2079 016f 0601 0000 		.long	0x106
+ 2080 0173 00        		.byte	0x0
+ 2081 0174 12        		.uleb128 0x12
+ 2082 0175 00        		.byte	0x0
+ 2083 0176 09        		.uleb128 0x9
+ 2084 0177 01        		.byte	0x1
+ 2085 0178 0000 0000 		.long	.LASF23
+ 2086 017c 01        		.byte	0x1
+ 2087 017d 68        		.byte	0x68
+ 2088 017e 01        		.byte	0x1
+ 2089 017f 01        		.byte	0x1
+ 2090 0180 8C01 0000 		.long	0x18c
+ 2091 0184 0C        		.uleb128 0xc
+ 2092 0185 11        		.uleb128 0x11
+ 2093 0186 C100 0000 		.long	0xc1
+ 2094 018a 00        		.byte	0x0
+ 2095 018b 00        		.byte	0x0
+ 2096 018c 09        		.uleb128 0x9
+ 2097 018d 01        		.byte	0x1
+ 2098 018e 0000 0000 		.long	.LASF24
+ 2099 0192 01        		.byte	0x1
+ 2100 0193 72        		.byte	0x72
+ 2101 0194 01        		.byte	0x1
+ 2102 0195 01        		.byte	0x1
+ 2103 0196 A701 0000 		.long	0x1a7
+ 2104 019a 10        		.uleb128 0x10
+ 2105 019b A501 0000 		.long	0x1a5
+ 2106 019f 11        		.uleb128 0x11
+ 2107 01a0 2A01 0000 		.long	0x12a
+ 2108 01a4 00        		.byte	0x0
+ 2109 01a5 12        		.uleb128 0x12
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 38
+
+
+ 2110 01a6 00        		.byte	0x0
+ 2111 01a7 0F        		.uleb128 0xf
+ 2112 01a8 01        		.byte	0x1
+ 2113 01a9 0000 0000 		.long	.LASF25
+ 2114 01ad 01        		.byte	0x1
+ 2115 01ae 6401      		.word	0x164
+ 2116 01b0 01        		.byte	0x1
+ 2117 01b1 01        		.byte	0x1
+ 2118 01b2 0F        		.uleb128 0xf
+ 2119 01b3 01        		.byte	0x1
+ 2120 01b4 0000 0000 		.long	.LASF26
+ 2121 01b8 01        		.byte	0x1
+ 2122 01b9 6C01      		.word	0x16c
+ 2123 01bb 01        		.byte	0x1
+ 2124 01bc 01        		.byte	0x1
+ 2125 01bd 13        		.uleb128 0x13
+ 2126 01be 01        		.byte	0x1
+ 2127 01bf 0000 0000 		.long	.LASF28
+ 2128 01c3 01        		.byte	0x1
+ 2129 01c4 31        		.byte	0x31
+ 2130 01c5 01        		.byte	0x1
+ 2131 01c6 0000 0000 		.long	.LFB2
+ 2132 01ca 0000 0000 		.long	.LFE2
+ 2133 01ce 02        		.byte	0x2
+ 2134 01cf 90        		.byte	0x90
+ 2135 01d0 20        		.uleb128 0x20
+ 2136 01d1 FC01 0000 		.long	0x1fc
+ 2137 01d5 14        		.uleb128 0x14
+ 2138 01d6 0000 0000 		.long	.LASF34
+ 2139 01da 01        		.byte	0x1
+ 2140 01db 30        		.byte	0x30
+ 2141 01dc 8000 0000 		.long	0x80
+ 2142 01e0 06        		.byte	0x6
+ 2143 01e1 68        		.byte	0x68
+ 2144 01e2 93        		.byte	0x93
+ 2145 01e3 01        		.uleb128 0x1
+ 2146 01e4 69        		.byte	0x69
+ 2147 01e5 93        		.byte	0x93
+ 2148 01e6 01        		.uleb128 0x1
+ 2149 01e7 0D        		.uleb128 0xd
+ 2150 01e8 0000 0000 		.long	.LASF27
+ 2151 01ec 01        		.byte	0x1
+ 2152 01ed 32        		.byte	0x32
+ 2153 01ee 8000 0000 		.long	0x80
+ 2154 01f2 15        		.uleb128 0x15
+ 2155 01f3 6900      		.string	"i"
+ 2156 01f5 01        		.byte	0x1
+ 2157 01f6 33        		.byte	0x33
+ 2158 01f7 8000 0000 		.long	0x80
+ 2159 01fb 00        		.byte	0x0
+ 2160 01fc 13        		.uleb128 0x13
+ 2161 01fd 01        		.byte	0x1
+ 2162 01fe 0000 0000 		.long	.LASF29
+ 2163 0202 01        		.byte	0x1
+ 2164 0203 4D        		.byte	0x4d
+ 2165 0204 01        		.byte	0x1
+ 2166 0205 0000 0000 		.long	.LFB3
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 39
+
+
+ 2167 0209 0000 0000 		.long	.LFE3
+ 2168 020d 02        		.byte	0x2
+ 2169 020e 90        		.byte	0x90
+ 2170 020f 20        		.uleb128 0x20
+ 2171 0210 D602 0000 		.long	0x2d6
+ 2172 0214 0D        		.uleb128 0xd
+ 2173 0215 0000 0000 		.long	.LASF30
+ 2174 0219 01        		.byte	0x1
+ 2175 021a 4E        		.byte	0x4e
+ 2176 021b 6A00 0000 		.long	0x6a
+ 2177 021f 16        		.uleb128 0x16
+ 2178 0220 4101 0000 		.long	0x141
+ 2179 0224 0000 0000 		.long	.LBB37
+ 2180 0228 0000 0000 		.long	.LBE37
+ 2181 022c 01        		.byte	0x1
+ 2182 022d 51        		.byte	0x51
+ 2183 022e 3802 0000 		.long	0x238
+ 2184 0232 11        		.uleb128 0x11
+ 2185 0233 4F01 0000 		.long	0x14f
+ 2186 0237 00        		.byte	0x0
+ 2187 0238 16        		.uleb128 0x16
+ 2188 0239 5B01 0000 		.long	0x15b
+ 2189 023d 0000 0000 		.long	.LBB39
+ 2190 0241 0000 0000 		.long	.LBE39
+ 2191 0245 01        		.byte	0x1
+ 2192 0246 54        		.byte	0x54
+ 2193 0247 7402 0000 		.long	0x274
+ 2194 024b 16        		.uleb128 0x16
+ 2195 024c F800 0000 		.long	0xf8
+ 2196 0250 0000 0000 		.long	.LBB41
+ 2197 0254 0000 0000 		.long	.LBE41
+ 2198 0258 01        		.byte	0x1
+ 2199 0259 60        		.byte	0x60
+ 2200 025a 6402 0000 		.long	0x264
+ 2201 025e 11        		.uleb128 0x11
+ 2202 025f 0601 0000 		.long	0x106
+ 2203 0263 00        		.byte	0x0
+ 2204 0264 17        		.uleb128 0x17
+ 2205 0265 1201 0000 		.long	0x112
+ 2206 0269 0000 0000 		.long	.LBB43
+ 2207 026d 0000 0000 		.long	.LBE43
+ 2208 0271 01        		.byte	0x1
+ 2209 0272 64        		.byte	0x64
+ 2210 0273 00        		.byte	0x0
+ 2211 0274 16        		.uleb128 0x16
+ 2212 0275 7601 0000 		.long	0x176
+ 2213 0279 0000 0000 		.long	.LBB45
+ 2214 027d 0000 0000 		.long	.LBE45
+ 2215 0281 01        		.byte	0x1
+ 2216 0282 55        		.byte	0x55
+ 2217 0283 9D02 0000 		.long	0x29d
+ 2218 0287 18        		.uleb128 0x18
+ 2219 0288 B300 0000 		.long	0xb3
+ 2220 028c 0000 0000 		.long	.LBB47
+ 2221 0290 0000 0000 		.long	.LBE47
+ 2222 0294 01        		.byte	0x1
+ 2223 0295 6A        		.byte	0x6a
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 40
+
+
+ 2224 0296 11        		.uleb128 0x11
+ 2225 0297 C100 0000 		.long	0xc1
+ 2226 029b 00        		.byte	0x0
+ 2227 029c 00        		.byte	0x0
+ 2228 029d 18        		.uleb128 0x18
+ 2229 029e 8C01 0000 		.long	0x18c
+ 2230 02a2 0000 0000 		.long	.LBB49
+ 2231 02a6 0000 0000 		.long	.LBE49
+ 2232 02aa 01        		.byte	0x1
+ 2233 02ab 57        		.byte	0x57
+ 2234 02ac 16        		.uleb128 0x16
+ 2235 02ad 1C01 0000 		.long	0x11c
+ 2236 02b1 0000 0000 		.long	.LBB51
+ 2237 02b5 0000 0000 		.long	.LBE51
+ 2238 02b9 01        		.byte	0x1
+ 2239 02ba 74        		.byte	0x74
+ 2240 02bb C502 0000 		.long	0x2c5
+ 2241 02bf 11        		.uleb128 0x11
+ 2242 02c0 2A01 0000 		.long	0x12a
+ 2243 02c4 00        		.byte	0x0
+ 2244 02c5 17        		.uleb128 0x17
+ 2245 02c6 3601 0000 		.long	0x136
+ 2246 02ca 0000 0000 		.long	.LBB53
+ 2247 02ce 0000 0000 		.long	.LBE53
+ 2248 02d2 01        		.byte	0x1
+ 2249 02d3 78        		.byte	0x78
+ 2250 02d4 00        		.byte	0x0
+ 2251 02d5 00        		.byte	0x0
+ 2252 02d6 19        		.uleb128 0x19
+ 2253 02d7 5B01 0000 		.long	0x15b
+ 2254 02db 0000 0000 		.long	.LFB4
+ 2255 02df 0000 0000 		.long	.LFE4
+ 2256 02e3 02        		.byte	0x2
+ 2257 02e4 90        		.byte	0x90
+ 2258 02e5 20        		.uleb128 0x20
+ 2259 02e6 1303 0000 		.long	0x313
+ 2260 02ea 16        		.uleb128 0x16
+ 2261 02eb F800 0000 		.long	0xf8
+ 2262 02ef 0000 0000 		.long	.LBB55
+ 2263 02f3 0000 0000 		.long	.LBE55
+ 2264 02f7 01        		.byte	0x1
+ 2265 02f8 60        		.byte	0x60
+ 2266 02f9 0303 0000 		.long	0x303
+ 2267 02fd 11        		.uleb128 0x11
+ 2268 02fe 0601 0000 		.long	0x106
+ 2269 0302 00        		.byte	0x0
+ 2270 0303 17        		.uleb128 0x17
+ 2271 0304 1201 0000 		.long	0x112
+ 2272 0308 0000 0000 		.long	.LBB57
+ 2273 030c 0000 0000 		.long	.LBE57
+ 2274 0310 01        		.byte	0x1
+ 2275 0311 64        		.byte	0x64
+ 2276 0312 00        		.byte	0x0
+ 2277 0313 19        		.uleb128 0x19
+ 2278 0314 7601 0000 		.long	0x176
+ 2279 0318 0000 0000 		.long	.LFB5
+ 2280 031c 0000 0000 		.long	.LFE5
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 41
+
+
+ 2281 0320 02        		.byte	0x2
+ 2282 0321 90        		.byte	0x90
+ 2283 0322 20        		.uleb128 0x20
+ 2284 0323 3D03 0000 		.long	0x33d
+ 2285 0327 18        		.uleb128 0x18
+ 2286 0328 B300 0000 		.long	0xb3
+ 2287 032c 0000 0000 		.long	.LBB59
+ 2288 0330 0000 0000 		.long	.LBE59
+ 2289 0334 01        		.byte	0x1
+ 2290 0335 6A        		.byte	0x6a
+ 2291 0336 11        		.uleb128 0x11
+ 2292 0337 C100 0000 		.long	0xc1
+ 2293 033b 00        		.byte	0x0
+ 2294 033c 00        		.byte	0x0
+ 2295 033d 19        		.uleb128 0x19
+ 2296 033e 8C01 0000 		.long	0x18c
+ 2297 0342 0000 0000 		.long	.LFB6
+ 2298 0346 0000 0000 		.long	.LFE6
+ 2299 034a 02        		.byte	0x2
+ 2300 034b 90        		.byte	0x90
+ 2301 034c 20        		.uleb128 0x20
+ 2302 034d 7A03 0000 		.long	0x37a
+ 2303 0351 16        		.uleb128 0x16
+ 2304 0352 1C01 0000 		.long	0x11c
+ 2305 0356 0000 0000 		.long	.LBB61
+ 2306 035a 0000 0000 		.long	.LBE61
+ 2307 035e 01        		.byte	0x1
+ 2308 035f 74        		.byte	0x74
+ 2309 0360 6A03 0000 		.long	0x36a
+ 2310 0364 11        		.uleb128 0x11
+ 2311 0365 2A01 0000 		.long	0x12a
+ 2312 0369 00        		.byte	0x0
+ 2313 036a 17        		.uleb128 0x17
+ 2314 036b 3601 0000 		.long	0x136
+ 2315 036f 0000 0000 		.long	.LBB63
+ 2316 0373 0000 0000 		.long	.LBE63
+ 2317 0377 01        		.byte	0x1
+ 2318 0378 78        		.byte	0x78
+ 2319 0379 00        		.byte	0x0
+ 2320 037a 19        		.uleb128 0x19
+ 2321 037b F800 0000 		.long	0xf8
+ 2322 037f 0000 0000 		.long	.LFB7
+ 2323 0383 0000 0000 		.long	.LFE7
+ 2324 0387 02        		.byte	0x2
+ 2325 0388 90        		.byte	0x90
+ 2326 0389 20        		.uleb128 0x20
+ 2327 038a 9603 0000 		.long	0x396
+ 2328 038e 1A        		.uleb128 0x1a
+ 2329 038f 0601 0000 		.long	0x106
+ 2330 0393 01        		.byte	0x1
+ 2331 0394 68        		.byte	0x68
+ 2332 0395 00        		.byte	0x0
+ 2333 0396 19        		.uleb128 0x19
+ 2334 0397 B300 0000 		.long	0xb3
+ 2335 039b 0000 0000 		.long	.LFB8
+ 2336 039f 0000 0000 		.long	.LFE8
+ 2337 03a3 02        		.byte	0x2
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 42
+
+
+ 2338 03a4 90        		.byte	0x90
+ 2339 03a5 20        		.uleb128 0x20
+ 2340 03a6 B203 0000 		.long	0x3b2
+ 2341 03aa 1A        		.uleb128 0x1a
+ 2342 03ab C100 0000 		.long	0xc1
+ 2343 03af 01        		.byte	0x1
+ 2344 03b0 68        		.byte	0x68
+ 2345 03b1 00        		.byte	0x0
+ 2346 03b2 19        		.uleb128 0x19
+ 2347 03b3 1C01 0000 		.long	0x11c
+ 2348 03b7 0000 0000 		.long	.LFB9
+ 2349 03bb 0000 0000 		.long	.LFE9
+ 2350 03bf 02        		.byte	0x2
+ 2351 03c0 90        		.byte	0x90
+ 2352 03c1 20        		.uleb128 0x20
+ 2353 03c2 CE03 0000 		.long	0x3ce
+ 2354 03c6 1A        		.uleb128 0x1a
+ 2355 03c7 2A01 0000 		.long	0x12a
+ 2356 03cb 01        		.byte	0x1
+ 2357 03cc 68        		.byte	0x68
+ 2358 03cd 00        		.byte	0x0
+ 2359 03ce 19        		.uleb128 0x19
+ 2360 03cf CD00 0000 		.long	0xcd
+ 2361 03d3 0000 0000 		.long	.LFB10
+ 2362 03d7 0000 0000 		.long	.LFE10
+ 2363 03db 02        		.byte	0x2
+ 2364 03dc 90        		.byte	0x90
+ 2365 03dd 20        		.uleb128 0x20
+ 2366 03de 0204 0000 		.long	0x402
+ 2367 03e2 1B        		.uleb128 0x1b
+ 2368 03e3 0000 0000 		.long	.LBB65
+ 2369 03e7 0000 0000 		.long	.LBE65
+ 2370 03eb 1C        		.uleb128 0x1c
+ 2371 03ec E000 0000 		.long	0xe0
+ 2372 03f0 06        		.byte	0x6
+ 2373 03f1 6E        		.byte	0x6e
+ 2374 03f2 93        		.byte	0x93
+ 2375 03f3 01        		.uleb128 0x1
+ 2376 03f4 6F        		.byte	0x6f
+ 2377 03f5 93        		.byte	0x93
+ 2378 03f6 01        		.uleb128 0x1
+ 2379 03f7 1D        		.uleb128 0x1d
+ 2380 03f8 EB00 0000 		.long	0xeb
+ 2381 03fc 0000 0000 		.long	.LLST9
+ 2382 0400 00        		.byte	0x0
+ 2383 0401 00        		.byte	0x0
+ 2384 0402 1E        		.uleb128 0x1e
+ 2385 0403 01        		.byte	0x1
+ 2386 0404 0000 0000 		.long	.LASF31
+ 2387 0408 01        		.byte	0x1
+ 2388 0409 97        		.byte	0x97
+ 2389 040a 01        		.byte	0x1
+ 2390 040b 7500 0000 		.long	0x75
+ 2391 040f 0000 0000 		.long	.LFB11
+ 2392 0413 0000 0000 		.long	.LFE11
+ 2393 0417 02        		.byte	0x2
+ 2394 0418 90        		.byte	0x90
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 43
+
+
+ 2395 0419 20        		.uleb128 0x20
+ 2396 041a 4A04 0000 		.long	0x44a
+ 2397 041e 1B        		.uleb128 0x1b
+ 2398 041f 0000 0000 		.long	.LBB66
+ 2399 0423 0000 0000 		.long	.LBE66
+ 2400 0427 1F        		.uleb128 0x1f
+ 2401 0428 0000 0000 		.long	.LASF12
+ 2402 042c 01        		.byte	0x1
+ 2403 042d 99        		.byte	0x99
+ 2404 042e 3600 0000 		.long	0x36
+ 2405 0432 06        		.byte	0x6
+ 2406 0433 6E        		.byte	0x6e
+ 2407 0434 93        		.byte	0x93
+ 2408 0435 01        		.uleb128 0x1
+ 2409 0436 6F        		.byte	0x6f
+ 2410 0437 93        		.byte	0x93
+ 2411 0438 01        		.uleb128 0x1
+ 2412 0439 20        		.uleb128 0x20
+ 2413 043a 0000 0000 		.long	.LASF13
+ 2414 043e 01        		.byte	0x1
+ 2415 043f 99        		.byte	0x99
+ 2416 0440 3600 0000 		.long	0x36
+ 2417 0444 0000 0000 		.long	.LLST11
+ 2418 0448 00        		.byte	0x0
+ 2419 0449 00        		.byte	0x0
+ 2420 044a 1E        		.uleb128 0x1e
+ 2421 044b 01        		.byte	0x1
+ 2422 044c 0000 0000 		.long	.LASF32
+ 2423 0450 01        		.byte	0x1
+ 2424 0451 9E        		.byte	0x9e
+ 2425 0452 01        		.byte	0x1
+ 2426 0453 7500 0000 		.long	0x75
+ 2427 0457 0000 0000 		.long	.LFB12
+ 2428 045b 0000 0000 		.long	.LFE12
+ 2429 045f 02        		.byte	0x2
+ 2430 0460 90        		.byte	0x90
+ 2431 0461 20        		.uleb128 0x20
+ 2432 0462 9204 0000 		.long	0x492
+ 2433 0466 1B        		.uleb128 0x1b
+ 2434 0467 0000 0000 		.long	.LBB67
+ 2435 046b 0000 0000 		.long	.LBE67
+ 2436 046f 1F        		.uleb128 0x1f
+ 2437 0470 0000 0000 		.long	.LASF12
+ 2438 0474 01        		.byte	0x1
+ 2439 0475 A3        		.byte	0xa3
+ 2440 0476 3600 0000 		.long	0x36
+ 2441 047a 06        		.byte	0x6
+ 2442 047b 6E        		.byte	0x6e
+ 2443 047c 93        		.byte	0x93
+ 2444 047d 01        		.uleb128 0x1
+ 2445 047e 6F        		.byte	0x6f
+ 2446 047f 93        		.byte	0x93
+ 2447 0480 01        		.uleb128 0x1
+ 2448 0481 20        		.uleb128 0x20
+ 2449 0482 0000 0000 		.long	.LASF13
+ 2450 0486 01        		.byte	0x1
+ 2451 0487 A3        		.byte	0xa3
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 44
+
+
+ 2452 0488 3600 0000 		.long	0x36
+ 2453 048c 0000 0000 		.long	.LLST13
+ 2454 0490 00        		.byte	0x0
+ 2455 0491 00        		.byte	0x0
+ 2456 0492 13        		.uleb128 0x13
+ 2457 0493 01        		.byte	0x1
+ 2458 0494 0000 0000 		.long	.LASF33
+ 2459 0498 01        		.byte	0x1
+ 2460 0499 A8        		.byte	0xa8
+ 2461 049a 01        		.byte	0x1
+ 2462 049b 0000 0000 		.long	.LFB13
+ 2463 049f 0000 0000 		.long	.LFE13
+ 2464 04a3 02        		.byte	0x2
+ 2465 04a4 90        		.byte	0x90
+ 2466 04a5 20        		.uleb128 0x20
+ 2467 04a6 CA04 0000 		.long	0x4ca
+ 2468 04aa 14        		.uleb128 0x14
+ 2469 04ab 0000 0000 		.long	.LASF21
+ 2470 04af 01        		.byte	0x1
+ 2471 04b0 A7        		.byte	0xa7
+ 2472 04b1 6A00 0000 		.long	0x6a
+ 2473 04b5 01        		.byte	0x1
+ 2474 04b6 68        		.byte	0x68
+ 2475 04b7 14        		.uleb128 0x14
+ 2476 04b8 0000 0000 		.long	.LASF35
+ 2477 04bc 01        		.byte	0x1
+ 2478 04bd A7        		.byte	0xa7
+ 2479 04be AB00 0000 		.long	0xab
+ 2480 04c2 06        		.byte	0x6
+ 2481 04c3 66        		.byte	0x66
+ 2482 04c4 93        		.byte	0x93
+ 2483 04c5 01        		.uleb128 0x1
+ 2484 04c6 67        		.byte	0x67
+ 2485 04c7 93        		.byte	0x93
+ 2486 04c8 01        		.uleb128 0x1
+ 2487 04c9 00        		.byte	0x0
+ 2488 04ca 19        		.uleb128 0x19
+ 2489 04cb 4101 0000 		.long	0x141
+ 2490 04cf 0000 0000 		.long	.LFB14
+ 2491 04d3 0000 0000 		.long	.LFE14
+ 2492 04d7 02        		.byte	0x2
+ 2493 04d8 90        		.byte	0x90
+ 2494 04d9 20        		.uleb128 0x20
+ 2495 04da E604 0000 		.long	0x4e6
+ 2496 04de 1A        		.uleb128 0x1a
+ 2497 04df 4F01 0000 		.long	0x14f
+ 2498 04e3 01        		.byte	0x1
+ 2499 04e4 68        		.byte	0x68
+ 2500 04e5 00        		.byte	0x0
+ 2501 04e6 13        		.uleb128 0x13
+ 2502 04e7 01        		.byte	0x1
+ 2503 04e8 0000 0000 		.long	.LASF36
+ 2504 04ec 01        		.byte	0x1
+ 2505 04ed CD        		.byte	0xcd
+ 2506 04ee 01        		.byte	0x1
+ 2507 04ef 0000 0000 		.long	.LFB15
+ 2508 04f3 0000 0000 		.long	.LFE15
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 45
+
+
+ 2509 04f7 02        		.byte	0x2
+ 2510 04f8 90        		.byte	0x90
+ 2511 04f9 20        		.uleb128 0x20
+ 2512 04fa 6705 0000 		.long	0x567
+ 2513 04fe 21        		.uleb128 0x21
+ 2514 04ff 0000 0000 		.long	.LASF37
+ 2515 0503 01        		.byte	0x1
+ 2516 0504 CC        		.byte	0xcc
+ 2517 0505 8000 0000 		.long	0x80
+ 2518 0509 0000 0000 		.long	.LLST17
+ 2519 050d 20        		.uleb128 0x20
+ 2520 050e 0000 0000 		.long	.LASF38
+ 2521 0512 01        		.byte	0x1
+ 2522 0513 CF        		.byte	0xcf
+ 2523 0514 6A00 0000 		.long	0x6a
+ 2524 0518 0000 0000 		.long	.LLST18
+ 2525 051c 20        		.uleb128 0x20
+ 2526 051d 0000 0000 		.long	.LASF39
+ 2527 0521 01        		.byte	0x1
+ 2528 0522 D0        		.byte	0xd0
+ 2529 0523 8E00 0000 		.long	0x8e
+ 2530 0527 0000 0000 		.long	.LLST19
+ 2531 052b 20        		.uleb128 0x20
+ 2532 052c 0000 0000 		.long	.LASF40
+ 2533 0530 01        		.byte	0x1
+ 2534 0531 D1        		.byte	0xd1
+ 2535 0532 8E00 0000 		.long	0x8e
+ 2536 0536 0000 0000 		.long	.LLST20
+ 2537 053a 18        		.uleb128 0x18
+ 2538 053b CD00 0000 		.long	0xcd
+ 2539 053f 0000 0000 		.long	.LBB68
+ 2540 0543 0000 0000 		.long	.LBE68
+ 2541 0547 01        		.byte	0x1
+ 2542 0548 D9        		.byte	0xd9
+ 2543 0549 1B        		.uleb128 0x1b
+ 2544 054a 0000 0000 		.long	.LBB70
+ 2545 054e 0000 0000 		.long	.LBE70
+ 2546 0552 1D        		.uleb128 0x1d
+ 2547 0553 E000 0000 		.long	0xe0
+ 2548 0557 0000 0000 		.long	.LLST21
+ 2549 055b 1D        		.uleb128 0x1d
+ 2550 055c EB00 0000 		.long	0xeb
+ 2551 0560 0000 0000 		.long	.LLST22
+ 2552 0564 00        		.byte	0x0
+ 2553 0565 00        		.byte	0x0
+ 2554 0566 00        		.byte	0x0
+ 2555 0567 22        		.uleb128 0x22
+ 2556 0568 1201 0000 		.long	0x112
+ 2557 056c 0000 0000 		.long	.LFB16
+ 2558 0570 0000 0000 		.long	.LFE16
+ 2559 0574 02        		.byte	0x2
+ 2560 0575 90        		.byte	0x90
+ 2561 0576 20        		.uleb128 0x20
+ 2562 0577 23        		.uleb128 0x23
+ 2563 0578 01        		.byte	0x1
+ 2564 0579 0000 0000 		.long	.LASF41
+ 2565 057d 01        		.byte	0x1
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 46
+
+
+ 2566 057e 0001      		.word	0x100
+ 2567 0580 01        		.byte	0x1
+ 2568 0581 4800 0000 		.long	0x48
+ 2569 0585 0000 0000 		.long	.LFB17
+ 2570 0589 0000 0000 		.long	.LFE17
+ 2571 058d 02        		.byte	0x2
+ 2572 058e 90        		.byte	0x90
+ 2573 058f 20        		.uleb128 0x20
+ 2574 0590 22        		.uleb128 0x22
+ 2575 0591 3601 0000 		.long	0x136
+ 2576 0595 0000 0000 		.long	.LFB18
+ 2577 0599 0000 0000 		.long	.LFE18
+ 2578 059d 02        		.byte	0x2
+ 2579 059e 90        		.byte	0x90
+ 2580 059f 20        		.uleb128 0x20
+ 2581 05a0 23        		.uleb128 0x23
+ 2582 05a1 01        		.byte	0x1
+ 2583 05a2 0000 0000 		.long	.LASF42
+ 2584 05a6 01        		.byte	0x1
+ 2585 05a7 0E01      		.word	0x10e
+ 2586 05a9 01        		.byte	0x1
+ 2587 05aa 4800 0000 		.long	0x48
+ 2588 05ae 0000 0000 		.long	.LFB19
+ 2589 05b2 0000 0000 		.long	.LFE19
+ 2590 05b6 02        		.byte	0x2
+ 2591 05b7 90        		.byte	0x90
+ 2592 05b8 20        		.uleb128 0x20
+ 2593 05b9 24        		.uleb128 0x24
+ 2594 05ba 01        		.byte	0x1
+ 2595 05bb 0000 0000 		.long	.LASF43
+ 2596 05bf 01        		.byte	0x1
+ 2597 05c0 1601      		.word	0x116
+ 2598 05c2 01        		.byte	0x1
+ 2599 05c3 0000 0000 		.long	.LFB20
+ 2600 05c7 0000 0000 		.long	.LFE20
+ 2601 05cb 02        		.byte	0x2
+ 2602 05cc 90        		.byte	0x90
+ 2603 05cd 20        		.uleb128 0x20
+ 2604 05ce E305 0000 		.long	0x5e3
+ 2605 05d2 25        		.uleb128 0x25
+ 2606 05d3 0000 0000 		.long	.LASF44
+ 2607 05d7 01        		.byte	0x1
+ 2608 05d8 1501      		.word	0x115
+ 2609 05da 6A00 0000 		.long	0x6a
+ 2610 05de 0000 0000 		.long	.LLST28
+ 2611 05e2 00        		.byte	0x0
+ 2612 05e3 24        		.uleb128 0x24
+ 2613 05e4 01        		.byte	0x1
+ 2614 05e5 0000 0000 		.long	.LASF45
+ 2615 05e9 01        		.byte	0x1
+ 2616 05ea 4A01      		.word	0x14a
+ 2617 05ec 01        		.byte	0x1
+ 2618 05ed 0000 0000 		.long	.LFB21
+ 2619 05f1 0000 0000 		.long	.LFE21
+ 2620 05f5 02        		.byte	0x2
+ 2621 05f6 90        		.byte	0x90
+ 2622 05f7 20        		.uleb128 0x20
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 47
+
+
+ 2623 05f8 1D06 0000 		.long	0x61d
+ 2624 05fc 26        		.uleb128 0x26
+ 2625 05fd A701 0000 		.long	0x1a7
+ 2626 0601 0000 0000 		.long	.LBB71
+ 2627 0605 0000 0000 		.long	.LBE71
+ 2628 0609 01        		.byte	0x1
+ 2629 060a 4F01      		.word	0x14f
+ 2630 060c 26        		.uleb128 0x26
+ 2631 060d B201 0000 		.long	0x1b2
+ 2632 0611 0000 0000 		.long	.LBB73
+ 2633 0615 0000 0000 		.long	.LBE73
+ 2634 0619 01        		.byte	0x1
+ 2635 061a 5001      		.word	0x150
+ 2636 061c 00        		.byte	0x0
+ 2637 061d 27        		.uleb128 0x27
+ 2638 061e 01        		.byte	0x1
+ 2639 061f 0000 0000 		.long	.LASF46
+ 2640 0623 01        		.byte	0x1
+ 2641 0624 5401      		.word	0x154
+ 2642 0626 01        		.byte	0x1
+ 2643 0627 0000 0000 		.long	.LFB22
+ 2644 062b 0000 0000 		.long	.LFE22
+ 2645 062f 02        		.byte	0x2
+ 2646 0630 90        		.byte	0x90
+ 2647 0631 20        		.uleb128 0x20
+ 2648 0632 27        		.uleb128 0x27
+ 2649 0633 01        		.byte	0x1
+ 2650 0634 0000 0000 		.long	.LASF47
+ 2651 0638 01        		.byte	0x1
+ 2652 0639 5C01      		.word	0x15c
+ 2653 063b 01        		.byte	0x1
+ 2654 063c 0000 0000 		.long	.LFB23
+ 2655 0640 0000 0000 		.long	.LFE23
+ 2656 0644 02        		.byte	0x2
+ 2657 0645 90        		.byte	0x90
+ 2658 0646 20        		.uleb128 0x20
+ 2659 0647 22        		.uleb128 0x22
+ 2660 0648 A701 0000 		.long	0x1a7
+ 2661 064c 0000 0000 		.long	.LFB24
+ 2662 0650 0000 0000 		.long	.LFE24
+ 2663 0654 02        		.byte	0x2
+ 2664 0655 90        		.byte	0x90
+ 2665 0656 20        		.uleb128 0x20
+ 2666 0657 22        		.uleb128 0x22
+ 2667 0658 B201 0000 		.long	0x1b2
+ 2668 065c 0000 0000 		.long	.LFB25
+ 2669 0660 0000 0000 		.long	.LFE25
+ 2670 0664 02        		.byte	0x2
+ 2671 0665 90        		.byte	0x90
+ 2672 0666 20        		.uleb128 0x20
+ 2673 0667 24        		.uleb128 0x24
+ 2674 0668 01        		.byte	0x1
+ 2675 0669 0000 0000 		.long	.LASF48
+ 2676 066d 01        		.byte	0x1
+ 2677 066e 7401      		.word	0x174
+ 2678 0670 01        		.byte	0x1
+ 2679 0671 0000 0000 		.long	.LFB26
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 48
+
+
+ 2680 0675 0000 0000 		.long	.LFE26
+ 2681 0679 02        		.byte	0x2
+ 2682 067a 90        		.byte	0x90
+ 2683 067b 20        		.uleb128 0x20
+ 2684 067c 9406 0000 		.long	0x694
+ 2685 0680 28        		.uleb128 0x28
+ 2686 0681 0000 0000 		.long	.LASF49
+ 2687 0685 01        		.byte	0x1
+ 2688 0686 7301      		.word	0x173
+ 2689 0688 7500 0000 		.long	0x75
+ 2690 068c 06        		.byte	0x6
+ 2691 068d 68        		.byte	0x68
+ 2692 068e 93        		.byte	0x93
+ 2693 068f 01        		.uleb128 0x1
+ 2694 0690 69        		.byte	0x69
+ 2695 0691 93        		.byte	0x93
+ 2696 0692 01        		.uleb128 0x1
+ 2697 0693 00        		.byte	0x0
+ 2698 0694 24        		.uleb128 0x24
+ 2699 0695 01        		.byte	0x1
+ 2700 0696 0000 0000 		.long	.LASF50
+ 2701 069a 01        		.byte	0x1
+ 2702 069b 8001      		.word	0x180
+ 2703 069d 01        		.byte	0x1
+ 2704 069e 0000 0000 		.long	.LFB27
+ 2705 06a2 0000 0000 		.long	.LFE27
+ 2706 06a6 02        		.byte	0x2
+ 2707 06a7 90        		.byte	0x90
+ 2708 06a8 20        		.uleb128 0x20
+ 2709 06a9 C106 0000 		.long	0x6c1
+ 2710 06ad 28        		.uleb128 0x28
+ 2711 06ae 0000 0000 		.long	.LASF49
+ 2712 06b2 01        		.byte	0x1
+ 2713 06b3 7F01      		.word	0x17f
+ 2714 06b5 7500 0000 		.long	0x75
+ 2715 06b9 06        		.byte	0x6
+ 2716 06ba 68        		.byte	0x68
+ 2717 06bb 93        		.byte	0x93
+ 2718 06bc 01        		.uleb128 0x1
+ 2719 06bd 69        		.byte	0x69
+ 2720 06be 93        		.byte	0x93
+ 2721 06bf 01        		.uleb128 0x1
+ 2722 06c0 00        		.byte	0x0
+ 2723 06c1 27        		.uleb128 0x27
+ 2724 06c2 01        		.byte	0x1
+ 2725 06c3 0000 0000 		.long	.LASF51
+ 2726 06c7 01        		.byte	0x1
+ 2727 06c8 8D01      		.word	0x18d
+ 2728 06ca 01        		.byte	0x1
+ 2729 06cb 0000 0000 		.long	.LFB28
+ 2730 06cf 0000 0000 		.long	.LFE28
+ 2731 06d3 02        		.byte	0x2
+ 2732 06d4 90        		.byte	0x90
+ 2733 06d5 20        		.uleb128 0x20
+ 2734 06d6 27        		.uleb128 0x27
+ 2735 06d7 01        		.byte	0x1
+ 2736 06d8 0000 0000 		.long	.LASF52
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 49
+
+
+ 2737 06dc 01        		.byte	0x1
+ 2738 06dd 9A01      		.word	0x19a
+ 2739 06df 01        		.byte	0x1
+ 2740 06e0 0000 0000 		.long	.LFB29
+ 2741 06e4 0000 0000 		.long	.LFE29
+ 2742 06e8 02        		.byte	0x2
+ 2743 06e9 90        		.byte	0x90
+ 2744 06ea 20        		.uleb128 0x20
+ 2745 06eb 27        		.uleb128 0x27
+ 2746 06ec 01        		.byte	0x1
+ 2747 06ed 0000 0000 		.long	.LASF53
+ 2748 06f1 01        		.byte	0x1
+ 2749 06f2 A301      		.word	0x1a3
+ 2750 06f4 01        		.byte	0x1
+ 2751 06f5 0000 0000 		.long	.LFB30
+ 2752 06f9 0000 0000 		.long	.LFE30
+ 2753 06fd 02        		.byte	0x2
+ 2754 06fe 90        		.byte	0x90
+ 2755 06ff 20        		.uleb128 0x20
+ 2756 0700 27        		.uleb128 0x27
+ 2757 0701 01        		.byte	0x1
+ 2758 0702 0000 0000 		.long	.LASF54
+ 2759 0706 01        		.byte	0x1
+ 2760 0707 B901      		.word	0x1b9
+ 2761 0709 01        		.byte	0x1
+ 2762 070a 0000 0000 		.long	.LFB31
+ 2763 070e 0000 0000 		.long	.LFE31
+ 2764 0712 02        		.byte	0x2
+ 2765 0713 90        		.byte	0x90
+ 2766 0714 20        		.uleb128 0x20
+ 2767 0715 27        		.uleb128 0x27
+ 2768 0716 01        		.byte	0x1
+ 2769 0717 0000 0000 		.long	.LASF55
+ 2770 071b 01        		.byte	0x1
+ 2771 071c C101      		.word	0x1c1
+ 2772 071e 01        		.byte	0x1
+ 2773 071f 0000 0000 		.long	.LFB32
+ 2774 0723 0000 0000 		.long	.LFE32
+ 2775 0727 02        		.byte	0x2
+ 2776 0728 90        		.byte	0x90
+ 2777 0729 20        		.uleb128 0x20
+ 2778 072a 27        		.uleb128 0x27
+ 2779 072b 01        		.byte	0x1
+ 2780 072c 0000 0000 		.long	.LASF56
+ 2781 0730 01        		.byte	0x1
+ 2782 0731 C901      		.word	0x1c9
+ 2783 0733 01        		.byte	0x1
+ 2784 0734 0000 0000 		.long	.LFB33
+ 2785 0738 0000 0000 		.long	.LFE33
+ 2786 073c 02        		.byte	0x2
+ 2787 073d 90        		.byte	0x90
+ 2788 073e 20        		.uleb128 0x20
+ 2789 073f 27        		.uleb128 0x27
+ 2790 0740 01        		.byte	0x1
+ 2791 0741 0000 0000 		.long	.LASF57
+ 2792 0745 01        		.byte	0x1
+ 2793 0746 D101      		.word	0x1d1
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 50
+
+
+ 2794 0748 01        		.byte	0x1
+ 2795 0749 0000 0000 		.long	.LFB34
+ 2796 074d 0000 0000 		.long	.LFE34
+ 2797 0751 02        		.byte	0x2
+ 2798 0752 90        		.byte	0x90
+ 2799 0753 20        		.uleb128 0x20
+ 2800 0754 29        		.uleb128 0x29
+ 2801 0755 A000 0000 		.long	0xa0
+ 2802 0759 6407 0000 		.long	0x764
+ 2803 075d 2A        		.uleb128 0x2a
+ 2804 075e 6407 0000 		.long	0x764
+ 2805 0762 06        		.byte	0x6
+ 2806 0763 00        		.byte	0x0
+ 2807 0764 05        		.uleb128 0x5
+ 2808 0765 02        		.byte	0x2
+ 2809 0766 07        		.byte	0x7
+ 2810 0767 1F        		.uleb128 0x1f
+ 2811 0768 0000 0000 		.long	.LASF58
+ 2812 076c 01        		.byte	0x1
+ 2813 076d 2B        		.byte	0x2b
+ 2814 076e 7807 0000 		.long	0x778
+ 2815 0772 05        		.byte	0x5
+ 2816 0773 03        		.byte	0x3
+ 2817 0774 0000 0000 		.long	TimerIntFunc
+ 2818 0778 2B        		.uleb128 0x2b
+ 2819 0779 5407 0000 		.long	0x754
+ 2820 077d 29        		.uleb128 0x29
+ 2821 077e 8000 0000 		.long	0x80
+ 2822 0782 8D07 0000 		.long	0x78d
+ 2823 0786 2A        		.uleb128 0x2a
+ 2824 0787 6407 0000 		.long	0x764
+ 2825 078b 05        		.byte	0x5
+ 2826 078c 00        		.byte	0x0
+ 2827 078d 2C        		.uleb128 0x2c
+ 2828 078e 0000 0000 		.long	.LASF59
+ 2829 0792 01        		.byte	0x1
+ 2830 0793 1F        		.byte	0x1f
+ 2831 0794 9F07 0000 		.long	0x79f
+ 2832 0798 01        		.byte	0x1
+ 2833 0799 05        		.byte	0x5
+ 2834 079a 03        		.byte	0x3
+ 2835 079b 0000 0000 		.long	TimerPrescaleFactor
+ 2836 079f 2D        		.uleb128 0x2d
+ 2837 07a0 7D07 0000 		.long	0x77d
+ 2838 07a4 29        		.uleb128 0x29
+ 2839 07a5 8000 0000 		.long	0x80
+ 2840 07a9 B407 0000 		.long	0x7b4
+ 2841 07ad 2A        		.uleb128 0x2a
+ 2842 07ae 6407 0000 		.long	0x764
+ 2843 07b2 07        		.byte	0x7
+ 2844 07b3 00        		.byte	0x0
+ 2845 07b4 2C        		.uleb128 0x2c
+ 2846 07b5 0000 0000 		.long	.LASF60
+ 2847 07b9 01        		.byte	0x1
+ 2848 07ba 22        		.byte	0x22
+ 2849 07bb C607 0000 		.long	0x7c6
+ 2850 07bf 01        		.byte	0x1
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 51
+
+
+ 2851 07c0 05        		.byte	0x5
+ 2852 07c1 03        		.byte	0x3
+ 2853 07c2 0000 0000 		.long	TimerRTCPrescaleFactor
+ 2854 07c6 2D        		.uleb128 0x2d
+ 2855 07c7 A407 0000 		.long	0x7a4
+ 2856 07cb 2C        		.uleb128 0x2c
+ 2857 07cc 0000 0000 		.long	.LASF61
+ 2858 07d0 01        		.byte	0x1
+ 2859 07d1 26        		.byte	0x26
+ 2860 07d2 DD07 0000 		.long	0x7dd
+ 2861 07d6 01        		.byte	0x1
+ 2862 07d7 05        		.byte	0x5
+ 2863 07d8 03        		.byte	0x3
+ 2864 07d9 0000 0000 		.long	TimerPauseReg
+ 2865 07dd 2B        		.uleb128 0x2b
+ 2866 07de 4F00 0000 		.long	0x4f
+ 2867 07e2 2C        		.uleb128 0x2c
+ 2868 07e3 0000 0000 		.long	.LASF62
+ 2869 07e7 01        		.byte	0x1
+ 2870 07e8 27        		.byte	0x27
+ 2871 07e9 DD07 0000 		.long	0x7dd
+ 2872 07ed 01        		.byte	0x1
+ 2873 07ee 05        		.byte	0x5
+ 2874 07ef 03        		.byte	0x3
+ 2875 07f0 0000 0000 		.long	Timer0Reg0
+ 2876 07f4 2C        		.uleb128 0x2c
+ 2877 07f5 0000 0000 		.long	.LASF63
+ 2878 07f9 01        		.byte	0x1
+ 2879 07fa 28        		.byte	0x28
+ 2880 07fb DD07 0000 		.long	0x7dd
+ 2881 07ff 01        		.byte	0x1
+ 2882 0800 05        		.byte	0x5
+ 2883 0801 03        		.byte	0x3
+ 2884 0802 0000 0000 		.long	Timer2Reg0
+ 2885 0806 00        		.byte	0x0
+ 2886               		.section	.debug_abbrev
+ 2887 0000 01        		.uleb128 0x1
+ 2888 0001 11        		.uleb128 0x11
+ 2889 0002 01        		.byte	0x1
+ 2890 0003 25        		.uleb128 0x25
+ 2891 0004 0E        		.uleb128 0xe
+ 2892 0005 13        		.uleb128 0x13
+ 2893 0006 0B        		.uleb128 0xb
+ 2894 0007 03        		.uleb128 0x3
+ 2895 0008 0E        		.uleb128 0xe
+ 2896 0009 11        		.uleb128 0x11
+ 2897 000a 01        		.uleb128 0x1
+ 2898 000b 12        		.uleb128 0x12
+ 2899 000c 01        		.uleb128 0x1
+ 2900 000d 10        		.uleb128 0x10
+ 2901 000e 06        		.uleb128 0x6
+ 2902 000f 00        		.byte	0x0
+ 2903 0010 00        		.byte	0x0
+ 2904 0011 02        		.uleb128 0x2
+ 2905 0012 24        		.uleb128 0x24
+ 2906 0013 00        		.byte	0x0
+ 2907 0014 0B        		.uleb128 0xb
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 52
+
+
+ 2908 0015 0B        		.uleb128 0xb
+ 2909 0016 3E        		.uleb128 0x3e
+ 2910 0017 0B        		.uleb128 0xb
+ 2911 0018 03        		.uleb128 0x3
+ 2912 0019 0E        		.uleb128 0xe
+ 2913 001a 00        		.byte	0x0
+ 2914 001b 00        		.byte	0x0
+ 2915 001c 03        		.uleb128 0x3
+ 2916 001d 24        		.uleb128 0x24
+ 2917 001e 00        		.byte	0x0
+ 2918 001f 0B        		.uleb128 0xb
+ 2919 0020 0B        		.uleb128 0xb
+ 2920 0021 3E        		.uleb128 0x3e
+ 2921 0022 0B        		.uleb128 0xb
+ 2922 0023 03        		.uleb128 0x3
+ 2923 0024 08        		.uleb128 0x8
+ 2924 0025 00        		.byte	0x0
+ 2925 0026 00        		.byte	0x0
+ 2926 0027 04        		.uleb128 0x4
+ 2927 0028 16        		.uleb128 0x16
+ 2928 0029 00        		.byte	0x0
+ 2929 002a 03        		.uleb128 0x3
+ 2930 002b 0E        		.uleb128 0xe
+ 2931 002c 3A        		.uleb128 0x3a
+ 2932 002d 0B        		.uleb128 0xb
+ 2933 002e 3B        		.uleb128 0x3b
+ 2934 002f 0B        		.uleb128 0xb
+ 2935 0030 49        		.uleb128 0x49
+ 2936 0031 13        		.uleb128 0x13
+ 2937 0032 00        		.byte	0x0
+ 2938 0033 00        		.byte	0x0
+ 2939 0034 05        		.uleb128 0x5
+ 2940 0035 24        		.uleb128 0x24
+ 2941 0036 00        		.byte	0x0
+ 2942 0037 0B        		.uleb128 0xb
+ 2943 0038 0B        		.uleb128 0xb
+ 2944 0039 3E        		.uleb128 0x3e
+ 2945 003a 0B        		.uleb128 0xb
+ 2946 003b 00        		.byte	0x0
+ 2947 003c 00        		.byte	0x0
+ 2948 003d 06        		.uleb128 0x6
+ 2949 003e 16        		.uleb128 0x16
+ 2950 003f 00        		.byte	0x0
+ 2951 0040 03        		.uleb128 0x3
+ 2952 0041 08        		.uleb128 0x8
+ 2953 0042 3A        		.uleb128 0x3a
+ 2954 0043 0B        		.uleb128 0xb
+ 2955 0044 3B        		.uleb128 0x3b
+ 2956 0045 0B        		.uleb128 0xb
+ 2957 0046 49        		.uleb128 0x49
+ 2958 0047 13        		.uleb128 0x13
+ 2959 0048 00        		.byte	0x0
+ 2960 0049 00        		.byte	0x0
+ 2961 004a 07        		.uleb128 0x7
+ 2962 004b 0F        		.uleb128 0xf
+ 2963 004c 00        		.byte	0x0
+ 2964 004d 0B        		.uleb128 0xb
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 53
+
+
+ 2965 004e 0B        		.uleb128 0xb
+ 2966 004f 49        		.uleb128 0x49
+ 2967 0050 13        		.uleb128 0x13
+ 2968 0051 00        		.byte	0x0
+ 2969 0052 00        		.byte	0x0
+ 2970 0053 08        		.uleb128 0x8
+ 2971 0054 15        		.uleb128 0x15
+ 2972 0055 00        		.byte	0x0
+ 2973 0056 27        		.uleb128 0x27
+ 2974 0057 0C        		.uleb128 0xc
+ 2975 0058 00        		.byte	0x0
+ 2976 0059 00        		.byte	0x0
+ 2977 005a 09        		.uleb128 0x9
+ 2978 005b 2E        		.uleb128 0x2e
+ 2979 005c 01        		.byte	0x1
+ 2980 005d 3F        		.uleb128 0x3f
+ 2981 005e 0C        		.uleb128 0xc
+ 2982 005f 03        		.uleb128 0x3
+ 2983 0060 0E        		.uleb128 0xe
+ 2984 0061 3A        		.uleb128 0x3a
+ 2985 0062 0B        		.uleb128 0xb
+ 2986 0063 3B        		.uleb128 0x3b
+ 2987 0064 0B        		.uleb128 0xb
+ 2988 0065 27        		.uleb128 0x27
+ 2989 0066 0C        		.uleb128 0xc
+ 2990 0067 20        		.uleb128 0x20
+ 2991 0068 0B        		.uleb128 0xb
+ 2992 0069 01        		.uleb128 0x1
+ 2993 006a 13        		.uleb128 0x13
+ 2994 006b 00        		.byte	0x0
+ 2995 006c 00        		.byte	0x0
+ 2996 006d 0A        		.uleb128 0xa
+ 2997 006e 05        		.uleb128 0x5
+ 2998 006f 00        		.byte	0x0
+ 2999 0070 03        		.uleb128 0x3
+ 3000 0071 0E        		.uleb128 0xe
+ 3001 0072 3A        		.uleb128 0x3a
+ 3002 0073 0B        		.uleb128 0xb
+ 3003 0074 3B        		.uleb128 0x3b
+ 3004 0075 0B        		.uleb128 0xb
+ 3005 0076 49        		.uleb128 0x49
+ 3006 0077 13        		.uleb128 0x13
+ 3007 0078 00        		.byte	0x0
+ 3008 0079 00        		.byte	0x0
+ 3009 007a 0B        		.uleb128 0xb
+ 3010 007b 2E        		.uleb128 0x2e
+ 3011 007c 01        		.byte	0x1
+ 3012 007d 3F        		.uleb128 0x3f
+ 3013 007e 0C        		.uleb128 0xc
+ 3014 007f 03        		.uleb128 0x3
+ 3015 0080 0E        		.uleb128 0xe
+ 3016 0081 3A        		.uleb128 0x3a
+ 3017 0082 0B        		.uleb128 0xb
+ 3018 0083 3B        		.uleb128 0x3b
+ 3019 0084 0B        		.uleb128 0xb
+ 3020 0085 27        		.uleb128 0x27
+ 3021 0086 0C        		.uleb128 0xc
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 54
+
+
+ 3022 0087 49        		.uleb128 0x49
+ 3023 0088 13        		.uleb128 0x13
+ 3024 0089 20        		.uleb128 0x20
+ 3025 008a 0B        		.uleb128 0xb
+ 3026 008b 01        		.uleb128 0x1
+ 3027 008c 13        		.uleb128 0x13
+ 3028 008d 00        		.byte	0x0
+ 3029 008e 00        		.byte	0x0
+ 3030 008f 0C        		.uleb128 0xc
+ 3031 0090 0B        		.uleb128 0xb
+ 3032 0091 01        		.byte	0x1
+ 3033 0092 00        		.byte	0x0
+ 3034 0093 00        		.byte	0x0
+ 3035 0094 0D        		.uleb128 0xd
+ 3036 0095 34        		.uleb128 0x34
+ 3037 0096 00        		.byte	0x0
+ 3038 0097 03        		.uleb128 0x3
+ 3039 0098 0E        		.uleb128 0xe
+ 3040 0099 3A        		.uleb128 0x3a
+ 3041 009a 0B        		.uleb128 0xb
+ 3042 009b 3B        		.uleb128 0x3b
+ 3043 009c 0B        		.uleb128 0xb
+ 3044 009d 49        		.uleb128 0x49
+ 3045 009e 13        		.uleb128 0x13
+ 3046 009f 00        		.byte	0x0
+ 3047 00a0 00        		.byte	0x0
+ 3048 00a1 0E        		.uleb128 0xe
+ 3049 00a2 2E        		.uleb128 0x2e
+ 3050 00a3 00        		.byte	0x0
+ 3051 00a4 3F        		.uleb128 0x3f
+ 3052 00a5 0C        		.uleb128 0xc
+ 3053 00a6 03        		.uleb128 0x3
+ 3054 00a7 0E        		.uleb128 0xe
+ 3055 00a8 3A        		.uleb128 0x3a
+ 3056 00a9 0B        		.uleb128 0xb
+ 3057 00aa 3B        		.uleb128 0x3b
+ 3058 00ab 0B        		.uleb128 0xb
+ 3059 00ac 27        		.uleb128 0x27
+ 3060 00ad 0C        		.uleb128 0xc
+ 3061 00ae 20        		.uleb128 0x20
+ 3062 00af 0B        		.uleb128 0xb
+ 3063 00b0 00        		.byte	0x0
+ 3064 00b1 00        		.byte	0x0
+ 3065 00b2 0F        		.uleb128 0xf
+ 3066 00b3 2E        		.uleb128 0x2e
+ 3067 00b4 00        		.byte	0x0
+ 3068 00b5 3F        		.uleb128 0x3f
+ 3069 00b6 0C        		.uleb128 0xc
+ 3070 00b7 03        		.uleb128 0x3
+ 3071 00b8 0E        		.uleb128 0xe
+ 3072 00b9 3A        		.uleb128 0x3a
+ 3073 00ba 0B        		.uleb128 0xb
+ 3074 00bb 3B        		.uleb128 0x3b
+ 3075 00bc 05        		.uleb128 0x5
+ 3076 00bd 27        		.uleb128 0x27
+ 3077 00be 0C        		.uleb128 0xc
+ 3078 00bf 20        		.uleb128 0x20
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 55
+
+
+ 3079 00c0 0B        		.uleb128 0xb
+ 3080 00c1 00        		.byte	0x0
+ 3081 00c2 00        		.byte	0x0
+ 3082 00c3 10        		.uleb128 0x10
+ 3083 00c4 0B        		.uleb128 0xb
+ 3084 00c5 01        		.byte	0x1
+ 3085 00c6 01        		.uleb128 0x1
+ 3086 00c7 13        		.uleb128 0x13
+ 3087 00c8 00        		.byte	0x0
+ 3088 00c9 00        		.byte	0x0
+ 3089 00ca 11        		.uleb128 0x11
+ 3090 00cb 05        		.uleb128 0x5
+ 3091 00cc 00        		.byte	0x0
+ 3092 00cd 31        		.uleb128 0x31
+ 3093 00ce 13        		.uleb128 0x13
+ 3094 00cf 00        		.byte	0x0
+ 3095 00d0 00        		.byte	0x0
+ 3096 00d1 12        		.uleb128 0x12
+ 3097 00d2 0B        		.uleb128 0xb
+ 3098 00d3 00        		.byte	0x0
+ 3099 00d4 00        		.byte	0x0
+ 3100 00d5 00        		.byte	0x0
+ 3101 00d6 13        		.uleb128 0x13
+ 3102 00d7 2E        		.uleb128 0x2e
+ 3103 00d8 01        		.byte	0x1
+ 3104 00d9 3F        		.uleb128 0x3f
+ 3105 00da 0C        		.uleb128 0xc
+ 3106 00db 03        		.uleb128 0x3
+ 3107 00dc 0E        		.uleb128 0xe
+ 3108 00dd 3A        		.uleb128 0x3a
+ 3109 00de 0B        		.uleb128 0xb
+ 3110 00df 3B        		.uleb128 0x3b
+ 3111 00e0 0B        		.uleb128 0xb
+ 3112 00e1 27        		.uleb128 0x27
+ 3113 00e2 0C        		.uleb128 0xc
+ 3114 00e3 11        		.uleb128 0x11
+ 3115 00e4 01        		.uleb128 0x1
+ 3116 00e5 12        		.uleb128 0x12
+ 3117 00e6 01        		.uleb128 0x1
+ 3118 00e7 40        		.uleb128 0x40
+ 3119 00e8 0A        		.uleb128 0xa
+ 3120 00e9 01        		.uleb128 0x1
+ 3121 00ea 13        		.uleb128 0x13
+ 3122 00eb 00        		.byte	0x0
+ 3123 00ec 00        		.byte	0x0
+ 3124 00ed 14        		.uleb128 0x14
+ 3125 00ee 05        		.uleb128 0x5
+ 3126 00ef 00        		.byte	0x0
+ 3127 00f0 03        		.uleb128 0x3
+ 3128 00f1 0E        		.uleb128 0xe
+ 3129 00f2 3A        		.uleb128 0x3a
+ 3130 00f3 0B        		.uleb128 0xb
+ 3131 00f4 3B        		.uleb128 0x3b
+ 3132 00f5 0B        		.uleb128 0xb
+ 3133 00f6 49        		.uleb128 0x49
+ 3134 00f7 13        		.uleb128 0x13
+ 3135 00f8 02        		.uleb128 0x2
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 56
+
+
+ 3136 00f9 0A        		.uleb128 0xa
+ 3137 00fa 00        		.byte	0x0
+ 3138 00fb 00        		.byte	0x0
+ 3139 00fc 15        		.uleb128 0x15
+ 3140 00fd 34        		.uleb128 0x34
+ 3141 00fe 00        		.byte	0x0
+ 3142 00ff 03        		.uleb128 0x3
+ 3143 0100 08        		.uleb128 0x8
+ 3144 0101 3A        		.uleb128 0x3a
+ 3145 0102 0B        		.uleb128 0xb
+ 3146 0103 3B        		.uleb128 0x3b
+ 3147 0104 0B        		.uleb128 0xb
+ 3148 0105 49        		.uleb128 0x49
+ 3149 0106 13        		.uleb128 0x13
+ 3150 0107 00        		.byte	0x0
+ 3151 0108 00        		.byte	0x0
+ 3152 0109 16        		.uleb128 0x16
+ 3153 010a 1D        		.uleb128 0x1d
+ 3154 010b 01        		.byte	0x1
+ 3155 010c 31        		.uleb128 0x31
+ 3156 010d 13        		.uleb128 0x13
+ 3157 010e 11        		.uleb128 0x11
+ 3158 010f 01        		.uleb128 0x1
+ 3159 0110 12        		.uleb128 0x12
+ 3160 0111 01        		.uleb128 0x1
+ 3161 0112 58        		.uleb128 0x58
+ 3162 0113 0B        		.uleb128 0xb
+ 3163 0114 59        		.uleb128 0x59
+ 3164 0115 0B        		.uleb128 0xb
+ 3165 0116 01        		.uleb128 0x1
+ 3166 0117 13        		.uleb128 0x13
+ 3167 0118 00        		.byte	0x0
+ 3168 0119 00        		.byte	0x0
+ 3169 011a 17        		.uleb128 0x17
+ 3170 011b 1D        		.uleb128 0x1d
+ 3171 011c 00        		.byte	0x0
+ 3172 011d 31        		.uleb128 0x31
+ 3173 011e 13        		.uleb128 0x13
+ 3174 011f 11        		.uleb128 0x11
+ 3175 0120 01        		.uleb128 0x1
+ 3176 0121 12        		.uleb128 0x12
+ 3177 0122 01        		.uleb128 0x1
+ 3178 0123 58        		.uleb128 0x58
+ 3179 0124 0B        		.uleb128 0xb
+ 3180 0125 59        		.uleb128 0x59
+ 3181 0126 0B        		.uleb128 0xb
+ 3182 0127 00        		.byte	0x0
+ 3183 0128 00        		.byte	0x0
+ 3184 0129 18        		.uleb128 0x18
+ 3185 012a 1D        		.uleb128 0x1d
+ 3186 012b 01        		.byte	0x1
+ 3187 012c 31        		.uleb128 0x31
+ 3188 012d 13        		.uleb128 0x13
+ 3189 012e 11        		.uleb128 0x11
+ 3190 012f 01        		.uleb128 0x1
+ 3191 0130 12        		.uleb128 0x12
+ 3192 0131 01        		.uleb128 0x1
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 57
+
+
+ 3193 0132 58        		.uleb128 0x58
+ 3194 0133 0B        		.uleb128 0xb
+ 3195 0134 59        		.uleb128 0x59
+ 3196 0135 0B        		.uleb128 0xb
+ 3197 0136 00        		.byte	0x0
+ 3198 0137 00        		.byte	0x0
+ 3199 0138 19        		.uleb128 0x19
+ 3200 0139 2E        		.uleb128 0x2e
+ 3201 013a 01        		.byte	0x1
+ 3202 013b 31        		.uleb128 0x31
+ 3203 013c 13        		.uleb128 0x13
+ 3204 013d 11        		.uleb128 0x11
+ 3205 013e 01        		.uleb128 0x1
+ 3206 013f 12        		.uleb128 0x12
+ 3207 0140 01        		.uleb128 0x1
+ 3208 0141 40        		.uleb128 0x40
+ 3209 0142 0A        		.uleb128 0xa
+ 3210 0143 01        		.uleb128 0x1
+ 3211 0144 13        		.uleb128 0x13
+ 3212 0145 00        		.byte	0x0
+ 3213 0146 00        		.byte	0x0
+ 3214 0147 1A        		.uleb128 0x1a
+ 3215 0148 05        		.uleb128 0x5
+ 3216 0149 00        		.byte	0x0
+ 3217 014a 31        		.uleb128 0x31
+ 3218 014b 13        		.uleb128 0x13
+ 3219 014c 02        		.uleb128 0x2
+ 3220 014d 0A        		.uleb128 0xa
+ 3221 014e 00        		.byte	0x0
+ 3222 014f 00        		.byte	0x0
+ 3223 0150 1B        		.uleb128 0x1b
+ 3224 0151 0B        		.uleb128 0xb
+ 3225 0152 01        		.byte	0x1
+ 3226 0153 11        		.uleb128 0x11
+ 3227 0154 01        		.uleb128 0x1
+ 3228 0155 12        		.uleb128 0x12
+ 3229 0156 01        		.uleb128 0x1
+ 3230 0157 00        		.byte	0x0
+ 3231 0158 00        		.byte	0x0
+ 3232 0159 1C        		.uleb128 0x1c
+ 3233 015a 34        		.uleb128 0x34
+ 3234 015b 00        		.byte	0x0
+ 3235 015c 31        		.uleb128 0x31
+ 3236 015d 13        		.uleb128 0x13
+ 3237 015e 02        		.uleb128 0x2
+ 3238 015f 0A        		.uleb128 0xa
+ 3239 0160 00        		.byte	0x0
+ 3240 0161 00        		.byte	0x0
+ 3241 0162 1D        		.uleb128 0x1d
+ 3242 0163 34        		.uleb128 0x34
+ 3243 0164 00        		.byte	0x0
+ 3244 0165 31        		.uleb128 0x31
+ 3245 0166 13        		.uleb128 0x13
+ 3246 0167 02        		.uleb128 0x2
+ 3247 0168 06        		.uleb128 0x6
+ 3248 0169 00        		.byte	0x0
+ 3249 016a 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 58
+
+
+ 3250 016b 1E        		.uleb128 0x1e
+ 3251 016c 2E        		.uleb128 0x2e
+ 3252 016d 01        		.byte	0x1
+ 3253 016e 3F        		.uleb128 0x3f
+ 3254 016f 0C        		.uleb128 0xc
+ 3255 0170 03        		.uleb128 0x3
+ 3256 0171 0E        		.uleb128 0xe
+ 3257 0172 3A        		.uleb128 0x3a
+ 3258 0173 0B        		.uleb128 0xb
+ 3259 0174 3B        		.uleb128 0x3b
+ 3260 0175 0B        		.uleb128 0xb
+ 3261 0176 27        		.uleb128 0x27
+ 3262 0177 0C        		.uleb128 0xc
+ 3263 0178 49        		.uleb128 0x49
+ 3264 0179 13        		.uleb128 0x13
+ 3265 017a 11        		.uleb128 0x11
+ 3266 017b 01        		.uleb128 0x1
+ 3267 017c 12        		.uleb128 0x12
+ 3268 017d 01        		.uleb128 0x1
+ 3269 017e 40        		.uleb128 0x40
+ 3270 017f 0A        		.uleb128 0xa
+ 3271 0180 01        		.uleb128 0x1
+ 3272 0181 13        		.uleb128 0x13
+ 3273 0182 00        		.byte	0x0
+ 3274 0183 00        		.byte	0x0
+ 3275 0184 1F        		.uleb128 0x1f
+ 3276 0185 34        		.uleb128 0x34
+ 3277 0186 00        		.byte	0x0
+ 3278 0187 03        		.uleb128 0x3
+ 3279 0188 0E        		.uleb128 0xe
+ 3280 0189 3A        		.uleb128 0x3a
+ 3281 018a 0B        		.uleb128 0xb
+ 3282 018b 3B        		.uleb128 0x3b
+ 3283 018c 0B        		.uleb128 0xb
+ 3284 018d 49        		.uleb128 0x49
+ 3285 018e 13        		.uleb128 0x13
+ 3286 018f 02        		.uleb128 0x2
+ 3287 0190 0A        		.uleb128 0xa
+ 3288 0191 00        		.byte	0x0
+ 3289 0192 00        		.byte	0x0
+ 3290 0193 20        		.uleb128 0x20
+ 3291 0194 34        		.uleb128 0x34
+ 3292 0195 00        		.byte	0x0
+ 3293 0196 03        		.uleb128 0x3
+ 3294 0197 0E        		.uleb128 0xe
+ 3295 0198 3A        		.uleb128 0x3a
+ 3296 0199 0B        		.uleb128 0xb
+ 3297 019a 3B        		.uleb128 0x3b
+ 3298 019b 0B        		.uleb128 0xb
+ 3299 019c 49        		.uleb128 0x49
+ 3300 019d 13        		.uleb128 0x13
+ 3301 019e 02        		.uleb128 0x2
+ 3302 019f 06        		.uleb128 0x6
+ 3303 01a0 00        		.byte	0x0
+ 3304 01a1 00        		.byte	0x0
+ 3305 01a2 21        		.uleb128 0x21
+ 3306 01a3 05        		.uleb128 0x5
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 59
+
+
+ 3307 01a4 00        		.byte	0x0
+ 3308 01a5 03        		.uleb128 0x3
+ 3309 01a6 0E        		.uleb128 0xe
+ 3310 01a7 3A        		.uleb128 0x3a
+ 3311 01a8 0B        		.uleb128 0xb
+ 3312 01a9 3B        		.uleb128 0x3b
+ 3313 01aa 0B        		.uleb128 0xb
+ 3314 01ab 49        		.uleb128 0x49
+ 3315 01ac 13        		.uleb128 0x13
+ 3316 01ad 02        		.uleb128 0x2
+ 3317 01ae 06        		.uleb128 0x6
+ 3318 01af 00        		.byte	0x0
+ 3319 01b0 00        		.byte	0x0
+ 3320 01b1 22        		.uleb128 0x22
+ 3321 01b2 2E        		.uleb128 0x2e
+ 3322 01b3 00        		.byte	0x0
+ 3323 01b4 31        		.uleb128 0x31
+ 3324 01b5 13        		.uleb128 0x13
+ 3325 01b6 11        		.uleb128 0x11
+ 3326 01b7 01        		.uleb128 0x1
+ 3327 01b8 12        		.uleb128 0x12
+ 3328 01b9 01        		.uleb128 0x1
+ 3329 01ba 40        		.uleb128 0x40
+ 3330 01bb 0A        		.uleb128 0xa
+ 3331 01bc 00        		.byte	0x0
+ 3332 01bd 00        		.byte	0x0
+ 3333 01be 23        		.uleb128 0x23
+ 3334 01bf 2E        		.uleb128 0x2e
+ 3335 01c0 00        		.byte	0x0
+ 3336 01c1 3F        		.uleb128 0x3f
+ 3337 01c2 0C        		.uleb128 0xc
+ 3338 01c3 03        		.uleb128 0x3
+ 3339 01c4 0E        		.uleb128 0xe
+ 3340 01c5 3A        		.uleb128 0x3a
+ 3341 01c6 0B        		.uleb128 0xb
+ 3342 01c7 3B        		.uleb128 0x3b
+ 3343 01c8 05        		.uleb128 0x5
+ 3344 01c9 27        		.uleb128 0x27
+ 3345 01ca 0C        		.uleb128 0xc
+ 3346 01cb 49        		.uleb128 0x49
+ 3347 01cc 13        		.uleb128 0x13
+ 3348 01cd 11        		.uleb128 0x11
+ 3349 01ce 01        		.uleb128 0x1
+ 3350 01cf 12        		.uleb128 0x12
+ 3351 01d0 01        		.uleb128 0x1
+ 3352 01d1 40        		.uleb128 0x40
+ 3353 01d2 0A        		.uleb128 0xa
+ 3354 01d3 00        		.byte	0x0
+ 3355 01d4 00        		.byte	0x0
+ 3356 01d5 24        		.uleb128 0x24
+ 3357 01d6 2E        		.uleb128 0x2e
+ 3358 01d7 01        		.byte	0x1
+ 3359 01d8 3F        		.uleb128 0x3f
+ 3360 01d9 0C        		.uleb128 0xc
+ 3361 01da 03        		.uleb128 0x3
+ 3362 01db 0E        		.uleb128 0xe
+ 3363 01dc 3A        		.uleb128 0x3a
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 60
+
+
+ 3364 01dd 0B        		.uleb128 0xb
+ 3365 01de 3B        		.uleb128 0x3b
+ 3366 01df 05        		.uleb128 0x5
+ 3367 01e0 27        		.uleb128 0x27
+ 3368 01e1 0C        		.uleb128 0xc
+ 3369 01e2 11        		.uleb128 0x11
+ 3370 01e3 01        		.uleb128 0x1
+ 3371 01e4 12        		.uleb128 0x12
+ 3372 01e5 01        		.uleb128 0x1
+ 3373 01e6 40        		.uleb128 0x40
+ 3374 01e7 0A        		.uleb128 0xa
+ 3375 01e8 01        		.uleb128 0x1
+ 3376 01e9 13        		.uleb128 0x13
+ 3377 01ea 00        		.byte	0x0
+ 3378 01eb 00        		.byte	0x0
+ 3379 01ec 25        		.uleb128 0x25
+ 3380 01ed 05        		.uleb128 0x5
+ 3381 01ee 00        		.byte	0x0
+ 3382 01ef 03        		.uleb128 0x3
+ 3383 01f0 0E        		.uleb128 0xe
+ 3384 01f1 3A        		.uleb128 0x3a
+ 3385 01f2 0B        		.uleb128 0xb
+ 3386 01f3 3B        		.uleb128 0x3b
+ 3387 01f4 05        		.uleb128 0x5
+ 3388 01f5 49        		.uleb128 0x49
+ 3389 01f6 13        		.uleb128 0x13
+ 3390 01f7 02        		.uleb128 0x2
+ 3391 01f8 06        		.uleb128 0x6
+ 3392 01f9 00        		.byte	0x0
+ 3393 01fa 00        		.byte	0x0
+ 3394 01fb 26        		.uleb128 0x26
+ 3395 01fc 1D        		.uleb128 0x1d
+ 3396 01fd 00        		.byte	0x0
+ 3397 01fe 31        		.uleb128 0x31
+ 3398 01ff 13        		.uleb128 0x13
+ 3399 0200 11        		.uleb128 0x11
+ 3400 0201 01        		.uleb128 0x1
+ 3401 0202 12        		.uleb128 0x12
+ 3402 0203 01        		.uleb128 0x1
+ 3403 0204 58        		.uleb128 0x58
+ 3404 0205 0B        		.uleb128 0xb
+ 3405 0206 59        		.uleb128 0x59
+ 3406 0207 05        		.uleb128 0x5
+ 3407 0208 00        		.byte	0x0
+ 3408 0209 00        		.byte	0x0
+ 3409 020a 27        		.uleb128 0x27
+ 3410 020b 2E        		.uleb128 0x2e
+ 3411 020c 00        		.byte	0x0
+ 3412 020d 3F        		.uleb128 0x3f
+ 3413 020e 0C        		.uleb128 0xc
+ 3414 020f 03        		.uleb128 0x3
+ 3415 0210 0E        		.uleb128 0xe
+ 3416 0211 3A        		.uleb128 0x3a
+ 3417 0212 0B        		.uleb128 0xb
+ 3418 0213 3B        		.uleb128 0x3b
+ 3419 0214 05        		.uleb128 0x5
+ 3420 0215 27        		.uleb128 0x27
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 61
+
+
+ 3421 0216 0C        		.uleb128 0xc
+ 3422 0217 11        		.uleb128 0x11
+ 3423 0218 01        		.uleb128 0x1
+ 3424 0219 12        		.uleb128 0x12
+ 3425 021a 01        		.uleb128 0x1
+ 3426 021b 40        		.uleb128 0x40
+ 3427 021c 0A        		.uleb128 0xa
+ 3428 021d 00        		.byte	0x0
+ 3429 021e 00        		.byte	0x0
+ 3430 021f 28        		.uleb128 0x28
+ 3431 0220 05        		.uleb128 0x5
+ 3432 0221 00        		.byte	0x0
+ 3433 0222 03        		.uleb128 0x3
+ 3434 0223 0E        		.uleb128 0xe
+ 3435 0224 3A        		.uleb128 0x3a
+ 3436 0225 0B        		.uleb128 0xb
+ 3437 0226 3B        		.uleb128 0x3b
+ 3438 0227 05        		.uleb128 0x5
+ 3439 0228 49        		.uleb128 0x49
+ 3440 0229 13        		.uleb128 0x13
+ 3441 022a 02        		.uleb128 0x2
+ 3442 022b 0A        		.uleb128 0xa
+ 3443 022c 00        		.byte	0x0
+ 3444 022d 00        		.byte	0x0
+ 3445 022e 29        		.uleb128 0x29
+ 3446 022f 01        		.uleb128 0x1
+ 3447 0230 01        		.byte	0x1
+ 3448 0231 49        		.uleb128 0x49
+ 3449 0232 13        		.uleb128 0x13
+ 3450 0233 01        		.uleb128 0x1
+ 3451 0234 13        		.uleb128 0x13
+ 3452 0235 00        		.byte	0x0
+ 3453 0236 00        		.byte	0x0
+ 3454 0237 2A        		.uleb128 0x2a
+ 3455 0238 21        		.uleb128 0x21
+ 3456 0239 00        		.byte	0x0
+ 3457 023a 49        		.uleb128 0x49
+ 3458 023b 13        		.uleb128 0x13
+ 3459 023c 2F        		.uleb128 0x2f
+ 3460 023d 0B        		.uleb128 0xb
+ 3461 023e 00        		.byte	0x0
+ 3462 023f 00        		.byte	0x0
+ 3463 0240 2B        		.uleb128 0x2b
+ 3464 0241 35        		.uleb128 0x35
+ 3465 0242 00        		.byte	0x0
+ 3466 0243 49        		.uleb128 0x49
+ 3467 0244 13        		.uleb128 0x13
+ 3468 0245 00        		.byte	0x0
+ 3469 0246 00        		.byte	0x0
+ 3470 0247 2C        		.uleb128 0x2c
+ 3471 0248 34        		.uleb128 0x34
+ 3472 0249 00        		.byte	0x0
+ 3473 024a 03        		.uleb128 0x3
+ 3474 024b 0E        		.uleb128 0xe
+ 3475 024c 3A        		.uleb128 0x3a
+ 3476 024d 0B        		.uleb128 0xb
+ 3477 024e 3B        		.uleb128 0x3b
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 62
+
+
+ 3478 024f 0B        		.uleb128 0xb
+ 3479 0250 49        		.uleb128 0x49
+ 3480 0251 13        		.uleb128 0x13
+ 3481 0252 3F        		.uleb128 0x3f
+ 3482 0253 0C        		.uleb128 0xc
+ 3483 0254 02        		.uleb128 0x2
+ 3484 0255 0A        		.uleb128 0xa
+ 3485 0256 00        		.byte	0x0
+ 3486 0257 00        		.byte	0x0
+ 3487 0258 2D        		.uleb128 0x2d
+ 3488 0259 26        		.uleb128 0x26
+ 3489 025a 00        		.byte	0x0
+ 3490 025b 49        		.uleb128 0x49
+ 3491 025c 13        		.uleb128 0x13
+ 3492 025d 00        		.byte	0x0
+ 3493 025e 00        		.byte	0x0
+ 3494 025f 00        		.byte	0x0
+ 3495               		.section	.debug_pubnames,"",@progbits
+ 3496 0000 D802 0000 		.long	0x2d8
+ 3497 0004 0200      		.word	0x2
+ 3498 0006 0000 0000 		.long	.Ldebug_info0
+ 3499 000a 0708 0000 		.long	0x807
+ 3500 000e BD01 0000 		.long	0x1bd
+ 3501 0012 6465 6C61 		.string	"delay_us"
+ 3501      795F 7573 
+ 3501      00
+ 3502 001b FC01 0000 		.long	0x1fc
+ 3503 001f 7469 6D65 		.string	"timerInit"
+ 3503      7249 6E69 
+ 3503      7400 
+ 3504 0029 D602 0000 		.long	0x2d6
+ 3505 002d 7469 6D65 		.string	"timer0Init"
+ 3505      7230 496E 
+ 3505      6974 00
+ 3506 0038 1303 0000 		.long	0x313
+ 3507 003c 7469 6D65 		.string	"timer1Init"
+ 3507      7231 496E 
+ 3507      6974 00
+ 3508 0047 3D03 0000 		.long	0x33d
+ 3509 004b 7469 6D65 		.string	"timer2Init"
+ 3509      7232 496E 
+ 3509      6974 00
+ 3510 0056 7A03 0000 		.long	0x37a
+ 3511 005a 7469 6D65 		.string	"timer0SetPrescaler"
+ 3511      7230 5365 
+ 3511      7450 7265 
+ 3511      7363 616C 
+ 3511      6572 00
+ 3512 006d 9603 0000 		.long	0x396
+ 3513 0071 7469 6D65 		.string	"timer1SetPrescaler"
+ 3513      7231 5365 
+ 3513      7450 7265 
+ 3513      7363 616C 
+ 3513      6572 00
+ 3514 0084 B203 0000 		.long	0x3b2
+ 3515 0088 7469 6D65 		.string	"timer2SetPrescaler"
+ 3515      7232 5365 
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 63
+
+
+ 3515      7450 7265 
+ 3515      7363 616C 
+ 3515      6572 00
+ 3516 009b CE03 0000 		.long	0x3ce
+ 3517 009f 7469 6D65 		.string	"timer0GetPrescaler"
+ 3517      7230 4765 
+ 3517      7450 7265 
+ 3517      7363 616C 
+ 3517      6572 00
+ 3518 00b2 0204 0000 		.long	0x402
+ 3519 00b6 7469 6D65 		.string	"timer1GetPrescaler"
+ 3519      7231 4765 
+ 3519      7450 7265 
+ 3519      7363 616C 
+ 3519      6572 00
+ 3520 00c9 4A04 0000 		.long	0x44a
+ 3521 00cd 7469 6D65 		.string	"timer2GetPrescaler"
+ 3521      7232 4765 
+ 3521      7450 7265 
+ 3521      7363 616C 
+ 3521      6572 00
+ 3522 00e0 9204 0000 		.long	0x492
+ 3523 00e4 7469 6D65 		.string	"timerAttach"
+ 3523      7241 7474 
+ 3523      6163 6800 
+ 3524 00f0 CA04 0000 		.long	0x4ca
+ 3525 00f4 7469 6D65 		.string	"timerDetach"
+ 3525      7244 6574 
+ 3525      6163 6800 
+ 3526 0100 E604 0000 		.long	0x4e6
+ 3527 0104 7469 6D65 		.string	"timerPause"
+ 3527      7250 6175 
+ 3527      7365 00
+ 3528 010f 6705 0000 		.long	0x567
+ 3529 0113 7469 6D65 		.string	"timer0ClearOverflowCount"
+ 3529      7230 436C 
+ 3529      6561 724F 
+ 3529      7665 7266 
+ 3529      6C6F 7743 
+ 3530 012c 7705 0000 		.long	0x577
+ 3531 0130 7469 6D65 		.string	"timer0GetOverflowCount"
+ 3531      7230 4765 
+ 3531      744F 7665 
+ 3531      7266 6C6F 
+ 3531      7743 6F75 
+ 3532 0147 9005 0000 		.long	0x590
+ 3533 014b 7469 6D65 		.string	"timer2ClearOverflowCount"
+ 3533      7232 436C 
+ 3533      6561 724F 
+ 3533      7665 7266 
+ 3533      6C6F 7743 
+ 3534 0164 A005 0000 		.long	0x5a0
+ 3535 0168 7469 6D65 		.string	"timer2GetOverflowCount"
+ 3535      7232 4765 
+ 3535      744F 7665 
+ 3535      7266 6C6F 
+ 3535      7743 6F75 
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 64
+
+
+ 3536 017f B905 0000 		.long	0x5b9
+ 3537 0183 7469 6D65 		.string	"timer1PWMInit"
+ 3537      7231 5057 
+ 3537      4D49 6E69 
+ 3537      7400 
+ 3538 0191 E305 0000 		.long	0x5e3
+ 3539 0195 7469 6D65 		.string	"timer1PWMOff"
+ 3539      7231 5057 
+ 3539      4D4F 6666 
+ 3539      00
+ 3540 01a2 1D06 0000 		.long	0x61d
+ 3541 01a6 7469 6D65 		.string	"timer1PWMAOn"
+ 3541      7231 5057 
+ 3541      4D41 4F6E 
+ 3541      00
+ 3542 01b3 3206 0000 		.long	0x632
+ 3543 01b7 7469 6D65 		.string	"timer1PWMBOn"
+ 3543      7231 5057 
+ 3543      4D42 4F6E 
+ 3543      00
+ 3544 01c4 4706 0000 		.long	0x647
+ 3545 01c8 7469 6D65 		.string	"timer1PWMAOff"
+ 3545      7231 5057 
+ 3545      4D41 4F66 
+ 3545      6600 
+ 3546 01d6 5706 0000 		.long	0x657
+ 3547 01da 7469 6D65 		.string	"timer1PWMBOff"
+ 3547      7231 5057 
+ 3547      4D42 4F66 
+ 3547      6600 
+ 3548 01e8 6706 0000 		.long	0x667
+ 3549 01ec 7469 6D65 		.string	"timer1PWMASet"
+ 3549      7231 5057 
+ 3549      4D41 5365 
+ 3549      7400 
+ 3550 01fa 9406 0000 		.long	0x694
+ 3551 01fe 7469 6D65 		.string	"timer1PWMBSet"
+ 3551      7231 5057 
+ 3551      4D42 5365 
+ 3551      7400 
+ 3552 020c C106 0000 		.long	0x6c1
+ 3553 0210 5F5F 7665 		.string	"__vector_9"
+ 3553      6374 6F72 
+ 3553      5F39 00
+ 3554 021b D606 0000 		.long	0x6d6
+ 3555 021f 5F5F 7665 		.string	"__vector_8"
+ 3555      6374 6F72 
+ 3555      5F38 00
+ 3556 022a EB06 0000 		.long	0x6eb
+ 3557 022e 5F5F 7665 		.string	"__vector_4"
+ 3557      6374 6F72 
+ 3557      5F34 00
+ 3558 0239 0007 0000 		.long	0x700
+ 3559 023d 5F5F 7665 		.string	"__vector_6"
+ 3559      6374 6F72 
+ 3559      5F36 00
+ 3560 0248 1507 0000 		.long	0x715
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 65
+
+
+ 3561 024c 5F5F 7665 		.string	"__vector_7"
+ 3561      6374 6F72 
+ 3561      5F37 00
+ 3562 0257 2A07 0000 		.long	0x72a
+ 3563 025b 5F5F 7665 		.string	"__vector_5"
+ 3563      6374 6F72 
+ 3563      5F35 00
+ 3564 0266 3F07 0000 		.long	0x73f
+ 3565 026a 5F5F 7665 		.string	"__vector_3"
+ 3565      6374 6F72 
+ 3565      5F33 00
+ 3566 0275 8D07 0000 		.long	0x78d
+ 3567 0279 5469 6D65 		.string	"TimerPrescaleFactor"
+ 3567      7250 7265 
+ 3567      7363 616C 
+ 3567      6546 6163 
+ 3567      746F 7200 
+ 3568 028d B407 0000 		.long	0x7b4
+ 3569 0291 5469 6D65 		.string	"TimerRTCPrescaleFactor"
+ 3569      7252 5443 
+ 3569      5072 6573 
+ 3569      6361 6C65 
+ 3569      4661 6374 
+ 3570 02a8 CB07 0000 		.long	0x7cb
+ 3571 02ac 5469 6D65 		.string	"TimerPauseReg"
+ 3571      7250 6175 
+ 3571      7365 5265 
+ 3571      6700 
+ 3572 02ba E207 0000 		.long	0x7e2
+ 3573 02be 5469 6D65 		.string	"Timer0Reg0"
+ 3573      7230 5265 
+ 3573      6730 00
+ 3574 02c9 F407 0000 		.long	0x7f4
+ 3575 02cd 5469 6D65 		.string	"Timer2Reg0"
+ 3575      7232 5265 
+ 3575      6730 00
+ 3576 02d8 0000 0000 		.long	0x0
+ 3577               		.section	.debug_aranges,"",@progbits
+ 3578 0000 1C00 0000 		.long	0x1c
+ 3579 0004 0200      		.word	0x2
+ 3580 0006 0000 0000 		.long	.Ldebug_info0
+ 3581 000a 04        		.byte	0x4
+ 3582 000b 00        		.byte	0x0
+ 3583 000c 0000      		.word	0x0
+ 3584 000e 0000      		.word	0x0
+ 3585 0010 0000 0000 		.long	.Ltext0
+ 3586 0014 4806 0000 		.long	.Letext0-.Ltext0
+ 3587 0018 0000 0000 		.long	0x0
+ 3588 001c 0000 0000 		.long	0x0
+ 3589               		.section	.debug_line
+ 3590 0000 AF05 0000 		.long	.LELT0-.LSLT0
+ 3591               	.LSLT0:
+ 3592 0004 0200      		.word	0x2
+ 3593 0006 7700 0000 		.long	.LELTP0-.LASLTP0
+ 3594               	.LASLTP0:
+ 3595 000a 01        		.byte	0x1
+ 3596 000b 01        		.byte	0x1
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 66
+
+
+ 3597 000c F6        		.byte	0xf6
+ 3598 000d F5        		.byte	0xf5
+ 3599 000e 0A        		.byte	0xa
+ 3600 000f 00        		.byte	0x0
+ 3601 0010 01        		.byte	0x1
+ 3602 0011 01        		.byte	0x1
+ 3603 0012 01        		.byte	0x1
+ 3604 0013 01        		.byte	0x1
+ 3605 0014 00        		.byte	0x0
+ 3606 0015 00        		.byte	0x0
+ 3607 0016 00        		.byte	0x0
+ 3608 0017 01        		.byte	0x1
+ 3609 0018 633A 2F77 		.ascii	"c:/winavr-20080610/lib/gcc/../../avr/include"
+ 3609      696E 6176 
+ 3609      722D 3230 
+ 3609      3038 3036 
+ 3609      3130 2F6C 
+ 3610 0044 00        		.byte	0
+ 3611 0045 433A 5C41 		.ascii	"C:\\AVRCode\\AVRlib"
+ 3611      5652 436F 
+ 3611      6465 5C41 
+ 3611      5652 6C69 
+ 3611      62
+ 3612 0056 00        		.byte	0
+ 3613 0057 00        		.byte	0x0
+ 3614 0058 7469 6D65 		.string	"timer.c"
+ 3614      722E 6300 
+ 3615 0060 02        		.uleb128 0x2
+ 3616 0061 00        		.uleb128 0x0
+ 3617 0062 00        		.uleb128 0x0
+ 3618 0063 6176 726C 		.string	"avrlibtypes.h"
+ 3618      6962 7479 
+ 3618      7065 732E 
+ 3618      6800 
+ 3619 0071 02        		.uleb128 0x2
+ 3620 0072 00        		.uleb128 0x0
+ 3621 0073 00        		.uleb128 0x0
+ 3622 0074 7374 6469 		.string	"stdint.h"
+ 3622      6E74 2E68 
+ 3622      00
+ 3623 007d 01        		.uleb128 0x1
+ 3624 007e 00        		.uleb128 0x0
+ 3625 007f 00        		.uleb128 0x0
+ 3626 0080 00        		.byte	0x0
+ 3627               	.LELTP0:
+ 3628 0081 00        		.byte	0x0
+ 3629 0082 05        		.uleb128 0x5
+ 3630 0083 02        		.byte	0x2
+ 3631 0084 0000 0000 		.long	.LM1
+ 3632 0088 44        		.byte	0x44
+ 3633 0089 00        		.byte	0x0
+ 3634 008a 05        		.uleb128 0x5
+ 3635 008b 02        		.byte	0x2
+ 3636 008c 0000 0000 		.long	.LM2
+ 3637 0090 1C        		.byte	0x1c
+ 3638 0091 00        		.byte	0x0
+ 3639 0092 05        		.uleb128 0x5
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 67
+
+
+ 3640 0093 02        		.byte	0x2
+ 3641 0094 0000 0000 		.long	.LM3
+ 3642 0098 28        		.byte	0x28
+ 3643 0099 00        		.byte	0x0
+ 3644 009a 05        		.uleb128 0x5
+ 3645 009b 02        		.byte	0x2
+ 3646 009c 0000 0000 		.long	.LM4
+ 3647 00a0 01        		.byte	0x1
+ 3648 00a1 00        		.byte	0x0
+ 3649 00a2 05        		.uleb128 0x5
+ 3650 00a3 02        		.byte	0x2
+ 3651 00a4 0000 0000 		.long	.LM5
+ 3652 00a8 7F        		.byte	0x7f
+ 3653 00a9 00        		.byte	0x0
+ 3654 00aa 05        		.uleb128 0x5
+ 3655 00ab 02        		.byte	0x2
+ 3656 00ac 0000 0000 		.long	.LM6
+ 3657 00b0 03        		.byte	0x3
+ 3658 00b1 987F      		.sleb128 -104
+ 3659 00b3 01        		.byte	0x1
+ 3660 00b4 00        		.byte	0x0
+ 3661 00b5 05        		.uleb128 0x5
+ 3662 00b6 02        		.byte	0x2
+ 3663 00b7 0000 0000 		.long	.LM7
+ 3664 00bb 43        		.byte	0x43
+ 3665 00bc 00        		.byte	0x0
+ 3666 00bd 05        		.uleb128 0x5
+ 3667 00be 02        		.byte	0x2
+ 3668 00bf 0000 0000 		.long	.LM8
+ 3669 00c3 03        		.byte	0x3
+ 3670 00c4 62        		.sleb128 -30
+ 3671 00c5 01        		.byte	0x1
+ 3672 00c6 00        		.byte	0x0
+ 3673 00c7 05        		.uleb128 0x5
+ 3674 00c8 02        		.byte	0x2
+ 3675 00c9 0000 0000 		.long	.LM9
+ 3676 00cd 15        		.byte	0x15
+ 3677 00ce 00        		.byte	0x0
+ 3678 00cf 05        		.uleb128 0x5
+ 3679 00d0 02        		.byte	0x2
+ 3680 00d1 0000 0000 		.long	.LM10
+ 3681 00d5 AE        		.byte	0xae
+ 3682 00d6 00        		.byte	0x0
+ 3683 00d7 05        		.uleb128 0x5
+ 3684 00d8 02        		.byte	0x2
+ 3685 00d9 0000 0000 		.long	.LM11
+ 3686 00dd 03        		.byte	0x3
+ 3687 00de 897F      		.sleb128 -119
+ 3688 00e0 01        		.byte	0x1
+ 3689 00e1 00        		.byte	0x0
+ 3690 00e2 05        		.uleb128 0x5
+ 3691 00e3 02        		.byte	0x2
+ 3692 00e4 0000 0000 		.long	.LM12
+ 3693 00e8 03        		.byte	0x3
+ 3694 00e9 66        		.sleb128 -26
+ 3695 00ea 01        		.byte	0x1
+ 3696 00eb 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 68
+
+
+ 3697 00ec 05        		.uleb128 0x5
+ 3698 00ed 02        		.byte	0x2
+ 3699 00ee 0000 0000 		.long	.LM13
+ 3700 00f2 15        		.byte	0x15
+ 3701 00f3 00        		.byte	0x0
+ 3702 00f4 05        		.uleb128 0x5
+ 3703 00f5 02        		.byte	0x2
+ 3704 00f6 0000 0000 		.long	.LM14
+ 3705 00fa 15        		.byte	0x15
+ 3706 00fb 00        		.byte	0x0
+ 3707 00fc 05        		.uleb128 0x5
+ 3708 00fd 02        		.byte	0x2
+ 3709 00fe 0000 0000 		.long	.LM15
+ 3710 0102 33        		.byte	0x33
+ 3711 0103 00        		.byte	0x0
+ 3712 0104 05        		.uleb128 0x5
+ 3713 0105 02        		.byte	0x2
+ 3714 0106 0000 0000 		.long	.LM16
+ 3715 010a 03        		.byte	0x3
+ 3716 010b 69        		.sleb128 -23
+ 3717 010c 01        		.byte	0x1
+ 3718 010d 00        		.byte	0x0
+ 3719 010e 05        		.uleb128 0x5
+ 3720 010f 02        		.byte	0x2
+ 3721 0110 0000 0000 		.long	.LM17
+ 3722 0114 15        		.byte	0x15
+ 3723 0115 00        		.byte	0x0
+ 3724 0116 05        		.uleb128 0x5
+ 3725 0117 02        		.byte	0x2
+ 3726 0118 0000 0000 		.long	.LM18
+ 3727 011c A8        		.byte	0xa8
+ 3728 011d 00        		.byte	0x0
+ 3729 011e 05        		.uleb128 0x5
+ 3730 011f 02        		.byte	0x2
+ 3731 0120 0000 0000 		.long	.LM19
+ 3732 0124 03        		.byte	0x3
+ 3733 0125 D07E      		.sleb128 -176
+ 3734 0127 01        		.byte	0x1
+ 3735 0128 00        		.byte	0x0
+ 3736 0129 05        		.uleb128 0x5
+ 3737 012a 02        		.byte	0x2
+ 3738 012b 0000 0000 		.long	.LM20
+ 3739 012f 15        		.byte	0x15
+ 3740 0130 00        		.byte	0x0
+ 3741 0131 05        		.uleb128 0x5
+ 3742 0132 02        		.byte	0x2
+ 3743 0133 0000 0000 		.long	.LM21
+ 3744 0137 17        		.byte	0x17
+ 3745 0138 00        		.byte	0x0
+ 3746 0139 05        		.uleb128 0x5
+ 3747 013a 02        		.byte	0x2
+ 3748 013b 0000 0000 		.long	.LM22
+ 3749 013f 35        		.byte	0x35
+ 3750 0140 00        		.byte	0x0
+ 3751 0141 05        		.uleb128 0x5
+ 3752 0142 02        		.byte	0x2
+ 3753 0143 0000 0000 		.long	.LM23
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 69
+
+
+ 3754 0147 03        		.byte	0x3
+ 3755 0148 62        		.sleb128 -30
+ 3756 0149 01        		.byte	0x1
+ 3757 014a 00        		.byte	0x0
+ 3758 014b 05        		.uleb128 0x5
+ 3759 014c 02        		.byte	0x2
+ 3760 014d 0000 0000 		.long	.LM24
+ 3761 0151 15        		.byte	0x15
+ 3762 0152 00        		.byte	0x0
+ 3763 0153 05        		.uleb128 0x5
+ 3764 0154 02        		.byte	0x2
+ 3765 0155 0000 0000 		.long	.LM25
+ 3766 0159 AE        		.byte	0xae
+ 3767 015a 00        		.byte	0x0
+ 3768 015b 05        		.uleb128 0x5
+ 3769 015c 02        		.byte	0x2
+ 3770 015d 0000 0000 		.long	.LM26
+ 3771 0161 03        		.byte	0x3
+ 3772 0162 E97E      		.sleb128 -151
+ 3773 0164 01        		.byte	0x1
+ 3774 0165 00        		.byte	0x0
+ 3775 0166 05        		.uleb128 0x5
+ 3776 0167 02        		.byte	0x2
+ 3777 0168 0000 0000 		.long	.LM27
+ 3778 016c 17        		.byte	0x17
+ 3779 016d 00        		.byte	0x0
+ 3780 016e 05        		.uleb128 0x5
+ 3781 016f 02        		.byte	0x2
+ 3782 0170 0000 0000 		.long	.LM28
+ 3783 0174 31        		.byte	0x31
+ 3784 0175 00        		.byte	0x0
+ 3785 0176 05        		.uleb128 0x5
+ 3786 0177 02        		.byte	0x2
+ 3787 0178 0000 0000 		.long	.LM29
+ 3788 017c 03        		.byte	0x3
+ 3789 017d 66        		.sleb128 -26
+ 3790 017e 01        		.byte	0x1
+ 3791 017f 00        		.byte	0x0
+ 3792 0180 05        		.uleb128 0x5
+ 3793 0181 02        		.byte	0x2
+ 3794 0182 0000 0000 		.long	.LM30
+ 3795 0186 15        		.byte	0x15
+ 3796 0187 00        		.byte	0x0
+ 3797 0188 05        		.uleb128 0x5
+ 3798 0189 02        		.byte	0x2
+ 3799 018a 0000 0000 		.long	.LM31
+ 3800 018e 15        		.byte	0x15
+ 3801 018f 00        		.byte	0x0
+ 3802 0190 05        		.uleb128 0x5
+ 3803 0191 02        		.byte	0x2
+ 3804 0192 0000 0000 		.long	.LM32
+ 3805 0196 15        		.byte	0x15
+ 3806 0197 00        		.byte	0x0
+ 3807 0198 05        		.uleb128 0x5
+ 3808 0199 02        		.byte	0x2
+ 3809 019a 0000 0000 		.long	.LM33
+ 3810 019e 18        		.byte	0x18
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 70
+
+
+ 3811 019f 00        		.byte	0x0
+ 3812 01a0 05        		.uleb128 0x5
+ 3813 01a1 02        		.byte	0x2
+ 3814 01a2 0000 0000 		.long	.LM34
+ 3815 01a6 2E        		.byte	0x2e
+ 3816 01a7 00        		.byte	0x0
+ 3817 01a8 05        		.uleb128 0x5
+ 3818 01a9 02        		.byte	0x2
+ 3819 01aa 0000 0000 		.long	.LM35
+ 3820 01ae 03        		.byte	0x3
+ 3821 01af 69        		.sleb128 -23
+ 3822 01b0 01        		.byte	0x1
+ 3823 01b1 00        		.byte	0x0
+ 3824 01b2 05        		.uleb128 0x5
+ 3825 01b3 02        		.byte	0x2
+ 3826 01b4 0000 0000 		.long	.LM36
+ 3827 01b8 15        		.byte	0x15
+ 3828 01b9 00        		.byte	0x0
+ 3829 01ba 05        		.uleb128 0x5
+ 3830 01bb 02        		.byte	0x2
+ 3831 01bc 0000 0000 		.long	.LM37
+ 3832 01c0 A8        		.byte	0xa8
+ 3833 01c1 00        		.byte	0x0
+ 3834 01c2 05        		.uleb128 0x5
+ 3835 01c3 02        		.byte	0x2
+ 3836 01c4 0000 0000 		.long	.LM38
+ 3837 01c8 03        		.byte	0x3
+ 3838 01c9 EF7E      		.sleb128 -145
+ 3839 01cb 01        		.byte	0x1
+ 3840 01cc 00        		.byte	0x0
+ 3841 01cd 05        		.uleb128 0x5
+ 3842 01ce 02        		.byte	0x2
+ 3843 01cf 0000 0000 		.long	.LM39
+ 3844 01d3 18        		.byte	0x18
+ 3845 01d4 00        		.byte	0x0
+ 3846 01d5 05        		.uleb128 0x5
+ 3847 01d6 02        		.byte	0x2
+ 3848 01d7 0000 0000 		.long	.LM40
+ 3849 01db 16        		.byte	0x16
+ 3850 01dc 00        		.byte	0x0
+ 3851 01dd 05        		.uleb128 0x5
+ 3852 01de 02        		.byte	0x2
+ 3853 01df 0000 0000 		.long	.LM41
+ 3854 01e3 15        		.byte	0x15
+ 3855 01e4 00        		.byte	0x0
+ 3856 01e5 05        		.uleb128 0x5
+ 3857 01e6 02        		.byte	0x2
+ 3858 01e7 0000 0000 		.long	.LM42
+ 3859 01eb 17        		.byte	0x17
+ 3860 01ec 00        		.byte	0x0
+ 3861 01ed 05        		.uleb128 0x5
+ 3862 01ee 02        		.byte	0x2
+ 3863 01ef 0000 0000 		.long	.LM43
+ 3864 01f3 16        		.byte	0x16
+ 3865 01f4 00        		.byte	0x0
+ 3866 01f5 05        		.uleb128 0x5
+ 3867 01f6 02        		.byte	0x2
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 71
+
+
+ 3868 01f7 0000 0000 		.long	.LM44
+ 3869 01fb 15        		.byte	0x15
+ 3870 01fc 00        		.byte	0x0
+ 3871 01fd 05        		.uleb128 0x5
+ 3872 01fe 02        		.byte	0x2
+ 3873 01ff 0000 0000 		.long	.LM45
+ 3874 0203 18        		.byte	0x18
+ 3875 0204 00        		.byte	0x0
+ 3876 0205 05        		.uleb128 0x5
+ 3877 0206 02        		.byte	0x2
+ 3878 0207 0000 0000 		.long	.LM46
+ 3879 020b 16        		.byte	0x16
+ 3880 020c 00        		.byte	0x0
+ 3881 020d 05        		.uleb128 0x5
+ 3882 020e 02        		.byte	0x2
+ 3883 020f 0000 0000 		.long	.LM47
+ 3884 0213 15        		.byte	0x15
+ 3885 0214 00        		.byte	0x0
+ 3886 0215 05        		.uleb128 0x5
+ 3887 0216 02        		.byte	0x2
+ 3888 0217 0000 0000 		.long	.LM48
+ 3889 021b 18        		.byte	0x18
+ 3890 021c 00        		.byte	0x0
+ 3891 021d 05        		.uleb128 0x5
+ 3892 021e 02        		.byte	0x2
+ 3893 021f 0000 0000 		.long	.LM49
+ 3894 0223 16        		.byte	0x16
+ 3895 0224 00        		.byte	0x0
+ 3896 0225 05        		.uleb128 0x5
+ 3897 0226 02        		.byte	0x2
+ 3898 0227 0000 0000 		.long	.LM50
+ 3899 022b 15        		.byte	0x15
+ 3900 022c 00        		.byte	0x0
+ 3901 022d 05        		.uleb128 0x5
+ 3902 022e 02        		.byte	0x2
+ 3903 022f 0000 0000 		.long	.LM51
+ 3904 0233 17        		.byte	0x17
+ 3905 0234 00        		.byte	0x0
+ 3906 0235 05        		.uleb128 0x5
+ 3907 0236 02        		.byte	0x2
+ 3908 0237 0000 0000 		.long	.LM52
+ 3909 023b 16        		.byte	0x16
+ 3910 023c 00        		.byte	0x0
+ 3911 023d 05        		.uleb128 0x5
+ 3912 023e 02        		.byte	0x2
+ 3913 023f 0000 0000 		.long	.LM53
+ 3914 0243 15        		.byte	0x15
+ 3915 0244 00        		.byte	0x0
+ 3916 0245 05        		.uleb128 0x5
+ 3917 0246 02        		.byte	0x2
+ 3918 0247 0000 0000 		.long	.LM54
+ 3919 024b 18        		.byte	0x18
+ 3920 024c 00        		.byte	0x0
+ 3921 024d 05        		.uleb128 0x5
+ 3922 024e 02        		.byte	0x2
+ 3923 024f 0000 0000 		.long	.LM55
+ 3924 0253 19        		.byte	0x19
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 72
+
+
+ 3925 0254 00        		.byte	0x0
+ 3926 0255 05        		.uleb128 0x5
+ 3927 0256 02        		.byte	0x2
+ 3928 0257 0000 0000 		.long	.LM56
+ 3929 025b 15        		.byte	0x15
+ 3930 025c 00        		.byte	0x0
+ 3931 025d 05        		.uleb128 0x5
+ 3932 025e 02        		.byte	0x2
+ 3933 025f 0000 0000 		.long	.LM57
+ 3934 0263 18        		.byte	0x18
+ 3935 0264 00        		.byte	0x0
+ 3936 0265 05        		.uleb128 0x5
+ 3937 0266 02        		.byte	0x2
+ 3938 0267 0000 0000 		.long	.LM58
+ 3939 026b 16        		.byte	0x16
+ 3940 026c 00        		.byte	0x0
+ 3941 026d 05        		.uleb128 0x5
+ 3942 026e 02        		.byte	0x2
+ 3943 026f 0000 0000 		.long	.LM59
+ 3944 0273 18        		.byte	0x18
+ 3945 0274 00        		.byte	0x0
+ 3946 0275 05        		.uleb128 0x5
+ 3947 0276 02        		.byte	0x2
+ 3948 0277 0000 0000 		.long	.LM60
+ 3949 027b 19        		.byte	0x19
+ 3950 027c 00        		.byte	0x0
+ 3951 027d 05        		.uleb128 0x5
+ 3952 027e 02        		.byte	0x2
+ 3953 027f 0000 0000 		.long	.LM61
+ 3954 0283 16        		.byte	0x16
+ 3955 0284 00        		.byte	0x0
+ 3956 0285 05        		.uleb128 0x5
+ 3957 0286 02        		.byte	0x2
+ 3958 0287 0000 0000 		.long	.LM62
+ 3959 028b 17        		.byte	0x17
+ 3960 028c 00        		.byte	0x0
+ 3961 028d 05        		.uleb128 0x5
+ 3962 028e 02        		.byte	0x2
+ 3963 028f 0000 0000 		.long	.LM63
+ 3964 0293 29        		.byte	0x29
+ 3965 0294 00        		.byte	0x0
+ 3966 0295 05        		.uleb128 0x5
+ 3967 0296 02        		.byte	0x2
+ 3968 0297 0000 0000 		.long	.LM64
+ 3969 029b 1B        		.byte	0x1b
+ 3970 029c 00        		.byte	0x0
+ 3971 029d 05        		.uleb128 0x5
+ 3972 029e 02        		.byte	0x2
+ 3973 029f 0000 0000 		.long	.LM65
+ 3974 02a3 16        		.byte	0x16
+ 3975 02a4 00        		.byte	0x0
+ 3976 02a5 05        		.uleb128 0x5
+ 3977 02a6 02        		.byte	0x2
+ 3978 02a7 0000 0000 		.long	.LM66
+ 3979 02ab 03        		.byte	0x3
+ 3980 02ac BD7F      		.sleb128 -67
+ 3981 02ae 01        		.byte	0x1
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 73
+
+
+ 3982 02af 00        		.byte	0x0
+ 3983 02b0 05        		.uleb128 0x5
+ 3984 02b1 02        		.byte	0x2
+ 3985 02b2 0000 0000 		.long	.LM67
+ 3986 02b6 5A        		.byte	0x5a
+ 3987 02b7 00        		.byte	0x0
+ 3988 02b8 05        		.uleb128 0x5
+ 3989 02b9 02        		.byte	0x2
+ 3990 02ba 0000 0000 		.long	.LM68
+ 3991 02be 18        		.byte	0x18
+ 3992 02bf 00        		.byte	0x0
+ 3993 02c0 05        		.uleb128 0x5
+ 3994 02c1 02        		.byte	0x2
+ 3995 02c2 0000 0000 		.long	.LM69
+ 3996 02c6 15        		.byte	0x15
+ 3997 02c7 00        		.byte	0x0
+ 3998 02c8 05        		.uleb128 0x5
+ 3999 02c9 02        		.byte	0x2
+ 4000 02ca 0000 0000 		.long	.LM70
+ 4001 02ce 16        		.byte	0x16
+ 4002 02cf 00        		.byte	0x0
+ 4003 02d0 05        		.uleb128 0x5
+ 4004 02d1 02        		.byte	0x2
+ 4005 02d2 0000 0000 		.long	.LM71
+ 4006 02d6 19        		.byte	0x19
+ 4007 02d7 00        		.byte	0x0
+ 4008 02d8 05        		.uleb128 0x5
+ 4009 02d9 02        		.byte	0x2
+ 4010 02da 0000 0000 		.long	.LM72
+ 4011 02de 17        		.byte	0x17
+ 4012 02df 00        		.byte	0x0
+ 4013 02e0 05        		.uleb128 0x5
+ 4014 02e1 02        		.byte	0x2
+ 4015 02e2 0000 0000 		.long	.LM73
+ 4016 02e6 15        		.byte	0x15
+ 4017 02e7 00        		.byte	0x0
+ 4018 02e8 05        		.uleb128 0x5
+ 4019 02e9 02        		.byte	0x2
+ 4020 02ea 0000 0000 		.long	.LM74
+ 4021 02ee 0E        		.byte	0xe
+ 4022 02ef 00        		.byte	0x0
+ 4023 02f0 05        		.uleb128 0x5
+ 4024 02f1 02        		.byte	0x2
+ 4025 02f2 0000 0000 		.long	.LM75
+ 4026 02f6 28        		.byte	0x28
+ 4027 02f7 00        		.byte	0x0
+ 4028 02f8 05        		.uleb128 0x5
+ 4029 02f9 02        		.byte	0x2
+ 4030 02fa 0000 0000 		.long	.LM76
+ 4031 02fe 17        		.byte	0x17
+ 4032 02ff 00        		.byte	0x0
+ 4033 0300 05        		.uleb128 0x5
+ 4034 0301 02        		.byte	0x2
+ 4035 0302 0000 0000 		.long	.LM77
+ 4036 0306 16        		.byte	0x16
+ 4037 0307 00        		.byte	0x0
+ 4038 0308 05        		.uleb128 0x5
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 74
+
+
+ 4039 0309 02        		.byte	0x2
+ 4040 030a 0000 0000 		.long	.LM78
+ 4041 030e 15        		.byte	0x15
+ 4042 030f 00        		.byte	0x0
+ 4043 0310 05        		.uleb128 0x5
+ 4044 0311 02        		.byte	0x2
+ 4045 0312 0000 0000 		.long	.LM79
+ 4046 0316 17        		.byte	0x17
+ 4047 0317 00        		.byte	0x0
+ 4048 0318 05        		.uleb128 0x5
+ 4049 0319 02        		.byte	0x2
+ 4050 031a 0000 0000 		.long	.LM80
+ 4051 031e 17        		.byte	0x17
+ 4052 031f 00        		.byte	0x0
+ 4053 0320 05        		.uleb128 0x5
+ 4054 0321 02        		.byte	0x2
+ 4055 0322 0000 0000 		.long	.LM81
+ 4056 0326 15        		.byte	0x15
+ 4057 0327 00        		.byte	0x0
+ 4058 0328 05        		.uleb128 0x5
+ 4059 0329 02        		.byte	0x2
+ 4060 032a 0000 0000 		.long	.LM82
+ 4061 032e 18        		.byte	0x18
+ 4062 032f 00        		.byte	0x0
+ 4063 0330 05        		.uleb128 0x5
+ 4064 0331 02        		.byte	0x2
+ 4065 0332 0000 0000 		.long	.LM83
+ 4066 0336 16        		.byte	0x16
+ 4067 0337 00        		.byte	0x0
+ 4068 0338 05        		.uleb128 0x5
+ 4069 0339 02        		.byte	0x2
+ 4070 033a 0000 0000 		.long	.LM84
+ 4071 033e 15        		.byte	0x15
+ 4072 033f 00        		.byte	0x0
+ 4073 0340 05        		.uleb128 0x5
+ 4074 0341 02        		.byte	0x2
+ 4075 0342 0000 0000 		.long	.LM85
+ 4076 0346 17        		.byte	0x17
+ 4077 0347 00        		.byte	0x0
+ 4078 0348 05        		.uleb128 0x5
+ 4079 0349 02        		.byte	0x2
+ 4080 034a 0000 0000 		.long	.LM86
+ 4081 034e 17        		.byte	0x17
+ 4082 034f 00        		.byte	0x0
+ 4083 0350 05        		.uleb128 0x5
+ 4084 0351 02        		.byte	0x2
+ 4085 0352 0000 0000 		.long	.LM87
+ 4086 0356 15        		.byte	0x15
+ 4087 0357 00        		.byte	0x0
+ 4088 0358 05        		.uleb128 0x5
+ 4089 0359 02        		.byte	0x2
+ 4090 035a 0000 0000 		.long	.LM88
+ 4091 035e 18        		.byte	0x18
+ 4092 035f 00        		.byte	0x0
+ 4093 0360 05        		.uleb128 0x5
+ 4094 0361 02        		.byte	0x2
+ 4095 0362 0000 0000 		.long	.LM89
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 75
+
+
+ 4096 0366 19        		.byte	0x19
+ 4097 0367 00        		.byte	0x0
+ 4098 0368 05        		.uleb128 0x5
+ 4099 0369 02        		.byte	0x2
+ 4100 036a 0000 0000 		.long	.LM90
+ 4101 036e 16        		.byte	0x16
+ 4102 036f 00        		.byte	0x0
+ 4103 0370 05        		.uleb128 0x5
+ 4104 0371 02        		.byte	0x2
+ 4105 0372 0000 0000 		.long	.LM91
+ 4106 0376 15        		.byte	0x15
+ 4107 0377 00        		.byte	0x0
+ 4108 0378 05        		.uleb128 0x5
+ 4109 0379 02        		.byte	0x2
+ 4110 037a 0000 0000 		.long	.LM92
+ 4111 037e 16        		.byte	0x16
+ 4112 037f 00        		.byte	0x0
+ 4113 0380 05        		.uleb128 0x5
+ 4114 0381 02        		.byte	0x2
+ 4115 0382 0000 0000 		.long	.LM93
+ 4116 0386 16        		.byte	0x16
+ 4117 0387 00        		.byte	0x0
+ 4118 0388 05        		.uleb128 0x5
+ 4119 0389 02        		.byte	0x2
+ 4120 038a 0000 0000 		.long	.LM94
+ 4121 038e 19        		.byte	0x19
+ 4122 038f 00        		.byte	0x0
+ 4123 0390 05        		.uleb128 0x5
+ 4124 0391 02        		.byte	0x2
+ 4125 0392 0000 0000 		.long	.LM95
+ 4126 0396 15        		.byte	0x15
+ 4127 0397 00        		.byte	0x0
+ 4128 0398 05        		.uleb128 0x5
+ 4129 0399 02        		.byte	0x2
+ 4130 039a 0000 0000 		.long	.LM96
+ 4131 039e 18        		.byte	0x18
+ 4132 039f 00        		.byte	0x0
+ 4133 03a0 05        		.uleb128 0x5
+ 4134 03a1 02        		.byte	0x2
+ 4135 03a2 0000 0000 		.long	.LM97
+ 4136 03a6 15        		.byte	0x15
+ 4137 03a7 00        		.byte	0x0
+ 4138 03a8 05        		.uleb128 0x5
+ 4139 03a9 02        		.byte	0x2
+ 4140 03aa 0000 0000 		.long	.LM98
+ 4141 03ae 16        		.byte	0x16
+ 4142 03af 00        		.byte	0x0
+ 4143 03b0 05        		.uleb128 0x5
+ 4144 03b1 02        		.byte	0x2
+ 4145 03b2 0000 0000 		.long	.LM99
+ 4146 03b6 15        		.byte	0x15
+ 4147 03b7 00        		.byte	0x0
+ 4148 03b8 05        		.uleb128 0x5
+ 4149 03b9 02        		.byte	0x2
+ 4150 03ba 0000 0000 		.long	.LM100
+ 4151 03be 15        		.byte	0x15
+ 4152 03bf 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 76
+
+
+ 4153 03c0 05        		.uleb128 0x5
+ 4154 03c1 02        		.byte	0x2
+ 4155 03c2 0000 0000 		.long	.LM101
+ 4156 03c6 2D        		.byte	0x2d
+ 4157 03c7 00        		.byte	0x0
+ 4158 03c8 05        		.uleb128 0x5
+ 4159 03c9 02        		.byte	0x2
+ 4160 03ca 0000 0000 		.long	.LM102
+ 4161 03ce 16        		.byte	0x16
+ 4162 03cf 00        		.byte	0x0
+ 4163 03d0 05        		.uleb128 0x5
+ 4164 03d1 02        		.byte	0x2
+ 4165 03d2 0000 0000 		.long	.LM103
+ 4166 03d6 15        		.byte	0x15
+ 4167 03d7 00        		.byte	0x0
+ 4168 03d8 05        		.uleb128 0x5
+ 4169 03d9 02        		.byte	0x2
+ 4170 03da 0000 0000 		.long	.LM104
+ 4171 03de 2E        		.byte	0x2e
+ 4172 03df 00        		.byte	0x0
+ 4173 03e0 05        		.uleb128 0x5
+ 4174 03e1 02        		.byte	0x2
+ 4175 03e2 0000 0000 		.long	.LM105
+ 4176 03e6 15        		.byte	0x15
+ 4177 03e7 00        		.byte	0x0
+ 4178 03e8 05        		.uleb128 0x5
+ 4179 03e9 02        		.byte	0x2
+ 4180 03ea 0000 0000 		.long	.LM106
+ 4181 03ee 1B        		.byte	0x1b
+ 4182 03ef 00        		.byte	0x0
+ 4183 03f0 05        		.uleb128 0x5
+ 4184 03f1 02        		.byte	0x2
+ 4185 03f2 0000 0000 		.long	.LM107
+ 4186 03f6 15        		.byte	0x15
+ 4187 03f7 00        		.byte	0x0
+ 4188 03f8 05        		.uleb128 0x5
+ 4189 03f9 02        		.byte	0x2
+ 4190 03fa 0000 0000 		.long	.LM108
+ 4191 03fe 03        		.byte	0x3
+ 4192 03ff 61        		.sleb128 -31
+ 4193 0400 01        		.byte	0x1
+ 4194 0401 00        		.byte	0x0
+ 4195 0402 05        		.uleb128 0x5
+ 4196 0403 02        		.byte	0x2
+ 4197 0404 0000 0000 		.long	.LM109
+ 4198 0408 17        		.byte	0x17
+ 4199 0409 00        		.byte	0x0
+ 4200 040a 05        		.uleb128 0x5
+ 4201 040b 02        		.byte	0x2
+ 4202 040c 0000 0000 		.long	.LM110
+ 4203 0410 17        		.byte	0x17
+ 4204 0411 00        		.byte	0x0
+ 4205 0412 05        		.uleb128 0x5
+ 4206 0413 02        		.byte	0x2
+ 4207 0414 0000 0000 		.long	.LM111
+ 4208 0418 15        		.byte	0x15
+ 4209 0419 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 77
+
+
+ 4210 041a 05        		.uleb128 0x5
+ 4211 041b 02        		.byte	0x2
+ 4212 041c 0000 0000 		.long	.LM112
+ 4213 0420 15        		.byte	0x15
+ 4214 0421 00        		.byte	0x0
+ 4215 0422 05        		.uleb128 0x5
+ 4216 0423 02        		.byte	0x2
+ 4217 0424 0000 0000 		.long	.LM113
+ 4218 0428 17        		.byte	0x17
+ 4219 0429 00        		.byte	0x0
+ 4220 042a 05        		.uleb128 0x5
+ 4221 042b 02        		.byte	0x2
+ 4222 042c 0000 0000 		.long	.LM114
+ 4223 0430 17        		.byte	0x17
+ 4224 0431 00        		.byte	0x0
+ 4225 0432 05        		.uleb128 0x5
+ 4226 0433 02        		.byte	0x2
+ 4227 0434 0000 0000 		.long	.LM115
+ 4228 0438 15        		.byte	0x15
+ 4229 0439 00        		.byte	0x0
+ 4230 043a 05        		.uleb128 0x5
+ 4231 043b 02        		.byte	0x2
+ 4232 043c 0000 0000 		.long	.LM116
+ 4233 0440 15        		.byte	0x15
+ 4234 0441 00        		.byte	0x0
+ 4235 0442 05        		.uleb128 0x5
+ 4236 0443 02        		.byte	0x2
+ 4237 0444 0000 0000 		.long	.LM117
+ 4238 0448 17        		.byte	0x17
+ 4239 0449 00        		.byte	0x0
+ 4240 044a 05        		.uleb128 0x5
+ 4241 044b 02        		.byte	0x2
+ 4242 044c 0000 0000 		.long	.LM118
+ 4243 0450 17        		.byte	0x17
+ 4244 0451 00        		.byte	0x0
+ 4245 0452 05        		.uleb128 0x5
+ 4246 0453 02        		.byte	0x2
+ 4247 0454 0000 0000 		.long	.LM119
+ 4248 0458 15        		.byte	0x15
+ 4249 0459 00        		.byte	0x0
+ 4250 045a 05        		.uleb128 0x5
+ 4251 045b 02        		.byte	0x2
+ 4252 045c 0000 0000 		.long	.LM120
+ 4253 0460 15        		.byte	0x15
+ 4254 0461 00        		.byte	0x0
+ 4255 0462 05        		.uleb128 0x5
+ 4256 0463 02        		.byte	0x2
+ 4257 0464 0000 0000 		.long	.LM121
+ 4258 0468 17        		.byte	0x17
+ 4259 0469 00        		.byte	0x0
+ 4260 046a 05        		.uleb128 0x5
+ 4261 046b 02        		.byte	0x2
+ 4262 046c 0000 0000 		.long	.LM122
+ 4263 0470 17        		.byte	0x17
+ 4264 0471 00        		.byte	0x0
+ 4265 0472 05        		.uleb128 0x5
+ 4266 0473 02        		.byte	0x2
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 78
+
+
+ 4267 0474 0000 0000 		.long	.LM123
+ 4268 0478 15        		.byte	0x15
+ 4269 0479 00        		.byte	0x0
+ 4270 047a 05        		.uleb128 0x5
+ 4271 047b 02        		.byte	0x2
+ 4272 047c 0000 0000 		.long	.LM124
+ 4273 0480 15        		.byte	0x15
+ 4274 0481 00        		.byte	0x0
+ 4275 0482 05        		.uleb128 0x5
+ 4276 0483 02        		.byte	0x2
+ 4277 0484 0000 0000 		.long	.LM125
+ 4278 0488 17        		.byte	0x17
+ 4279 0489 00        		.byte	0x0
+ 4280 048a 05        		.uleb128 0x5
+ 4281 048b 02        		.byte	0x2
+ 4282 048c 0000 0000 		.long	.LM126
+ 4283 0490 1C        		.byte	0x1c
+ 4284 0491 00        		.byte	0x0
+ 4285 0492 05        		.uleb128 0x5
+ 4286 0493 02        		.byte	0x2
+ 4287 0494 0000 0000 		.long	.LM127
+ 4288 0498 15        		.byte	0x15
+ 4289 0499 00        		.byte	0x0
+ 4290 049a 05        		.uleb128 0x5
+ 4291 049b 02        		.byte	0x2
+ 4292 049c 0000 0000 		.long	.LM128
+ 4293 04a0 17        		.byte	0x17
+ 4294 04a1 00        		.byte	0x0
+ 4295 04a2 05        		.uleb128 0x5
+ 4296 04a3 02        		.byte	0x2
+ 4297 04a4 0000 0000 		.long	.LM129
+ 4298 04a8 1C        		.byte	0x1c
+ 4299 04a9 00        		.byte	0x0
+ 4300 04aa 05        		.uleb128 0x5
+ 4301 04ab 02        		.byte	0x2
+ 4302 04ac 0000 0000 		.long	.LM130
+ 4303 04b0 15        		.byte	0x15
+ 4304 04b1 00        		.byte	0x0
+ 4305 04b2 05        		.uleb128 0x5
+ 4306 04b3 02        		.byte	0x2
+ 4307 04b4 0000 0000 		.long	.LM131
+ 4308 04b8 18        		.byte	0x18
+ 4309 04b9 00        		.byte	0x0
+ 4310 04ba 05        		.uleb128 0x5
+ 4311 04bb 02        		.byte	0x2
+ 4312 04bc 0000 0000 		.long	.LM132
+ 4313 04c0 15        		.byte	0x15
+ 4314 04c1 00        		.byte	0x0
+ 4315 04c2 05        		.uleb128 0x5
+ 4316 04c3 02        		.byte	0x2
+ 4317 04c4 0000 0000 		.long	.LM133
+ 4318 04c8 17        		.byte	0x17
+ 4319 04c9 00        		.byte	0x0
+ 4320 04ca 05        		.uleb128 0x5
+ 4321 04cb 02        		.byte	0x2
+ 4322 04cc 0000 0000 		.long	.LM134
+ 4323 04d0 17        		.byte	0x17
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 79
+
+
+ 4324 04d1 00        		.byte	0x0
+ 4325 04d2 05        		.uleb128 0x5
+ 4326 04d3 02        		.byte	0x2
+ 4327 04d4 0000 0000 		.long	.LM135
+ 4328 04d8 15        		.byte	0x15
+ 4329 04d9 00        		.byte	0x0
+ 4330 04da 05        		.uleb128 0x5
+ 4331 04db 02        		.byte	0x2
+ 4332 04dc 0000 0000 		.long	.LM136
+ 4333 04e0 15        		.byte	0x15
+ 4334 04e1 00        		.byte	0x0
+ 4335 04e2 05        		.uleb128 0x5
+ 4336 04e3 02        		.byte	0x2
+ 4337 04e4 0000 0000 		.long	.LM137
+ 4338 04e8 18        		.byte	0x18
+ 4339 04e9 00        		.byte	0x0
+ 4340 04ea 05        		.uleb128 0x5
+ 4341 04eb 02        		.byte	0x2
+ 4342 04ec 0000 0000 		.long	.LM138
+ 4343 04f0 16        		.byte	0x16
+ 4344 04f1 00        		.byte	0x0
+ 4345 04f2 05        		.uleb128 0x5
+ 4346 04f3 02        		.byte	0x2
+ 4347 04f4 0000 0000 		.long	.LM139
+ 4348 04f8 15        		.byte	0x15
+ 4349 04f9 00        		.byte	0x0
+ 4350 04fa 05        		.uleb128 0x5
+ 4351 04fb 02        		.byte	0x2
+ 4352 04fc 0000 0000 		.long	.LM140
+ 4353 0500 15        		.byte	0x15
+ 4354 0501 00        		.byte	0x0
+ 4355 0502 05        		.uleb128 0x5
+ 4356 0503 02        		.byte	0x2
+ 4357 0504 0000 0000 		.long	.LM141
+ 4358 0508 19        		.byte	0x19
+ 4359 0509 00        		.byte	0x0
+ 4360 050a 05        		.uleb128 0x5
+ 4361 050b 02        		.byte	0x2
+ 4362 050c 0000 0000 		.long	.LM142
+ 4363 0510 15        		.byte	0x15
+ 4364 0511 00        		.byte	0x0
+ 4365 0512 05        		.uleb128 0x5
+ 4366 0513 02        		.byte	0x2
+ 4367 0514 0000 0000 		.long	.LM143
+ 4368 0518 17        		.byte	0x17
+ 4369 0519 00        		.byte	0x0
+ 4370 051a 05        		.uleb128 0x5
+ 4371 051b 02        		.byte	0x2
+ 4372 051c 0000 0000 		.long	.LM144
+ 4373 0520 15        		.byte	0x15
+ 4374 0521 00        		.byte	0x0
+ 4375 0522 05        		.uleb128 0x5
+ 4376 0523 02        		.byte	0x2
+ 4377 0524 0000 0000 		.long	.LM145
+ 4378 0528 15        		.byte	0x15
+ 4379 0529 00        		.byte	0x0
+ 4380 052a 05        		.uleb128 0x5
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 80
+
+
+ 4381 052b 02        		.byte	0x2
+ 4382 052c 0000 0000 		.long	.LM146
+ 4383 0530 24        		.byte	0x24
+ 4384 0531 00        		.byte	0x0
+ 4385 0532 05        		.uleb128 0x5
+ 4386 0533 02        		.byte	0x2
+ 4387 0534 0000 0000 		.long	.LM147
+ 4388 0538 16        		.byte	0x16
+ 4389 0539 00        		.byte	0x0
+ 4390 053a 05        		.uleb128 0x5
+ 4391 053b 02        		.byte	0x2
+ 4392 053c 0000 0000 		.long	.LM148
+ 4393 0540 15        		.byte	0x15
+ 4394 0541 00        		.byte	0x0
+ 4395 0542 05        		.uleb128 0x5
+ 4396 0543 02        		.byte	0x2
+ 4397 0544 0000 0000 		.long	.LM149
+ 4398 0548 15        		.byte	0x15
+ 4399 0549 00        		.byte	0x0
+ 4400 054a 05        		.uleb128 0x5
+ 4401 054b 02        		.byte	0x2
+ 4402 054c 0000 0000 		.long	.LM150
+ 4403 0550 18        		.byte	0x18
+ 4404 0551 00        		.byte	0x0
+ 4405 0552 05        		.uleb128 0x5
+ 4406 0553 02        		.byte	0x2
+ 4407 0554 0000 0000 		.long	.LM151
+ 4408 0558 16        		.byte	0x16
+ 4409 0559 00        		.byte	0x0
+ 4410 055a 05        		.uleb128 0x5
+ 4411 055b 02        		.byte	0x2
+ 4412 055c 0000 0000 		.long	.LM152
+ 4413 0560 15        		.byte	0x15
+ 4414 0561 00        		.byte	0x0
+ 4415 0562 05        		.uleb128 0x5
+ 4416 0563 02        		.byte	0x2
+ 4417 0564 0000 0000 		.long	.LM153
+ 4418 0568 15        		.byte	0x15
+ 4419 0569 00        		.byte	0x0
+ 4420 056a 05        		.uleb128 0x5
+ 4421 056b 02        		.byte	0x2
+ 4422 056c 0000 0000 		.long	.LM154
+ 4423 0570 18        		.byte	0x18
+ 4424 0571 00        		.byte	0x0
+ 4425 0572 05        		.uleb128 0x5
+ 4426 0573 02        		.byte	0x2
+ 4427 0574 0000 0000 		.long	.LM155
+ 4428 0578 16        		.byte	0x16
+ 4429 0579 00        		.byte	0x0
+ 4430 057a 05        		.uleb128 0x5
+ 4431 057b 02        		.byte	0x2
+ 4432 057c 0000 0000 		.long	.LM156
+ 4433 0580 15        		.byte	0x15
+ 4434 0581 00        		.byte	0x0
+ 4435 0582 05        		.uleb128 0x5
+ 4436 0583 02        		.byte	0x2
+ 4437 0584 0000 0000 		.long	.LM157
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 81
+
+
+ 4438 0588 15        		.byte	0x15
+ 4439 0589 00        		.byte	0x0
+ 4440 058a 05        		.uleb128 0x5
+ 4441 058b 02        		.byte	0x2
+ 4442 058c 0000 0000 		.long	.LM158
+ 4443 0590 18        		.byte	0x18
+ 4444 0591 00        		.byte	0x0
+ 4445 0592 05        		.uleb128 0x5
+ 4446 0593 02        		.byte	0x2
+ 4447 0594 0000 0000 		.long	.LM159
+ 4448 0598 16        		.byte	0x16
+ 4449 0599 00        		.byte	0x0
+ 4450 059a 05        		.uleb128 0x5
+ 4451 059b 02        		.byte	0x2
+ 4452 059c 0000 0000 		.long	.LM160
+ 4453 05a0 15        		.byte	0x15
+ 4454 05a1 00        		.byte	0x0
+ 4455 05a2 05        		.uleb128 0x5
+ 4456 05a3 02        		.byte	0x2
+ 4457 05a4 0000 0000 		.long	.LM161
+ 4458 05a8 15        		.byte	0x15
+ 4459 05a9 00        		.byte	0x0
+ 4460 05aa 05        		.uleb128 0x5
+ 4461 05ab 02        		.byte	0x2
+ 4462 05ac 0000 0000 		.long	.Letext0
+ 4463 05b0 00        		.byte	0x0
+ 4464 05b1 01        		.uleb128 0x1
+ 4465 05b2 01        		.byte	0x1
+ 4466               	.LELT0:
+ 4467 05b3 1900 0000 		.section	.debug_str,"MS",@progbits,1
+ 4467      0200 1300 
+ 4467      0000 0101 
+ 4467      FB0E 0D00 
+ 4467      0101 0101 
+ 4468               	.LASF66:
+ 4469 0000 7469 6D65 		.string	"timer0GetPrescaler"
+ 4469      7230 4765 
+ 4469      7450 7265 
+ 4469      7363 616C 
+ 4469      6572 00
+ 4470               	.LASF64:
+ 4471 0013 474E 5520 		.string	"GNU C 4.3.0"
+ 4471      4320 342E 
+ 4471      332E 3000 
+ 4472               	.LASF47:
+ 4473 001f 7469 6D65 		.string	"timer1PWMBOn"
+ 4473      7231 5057 
+ 4473      4D42 4F6E 
+ 4473      00
+ 4474               	.LASF9:
+ 4475 002c 7368 6F72 		.string	"short int"
+ 4475      7420 696E 
+ 4475      7400 
+ 4476               	.LASF34:
+ 4477 0036 7469 6D65 		.string	"time_us"
+ 4477      5F75 7300 
+ 4478               	.LASF39:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 82
+
+
+ 4479 003e 7469 6352 		.string	"ticRateHz"
+ 4479      6174 6548 
+ 4479      7A00 
+ 4480               	.LASF63:
+ 4481 0048 5469 6D65 		.string	"Timer2Reg0"
+ 4481      7232 5265 
+ 4481      6730 00
+ 4482               	.LASF28:
+ 4483 0053 6465 6C61 		.string	"delay_us"
+ 4483      795F 7573 
+ 4483      00
+ 4484               	.LASF25:
+ 4485 005c 7469 6D65 		.string	"timer1PWMAOff"
+ 4485      7231 5057 
+ 4485      4D41 4F66 
+ 4485      6600 
+ 4486               	.LASF46:
+ 4487 006a 7469 6D65 		.string	"timer1PWMAOn"
+ 4487      7231 5057 
+ 4487      4D41 4F6E 
+ 4487      00
+ 4488               	.LASF49:
+ 4489 0077 7077 6D44 		.string	"pwmDuty"
+ 4489      7574 7900 
+ 4490               	.LASF20:
+ 4491 007f 7469 6D65 		.string	"timerDetach"
+ 4491      7244 6574 
+ 4491      6163 6800 
+ 4492               	.LASF31:
+ 4493 008b 7469 6D65 		.string	"timer1GetPrescaler"
+ 4493      7231 4765 
+ 4493      7450 7265 
+ 4493      7363 616C 
+ 4493      6572 00
+ 4494               	.LASF12:
+ 4495 009e 5F5F 6164 		.string	"__addr16"
+ 4495      6472 3136 
+ 4495      00
+ 4496               	.LASF24:
+ 4497 00a7 7469 6D65 		.string	"timer2Init"
+ 4497      7232 496E 
+ 4497      6974 00
+ 4498               	.LASF57:
+ 4499 00b2 5F5F 7665 		.string	"__vector_3"
+ 4499      6374 6F72 
+ 4499      5F33 00
+ 4500               	.LASF53:
+ 4501 00bd 5F5F 7665 		.string	"__vector_4"
+ 4501      6374 6F72 
+ 4501      5F34 00
+ 4502               	.LASF56:
+ 4503 00c8 5F5F 7665 		.string	"__vector_5"
+ 4503      6374 6F72 
+ 4503      5F35 00
+ 4504               	.LASF54:
+ 4505 00d3 5F5F 7665 		.string	"__vector_6"
+ 4505      6374 6F72 
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 83
+
+
+ 4505      5F36 00
+ 4506               	.LASF55:
+ 4507 00de 5F5F 7665 		.string	"__vector_7"
+ 4507      6374 6F72 
+ 4507      5F37 00
+ 4508               	.LASF52:
+ 4509 00e9 5F5F 7665 		.string	"__vector_8"
+ 4509      6374 6F72 
+ 4509      5F38 00
+ 4510               	.LASF51:
+ 4511 00f4 5F5F 7665 		.string	"__vector_9"
+ 4511      6374 6F72 
+ 4511      5F39 00
+ 4512               	.LASF5:
+ 4513 00ff 6C6F 6E67 		.string	"long long int"
+ 4513      206C 6F6E 
+ 4513      6720 696E 
+ 4513      7400 
+ 4514               	.LASF18:
+ 4515 010d 7469 6D65 		.string	"timer0ClearOverflowCount"
+ 4515      7230 436C 
+ 4515      6561 724F 
+ 4515      7665 7266 
+ 4515      6C6F 7743 
+ 4516               	.LASF3:
+ 4517 0126 6C6F 6E67 		.string	"long int"
+ 4517      2069 6E74 
+ 4517      00
+ 4518               	.LASF30:
+ 4519 012f 696E 744E 		.string	"intNum"
+ 4519      756D 00
+ 4520               	.LASF27:
+ 4521 0136 6465 6C61 		.string	"delay_loops"
+ 4521      795F 6C6F 
+ 4521      6F70 7300 
+ 4522               	.LASF35:
+ 4523 0142 7573 6572 		.string	"userFunc"
+ 4523      4675 6E63 
+ 4523      00
+ 4524               	.LASF1:
+ 4525 014b 756E 7369 		.string	"unsigned char"
+ 4525      676E 6564 
+ 4525      2063 6861 
+ 4525      7200 
+ 4526               	.LASF33:
+ 4527 0159 7469 6D65 		.string	"timerAttach"
+ 4527      7241 7474 
+ 4527      6163 6800 
+ 4528               	.LASF58:
+ 4529 0165 5469 6D65 		.string	"TimerIntFunc"
+ 4529      7249 6E74 
+ 4529      4675 6E63 
+ 4529      00
+ 4530               	.LASF0:
+ 4531 0172 7369 676E 		.string	"signed char"
+ 4531      6564 2063 
+ 4531      6861 7200 
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 84
+
+
+ 4532               	.LASF6:
+ 4533 017e 6C6F 6E67 		.string	"long long unsigned int"
+ 4533      206C 6F6E 
+ 4533      6720 756E 
+ 4533      7369 676E 
+ 4533      6564 2069 
+ 4534               	.LASF11:
+ 4535 0195 766F 6964 		.string	"voidFuncPtr"
+ 4535      4675 6E63 
+ 4535      5074 7200 
+ 4536               	.LASF2:
+ 4537 01a1 756E 7369 		.string	"unsigned int"
+ 4537      676E 6564 
+ 4537      2069 6E74 
+ 4537      00
+ 4538               	.LASF26:
+ 4539 01ae 7469 6D65 		.string	"timer1PWMBOff"
+ 4539      7231 5057 
+ 4539      4D42 4F66 
+ 4539      6600 
+ 4540               	.LASF7:
+ 4541 01bc 7569 6E74 		.string	"uint16_t"
+ 4541      3136 5F74 
+ 4541      00
+ 4542               	.LASF37:
+ 4543 01c5 7061 7573 		.string	"pause_ms"
+ 4543      655F 6D73 
+ 4543      00
+ 4544               	.LASF13:
+ 4545 01ce 5F5F 7265 		.string	"__result"
+ 4545      7375 6C74 
+ 4545      00
+ 4546               	.LASF19:
+ 4547 01d7 7469 6D65 		.string	"timer2ClearOverflowCount"
+ 4547      7232 436C 
+ 4547      6561 724F 
+ 4547      7665 7266 
+ 4547      6C6F 7743 
+ 4548               	.LASF22:
+ 4549 01f0 7469 6D65 		.string	"timer0Init"
+ 4549      7230 496E 
+ 4549      6974 00
+ 4550               	.LASF65:
+ 4551 01fb 433A 5C41 		.string	"C:\\AVRCode\\AVRlib/timer.c"
+ 4551      5652 436F 
+ 4551      6465 5C41 
+ 4551      5652 6C69 
+ 4551      622F 7469 
+ 4552               	.LASF8:
+ 4553 0215 7368 6F72 		.string	"short unsigned int"
+ 4553      7420 756E 
+ 4553      7369 676E 
+ 4553      6564 2069 
+ 4553      6E74 00
+ 4554               	.LASF48:
+ 4555 0228 7469 6D65 		.string	"timer1PWMASet"
+ 4555      7231 5057 
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 85
+
+
+ 4555      4D41 5365 
+ 4555      7400 
+ 4556               	.LASF10:
+ 4557 0236 6368 6172 		.string	"char"
+ 4557      00
+ 4558               	.LASF43:
+ 4559 023b 7469 6D65 		.string	"timer1PWMInit"
+ 4559      7231 5057 
+ 4559      4D49 6E69 
+ 4559      7400 
+ 4560               	.LASF21:
+ 4561 0249 696E 7465 		.string	"interruptNum"
+ 4561      7272 7570 
+ 4561      744E 756D 
+ 4561      00
+ 4562               	.LASF14:
+ 4563 0256 7469 6D65 		.string	"timer1SetPrescaler"
+ 4563      7231 5365 
+ 4563      7450 7265 
+ 4563      7363 616C 
+ 4563      6572 00
+ 4564               	.LASF45:
+ 4565 0269 7469 6D65 		.string	"timer1PWMOff"
+ 4565      7231 5057 
+ 4565      4D4F 6666 
+ 4565      00
+ 4566               	.LASF60:
+ 4567 0276 5469 6D65 		.string	"TimerRTCPrescaleFactor"
+ 4567      7252 5443 
+ 4567      5072 6573 
+ 4567      6361 6C65 
+ 4567      4661 6374 
+ 4568               	.LASF38:
+ 4569 028d 7469 6D65 		.string	"timerThres"
+ 4569      7254 6872 
+ 4569      6573 00
+ 4570               	.LASF4:
+ 4571 0298 6C6F 6E67 		.string	"long unsigned int"
+ 4571      2075 6E73 
+ 4571      6967 6E65 
+ 4571      6420 696E 
+ 4571      7400 
+ 4572               	.LASF32:
+ 4573 02aa 7469 6D65 		.string	"timer2GetPrescaler"
+ 4573      7232 4765 
+ 4573      7450 7265 
+ 4573      7363 616C 
+ 4573      6572 00
+ 4574               	.LASF62:
+ 4575 02bd 5469 6D65 		.string	"Timer0Reg0"
+ 4575      7230 5265 
+ 4575      6730 00
+ 4576               	.LASF16:
+ 4577 02c8 7072 6573 		.string	"prescale"
+ 4577      6361 6C65 
+ 4577      00
+ 4578               	.LASF36:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 86
+
+
+ 4579 02d1 7469 6D65 		.string	"timerPause"
+ 4579      7250 6175 
+ 4579      7365 00
+ 4580               	.LASF41:
+ 4581 02dc 7469 6D65 		.string	"timer0GetOverflowCount"
+ 4581      7230 4765 
+ 4581      744F 7665 
+ 4581      7266 6C6F 
+ 4581      7743 6F75 
+ 4582               	.LASF50:
+ 4583 02f3 7469 6D65 		.string	"timer1PWMBSet"
+ 4583      7231 5057 
+ 4583      4D42 5365 
+ 4583      7400 
+ 4584               	.LASF44:
+ 4585 0301 6269 7452 		.string	"bitRes"
+ 4585      6573 00
+ 4586               	.LASF59:
+ 4587 0308 5469 6D65 		.string	"TimerPrescaleFactor"
+ 4587      7250 7265 
+ 4587      7363 616C 
+ 4587      6546 6163 
+ 4587      746F 7200 
+ 4588               	.LASF15:
+ 4589 031c 7469 6D65 		.string	"timer0SetPrescaler"
+ 4589      7230 5365 
+ 4589      7450 7265 
+ 4589      7363 616C 
+ 4589      6572 00
+ 4590               	.LASF40:
+ 4591 032f 7061 7573 		.string	"pause"
+ 4591      6500 
+ 4592               	.LASF23:
+ 4593 0335 7469 6D65 		.string	"timer1Init"
+ 4593      7231 496E 
+ 4593      6974 00
+ 4594               	.LASF17:
+ 4595 0340 7469 6D65 		.string	"timer2SetPrescaler"
+ 4595      7232 5365 
+ 4595      7450 7265 
+ 4595      7363 616C 
+ 4595      6572 00
+ 4596               	.LASF42:
+ 4597 0353 7469 6D65 		.string	"timer2GetOverflowCount"
+ 4597      7232 4765 
+ 4597      744F 7665 
+ 4597      7266 6C6F 
+ 4597      7743 6F75 
+ 4598               	.LASF61:
+ 4599 036a 5469 6D65 		.string	"TimerPauseReg"
+ 4599      7250 6175 
+ 4599      7365 5265 
+ 4599      6700 
+ 4600               	.LASF29:
+ 4601 0378 7469 6D65 		.string	"timerInit"
+ 4601      7249 6E69 
+ 4601      7400 
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 87
+
+
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s 			page 88
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 timer.c
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:5      *ABS*:00000034 __CCP__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:20     .text:00000000 delay_us
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:33     .text:00000002 timerInit
+                             .bss:00000000 TimerIntFunc
+                            *COM*:00000004 Timer0Reg0
+                            *COM*:00000004 Timer2Reg0
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:149    .text:00000072 timer0Init
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:185    .text:00000094 timer1Init
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:214    .text:000000a8 timer2Init
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:250    .text:000000ca timer0SetPrescaler
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:268    .text:000000d4 timer1SetPrescaler
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:286    .text:000000de timer2SetPrescaler
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:304    .text:000000e8 timer0GetPrescaler
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:1355   .progmem.data:00000000 TimerPrescaleFactor
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:341    .text:00000102 timer1GetPrescaler
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:378    .text:0000011c timer2GetPrescaler
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:1365   .progmem.data:0000000c TimerRTCPrescaleFactor
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:415    .text:00000136 timerAttach
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:439    .text:0000014c timerDetach
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:463    .text:00000162 timerPause
+                            *COM*:00000004 TimerPauseReg
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:648    .text:00000276 timer0ClearOverflowCount
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:665    .text:00000288 timer0GetOverflowCount
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:684    .text:0000029e timer2ClearOverflowCount
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:701    .text:000002b0 timer2GetOverflowCount
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:720    .text:000002c6 timer1PWMInit
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:776    .text:000002f6 timer1PWMOff
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:820    .text:0000031c timer1PWMAOn
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:840    .text:0000032a timer1PWMBOn
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:860    .text:00000338 timer1PWMAOff
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:880    .text:00000346 timer1PWMBOff
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:900    .text:00000354 timer1PWMASet
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:916    .text:0000035a timer1PWMBSet
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:932    .text:00000360 __vector_9
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:1011   .text:00000406 __vector_8
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:1066   .text:00000460 __vector_4
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:1133   .text:000004e0 __vector_6
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:1188   .text:0000053a __vector_7
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:1243   .text:00000594 __vector_5
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc1RARyE.s:1298   .text:000005ee __vector_3
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__divmodsi4
+__mulsi3
+__udivmodsi4

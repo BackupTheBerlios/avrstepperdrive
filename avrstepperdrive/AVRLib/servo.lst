@@ -1,0 +1,2199 @@
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 1
+
+
+   1               		.file	"servo.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.section	.debug_abbrev,"",@progbits
+  11               	.Ldebug_abbrev0:
+  12               		.section	.debug_info,"",@progbits
+  13               	.Ldebug_info0:
+  14               		.section	.debug_line,"",@progbits
+  15               	.Ldebug_line0:
+  16               		.text
+  17               	.Ltext0:
+  18               	.global	servoSetChannelIO
+  19               		.type	servoSetChannelIO, @function
+  20               	servoSetChannelIO:
+  21               	.LFB4:
+  22               	.LM1:
+  23               	.LVL0:
+  24               	/* prologue: function */
+  25               	/* frame size = 0 */
+  26               	.LM2:
+  27 0000 E82F      		mov r30,r24
+  28 0002 F0E0      		ldi r31,lo8(0)
+  29 0004 EE0F      		lsl r30
+  30 0006 FF1F      		rol r31
+  31 0008 EE0F      		lsl r30
+  32 000a FF1F      		rol r31
+  33               	.LVL1:
+  34 000c E050      		subi r30,lo8(-(ServoChannels))
+  35 000e F040      		sbci r31,hi8(-(ServoChannels))
+  36 0010 6083      		st Z,r22
+  37               	.LM3:
+  38 0012 4770      		andi r20,lo8(7)
+  39               	.LVL2:
+  40 0014 81E0      		ldi r24,lo8(1)
+  41 0016 90E0      		ldi r25,hi8(1)
+  42 0018 00C0      		rjmp 2f
+  43 001a 880F      	1:	lsl r24
+  44 001c 991F      		rol r25
+  45 001e 4A95      	2:	dec r20
+  46 0020 02F4      		brpl 1b
+  47 0022 8183      		std Z+1,r24
+  48               	/* epilogue start */
+  49               	.LM4:
+  50 0024 0895      		ret
+  51               	.LFE4:
+  52               		.size	servoSetChannelIO, .-servoSetChannelIO
+  53               	.global	servoSetPosition
+  54               		.type	servoSetPosition, @function
+  55               	servoSetPosition:
+  56               	.LFB5:
+  57               	.LM5:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 2
+
+
+  58               	.LVL3:
+  59               	/* prologue: function */
+  60               	/* frame size = 0 */
+  61 0026 282F      		mov r18,r24
+  62               	.LBB6:
+  63               	.LBB7:
+  64               	.LM6:
+  65 0028 88E6      		ldi r24,lo8(104)
+  66               	.LVL4:
+  67 002a 689F      		mul r22,r24
+  68 002c C001      		movw r24,r0
+  69 002e 1124      		clr r1
+  70 0030 6FEF      		ldi r22,lo8(255)
+  71 0032 70E0      		ldi r23,hi8(255)
+  72               	.LVL5:
+  73 0034 0E94 0000 		call __udivmodhi4
+  74 0038 6E5D      		subi r22,lo8(-(34))
+  75 003a 7F4F      		sbci r23,hi8(-(34))
+  76               	.LVL6:
+  77 003c 6232      		cpi r22,34
+  78 003e 7105      		cpc r23,__zero_reg__
+  79 0040 00F4      		brsh .L4
+  80 0042 62E2      		ldi r22,lo8(34)
+  81 0044 70E0      		ldi r23,hi8(34)
+  82               	.L4:
+  83               	.LM7:
+  84 0046 E22F      		mov r30,r18
+  85 0048 F0E0      		ldi r31,lo8(0)
+  86 004a EE0F      		lsl r30
+  87 004c FF1F      		rol r31
+  88 004e EE0F      		lsl r30
+  89 0050 FF1F      		rol r31
+  90 0052 E050      		subi r30,lo8(-(ServoChannels+2))
+  91 0054 F040      		sbci r31,hi8(-(ServoChannels+2))
+  92 0056 6B38      		cpi r22,139
+  93 0058 7105      		cpc r23,__zero_reg__
+  94 005a 00F0      		brlo .L5
+  95 005c 6AE8      		ldi r22,lo8(138)
+  96 005e 70E0      		ldi r23,hi8(138)
+  97               	.LVL7:
+  98               	.L5:
+  99 0060 7183      		std Z+1,r23
+ 100 0062 6083      		st Z,r22
+ 101               	/* epilogue start */
+ 102               	.LBE7:
+ 103               	.LBE6:
+ 104               	.LM8:
+ 105 0064 0895      		ret
+ 106               	.LFE5:
+ 107               		.size	servoSetPosition, .-servoSetPosition
+ 108               	.global	servoGetPosition
+ 109               		.type	servoGetPosition, @function
+ 110               	servoGetPosition:
+ 111               	.LFB6:
+ 112               	.LM9:
+ 113               	.LVL8:
+ 114               	/* prologue: function */
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 3
+
+
+ 115               	/* frame size = 0 */
+ 116               	.LM10:
+ 117 0066 E82F      		mov r30,r24
+ 118 0068 F0E0      		ldi r31,lo8(0)
+ 119               	.LVL9:
+ 120 006a EE0F      		lsl r30
+ 121 006c FF1F      		rol r31
+ 122 006e EE0F      		lsl r30
+ 123 0070 FF1F      		rol r31
+ 124               	.LVL10:
+ 125 0072 E050      		subi r30,lo8(-(ServoChannels+2))
+ 126 0074 F040      		sbci r31,hi8(-(ServoChannels+2))
+ 127               	.LVL11:
+ 128 0076 2081      		ld r18,Z
+ 129 0078 3181      		ldd r19,Z+1
+ 130 007a 8FEF      		ldi r24,lo8(255)
+ 131 007c 90E0      		ldi r25,hi8(255)
+ 132 007e AC01      		movw r20,r24
+ 133 0080 249F      		mul r18,r20
+ 134 0082 C001      		movw r24,r0
+ 135 0084 259F      		mul r18,r21
+ 136 0086 900D      		add r25,r0
+ 137 0088 349F      		mul r19,r20
+ 138 008a 900D      		add r25,r0
+ 139 008c 1124      		clr r1
+ 140 008e 8E5D      		subi r24,lo8(-(-8670))
+ 141 0090 9142      		sbci r25,hi8(-(-8670))
+ 142 0092 68E6      		ldi r22,lo8(104)
+ 143 0094 70E0      		ldi r23,hi8(104)
+ 144 0096 0E94 0000 		call __udivmodhi4
+ 145 009a 862F      		mov r24,r22
+ 146               	/* epilogue start */
+ 147               	.LM11:
+ 148 009c 0895      		ret
+ 149               	.LFE6:
+ 150               		.size	servoGetPosition, .-servoGetPosition
+ 151               	.global	servoSetPositionRaw
+ 152               		.type	servoSetPositionRaw, @function
+ 153               	servoSetPositionRaw:
+ 154               	.LFB7:
+ 155               	.LM12:
+ 156               	.LVL12:
+ 157               	/* prologue: function */
+ 158               	/* frame size = 0 */
+ 159 009e 482F      		mov r20,r24
+ 160               	.LM13:
+ 161 00a0 CB01      		movw r24,r22
+ 162               	.LVL13:
+ 163 00a2 6232      		cpi r22,34
+ 164 00a4 7105      		cpc r23,__zero_reg__
+ 165               	.LVL14:
+ 166 00a6 00F4      		brsh .L10
+ 167 00a8 82E2      		ldi r24,lo8(34)
+ 168 00aa 90E0      		ldi r25,hi8(34)
+ 169               	.LVL15:
+ 170               	.L10:
+ 171               	.LM14:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 4
+
+
+ 172 00ac E42F      		mov r30,r20
+ 173 00ae F0E0      		ldi r31,lo8(0)
+ 174 00b0 EE0F      		lsl r30
+ 175 00b2 FF1F      		rol r31
+ 176 00b4 EE0F      		lsl r30
+ 177 00b6 FF1F      		rol r31
+ 178 00b8 E050      		subi r30,lo8(-(ServoChannels+2))
+ 179 00ba F040      		sbci r31,hi8(-(ServoChannels+2))
+ 180 00bc 8B38      		cpi r24,139
+ 181 00be 9105      		cpc r25,__zero_reg__
+ 182 00c0 00F0      		brlo .L11
+ 183               	.LVL16:
+ 184 00c2 8AE8      		ldi r24,lo8(138)
+ 185 00c4 90E0      		ldi r25,hi8(138)
+ 186               	.LVL17:
+ 187               	.L11:
+ 188 00c6 9183      		std Z+1,r25
+ 189 00c8 8083      		st Z,r24
+ 190               	/* epilogue start */
+ 191               	.LM15:
+ 192 00ca 0895      		ret
+ 193               	.LFE7:
+ 194               		.size	servoSetPositionRaw, .-servoSetPositionRaw
+ 195               	.global	servoGetPositionRaw
+ 196               		.type	servoGetPositionRaw, @function
+ 197               	servoGetPositionRaw:
+ 198               	.LFB8:
+ 199               	.LM16:
+ 200               	.LVL18:
+ 201               	/* prologue: function */
+ 202               	/* frame size = 0 */
+ 203               	.LM17:
+ 204 00cc E82F      		mov r30,r24
+ 205 00ce F0E0      		ldi r31,lo8(0)
+ 206 00d0 EE0F      		lsl r30
+ 207 00d2 FF1F      		rol r31
+ 208 00d4 EE0F      		lsl r30
+ 209 00d6 FF1F      		rol r31
+ 210 00d8 E050      		subi r30,lo8(-(ServoChannels+2))
+ 211 00da F040      		sbci r31,hi8(-(ServoChannels+2))
+ 212               	.LM18:
+ 213 00dc 8081      		ld r24,Z
+ 214               	.LVL19:
+ 215 00de 9181      		ldd r25,Z+1
+ 216               	/* epilogue start */
+ 217 00e0 0895      		ret
+ 218               	.LFE8:
+ 219               		.size	servoGetPositionRaw, .-servoGetPositionRaw
+ 220               	.global	servoService
+ 221               		.type	servoService, @function
+ 222               	servoService:
+ 223               	.LFB9:
+ 224               	.LM19:
+ 225               	/* prologue: function */
+ 226               	/* frame size = 0 */
+ 227               	.LM20:
+ 228 00e2 E091 0000 		lds r30,ServoChannel
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 5
+
+
+ 229 00e6 E430      		cpi r30,lo8(4)
+ 230 00e8 00F4      		brsh .L16
+ 231               	.LM21:
+ 232 00ea F0E0      		ldi r31,lo8(0)
+ 233 00ec EE0F      		lsl r30
+ 234 00ee FF1F      		rol r31
+ 235 00f0 EE0F      		lsl r30
+ 236 00f2 FF1F      		rol r31
+ 237 00f4 E050      		subi r30,lo8(-(ServoChannels))
+ 238 00f6 F040      		sbci r31,hi8(-(ServoChannels))
+ 239 00f8 A081      		ld r26,Z
+ 240 00fa B0E0      		ldi r27,lo8(0)
+ 241 00fc 9096      		adiw r26,32
+ 242 00fe 9C91      		ld r25,X
+ 243 0100 9097      		sbiw r26,32
+ 244 0102 8181      		ldd r24,Z+1
+ 245 0104 8095      		com r24
+ 246 0106 9823      		and r25,r24
+ 247 0108 9096      		adiw r26,32
+ 248 010a 9C93      		st X,r25
+ 249               	.L16:
+ 250               	.LM22:
+ 251 010c 8091 0000 		lds r24,ServoChannel
+ 252 0110 8F5F      		subi r24,lo8(-(1))
+ 253 0112 8093 0000 		sts ServoChannel,r24
+ 254               	.LM23:
+ 255 0116 8430      		cpi r24,lo8(4)
+ 256 0118 01F0      		breq .L17
+ 257               	.LM24:
+ 258 011a 8530      		cpi r24,lo8(5)
+ 259 011c 00F0      		brlo .L18
+ 260 011e 1092 0000 		sts ServoChannel,__zero_reg__
+ 261               	.L18:
+ 262               	.LM25:
+ 263 0122 E091 0000 		lds r30,ServoChannel
+ 264 0126 F0E0      		ldi r31,lo8(0)
+ 265 0128 EE0F      		lsl r30
+ 266 012a FF1F      		rol r31
+ 267 012c EE0F      		lsl r30
+ 268 012e FF1F      		rol r31
+ 269 0130 E050      		subi r30,lo8(-(ServoChannels))
+ 270 0132 F040      		sbci r31,hi8(-(ServoChannels))
+ 271 0134 A081      		ld r26,Z
+ 272 0136 B0E0      		ldi r27,lo8(0)
+ 273 0138 9096      		adiw r26,32
+ 274 013a 8C91      		ld r24,X
+ 275 013c 9097      		sbiw r26,32
+ 276 013e 9181      		ldd r25,Z+1
+ 277 0140 892B      		or r24,r25
+ 278 0142 9096      		adiw r26,32
+ 279 0144 8C93      		st X,r24
+ 280               	.LM26:
+ 281 0146 E091 0000 		lds r30,ServoChannel
+ 282 014a F0E0      		ldi r31,lo8(0)
+ 283 014c EE0F      		lsl r30
+ 284 014e FF1F      		rol r31
+ 285 0150 EE0F      		lsl r30
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 6
+
+
+ 286 0152 FF1F      		rol r31
+ 287 0154 E050      		subi r30,lo8(-(ServoChannels+2))
+ 288 0156 F040      		sbci r31,hi8(-(ServoChannels+2))
+ 289 0158 0190      		ld __tmp_reg__,Z+
+ 290 015a F081      		ld r31,Z
+ 291 015c E02D      		mov r30,__tmp_reg__
+ 292               	.LVL20:
+ 293 015e 00C0      		rjmp .L19
+ 294               	.LVL21:
+ 295               	.L17:
+ 296               	.LM27:
+ 297 0160 E091 0000 		lds r30,ServoPeriodTics
+ 298 0164 F091 0000 		lds r31,(ServoPeriodTics)+1
+ 299               	.LVL22:
+ 300 0168 8091 0000 		lds r24,ServoPosTics
+ 301 016c 9091 0000 		lds r25,(ServoPosTics)+1
+ 302 0170 E81B      		sub r30,r24
+ 303 0172 F90B      		sbc r31,r25
+ 304               	.L19:
+ 305               	.LM28:
+ 306 0174 3AB5      		in r19,74-32
+ 307               	.LM29:
+ 308 0176 2BB5      		in r18,75-32
+ 309 0178 922F      		mov r25,r18
+ 310 017a 80E0      		ldi r24,lo8(0)
+ 311 017c 830F      		add r24,r19
+ 312 017e 911D      		adc r25,__zero_reg__
+ 313               	.LVL23:
+ 314               	.LM30:
+ 315 0180 8E0F      		add r24,r30
+ 316 0182 9F1F      		adc r25,r31
+ 317               	.LM31:
+ 318 0184 9BBD      		out 75-32,r25
+ 319               	.LVL24:
+ 320               	.LM32:
+ 321 0186 8ABD      		out 74-32,r24
+ 322               	.LM33:
+ 323 0188 8091 0000 		lds r24,ServoPosTics
+ 324 018c 9091 0000 		lds r25,(ServoPosTics)+1
+ 325               	.LVL25:
+ 326 0190 8E0F      		add r24,r30
+ 327 0192 9F1F      		adc r25,r31
+ 328 0194 9093 0000 		sts (ServoPosTics)+1,r25
+ 329 0198 8093 0000 		sts ServoPosTics,r24
+ 330               	.LM34:
+ 331 019c 2091 0000 		lds r18,ServoPeriodTics
+ 332 01a0 3091 0000 		lds r19,(ServoPeriodTics)+1
+ 333 01a4 8217      		cp r24,r18
+ 334 01a6 9307      		cpc r25,r19
+ 335 01a8 00F0      		brlo .L21
+ 336 01aa 1092 0000 		sts (ServoPosTics)+1,__zero_reg__
+ 337 01ae 1092 0000 		sts ServoPosTics,__zero_reg__
+ 338               	.L21:
+ 339 01b2 0895      		ret
+ 340               	.LFE9:
+ 341               		.size	servoService, .-servoService
+ 342               	.global	servoOff
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 7
+
+
+ 343               		.type	servoOff, @function
+ 344               	servoOff:
+ 345               	.LFB3:
+ 346               	.LM35:
+ 347               	/* prologue: function */
+ 348               	/* frame size = 0 */
+ 349               	.LM36:
+ 350 01b4 89B7      		in r24,89-32
+ 351 01b6 8F7E      		andi r24,lo8(-17)
+ 352 01b8 89BF      		out 89-32,r24
+ 353               	.LM37:
+ 354 01ba 82E0      		ldi r24,lo8(2)
+ 355 01bc 0E94 0000 		call timerDetach
+ 356               	/* epilogue start */
+ 357               	.LM38:
+ 358 01c0 0895      		ret
+ 359               	.LFE3:
+ 360               		.size	servoOff, .-servoOff
+ 361               	.global	servoInit
+ 362               		.type	servoInit, @function
+ 363               	servoInit:
+ 364               	.LFB2:
+ 365               	.LM39:
+ 366               	/* prologue: function */
+ 367               	/* frame size = 0 */
+ 368               	.LM40:
+ 369 01c2 89B7      		in r24,89-32
+ 370 01c4 8F7E      		andi r24,lo8(-17)
+ 371 01c6 89BF      		out 89-32,r24
+ 372               	.LM41:
+ 373 01c8 84E0      		ldi r24,lo8(4)
+ 374 01ca 0E94 0000 		call timer1SetPrescaler
+ 375               	.LM42:
+ 376 01ce 60E0      		ldi r22,lo8(gs(servoService))
+ 377 01d0 70E0      		ldi r23,hi8(gs(servoService))
+ 378 01d2 82E0      		ldi r24,lo8(2)
+ 379 01d4 0E94 0000 		call timerAttach
+ 380 01d8 E0E0      		ldi r30,lo8(ServoChannels)
+ 381 01da F0E0      		ldi r31,hi8(ServoChannels)
+ 382 01dc 20E0      		ldi r18,lo8(0)
+ 383 01de 30E0      		ldi r19,hi8(0)
+ 384               	.LM43:
+ 385 01e0 62E2      		ldi r22,lo8(34)
+ 386 01e2 70E0      		ldi r23,hi8(34)
+ 387               	.LM44:
+ 388 01e4 A8E1      		ldi r26,lo8(24)
+ 389               	.LM45:
+ 390 01e6 41E0      		ldi r20,lo8(1)
+ 391 01e8 50E0      		ldi r21,hi8(1)
+ 392               	.L25:
+ 393               	.LM46:
+ 394 01ea 7383      		std Z+3,r23
+ 395 01ec 6283      		std Z+2,r22
+ 396               	.LM47:
+ 397 01ee A083      		st Z,r26
+ 398               	.LM48:
+ 399 01f0 CA01      		movw r24,r20
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 8
+
+
+ 400 01f2 022E      		mov r0,r18
+ 401 01f4 00C0      		rjmp 2f
+ 402 01f6 880F      	1:	lsl r24
+ 403 01f8 991F      		rol r25
+ 404 01fa 0A94      	2:	dec r0
+ 405 01fc 02F4      		brpl 1b
+ 406 01fe 8183      		std Z+1,r24
+ 407 0200 2F5F      		subi r18,lo8(-(1))
+ 408 0202 3F4F      		sbci r19,hi8(-(1))
+ 409 0204 3496      		adiw r30,4
+ 410               	.LM49:
+ 411 0206 2430      		cpi r18,4
+ 412 0208 3105      		cpc r19,__zero_reg__
+ 413 020a 01F4      		brne .L25
+ 414               	.LM50:
+ 415 020c 1092 0000 		sts (ServoPosTics)+1,__zero_reg__
+ 416 0210 1092 0000 		sts ServoPosTics,__zero_reg__
+ 417               	.LM51:
+ 418 0214 8AED      		ldi r24,lo8(1242)
+ 419 0216 94E0      		ldi r25,hi8(1242)
+ 420 0218 9093 0000 		sts (ServoPeriodTics)+1,r25
+ 421 021c 8093 0000 		sts ServoPeriodTics,r24
+ 422               	.LM52:
+ 423 0220 2AB5      		in r18,74-32
+ 424 0222 30E0      		ldi r19,lo8(0)
+ 425               	.LVL26:
+ 426               	.LM53:
+ 427 0224 4BB5      		in r20,75-32
+ 428 0226 2652      		subi r18,lo8(-(1242))
+ 429 0228 3B4F      		sbci r19,hi8(-(1242))
+ 430               	.LVL27:
+ 431               	.LM54:
+ 432 022a 942F      		mov r25,r20
+ 433 022c 80E0      		ldi r24,lo8(0)
+ 434 022e 280F      		add r18,r24
+ 435 0230 391F      		adc r19,r25
+ 436               	.LM55:
+ 437 0232 3BBD      		out 75-32,r19
+ 438               	.LM56:
+ 439 0234 2ABD      		out 74-32,r18
+ 440               	.LM57:
+ 441 0236 89B7      		in r24,89-32
+ 442 0238 8061      		ori r24,lo8(16)
+ 443 023a 89BF      		out 89-32,r24
+ 444               	/* epilogue start */
+ 445               	.LM58:
+ 446 023c 0895      		ret
+ 447               	.LFE2:
+ 448               		.size	servoInit, .-servoInit
+ 449               		.comm ServoPosTics,2,1
+ 450               		.comm ServoPeriodTics,2,1
+ 451               		.comm ServoChannel,1,1
+ 452               		.comm ServoChannels,16,1
+ 453               		.section	.debug_frame,"",@progbits
+ 454               	.Lframe0:
+ 455 0000 0C00 0000 		.long	.LECIE0-.LSCIE0
+ 456               	.LSCIE0:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 9
+
+
+ 457 0004 FFFF FFFF 		.long	0xffffffff
+ 458 0008 01        		.byte	0x1
+ 459 0009 00        		.string	""
+ 460 000a 01        		.uleb128 0x1
+ 461 000b 7F        		.sleb128 -1
+ 462 000c 24        		.byte	0x24
+ 463 000d 0C        		.byte	0xc
+ 464 000e 20        		.uleb128 0x20
+ 465 000f 00        		.uleb128 0x0
+ 466               		.p2align	2
+ 467               	.LECIE0:
+ 468               	.LSFDE0:
+ 469 0010 0C00 0000 		.long	.LEFDE0-.LASFDE0
+ 470               	.LASFDE0:
+ 471 0014 0000 0000 		.long	.Lframe0
+ 472 0018 0000 0000 		.long	.LFB4
+ 473 001c 2600 0000 		.long	.LFE4-.LFB4
+ 474               		.p2align	2
+ 475               	.LEFDE0:
+ 476               	.LSFDE2:
+ 477 0020 0C00 0000 		.long	.LEFDE2-.LASFDE2
+ 478               	.LASFDE2:
+ 479 0024 0000 0000 		.long	.Lframe0
+ 480 0028 0000 0000 		.long	.LFB5
+ 481 002c 4000 0000 		.long	.LFE5-.LFB5
+ 482               		.p2align	2
+ 483               	.LEFDE2:
+ 484               	.LSFDE4:
+ 485 0030 0C00 0000 		.long	.LEFDE4-.LASFDE4
+ 486               	.LASFDE4:
+ 487 0034 0000 0000 		.long	.Lframe0
+ 488 0038 0000 0000 		.long	.LFB6
+ 489 003c 3800 0000 		.long	.LFE6-.LFB6
+ 490               		.p2align	2
+ 491               	.LEFDE4:
+ 492               	.LSFDE6:
+ 493 0040 0C00 0000 		.long	.LEFDE6-.LASFDE6
+ 494               	.LASFDE6:
+ 495 0044 0000 0000 		.long	.Lframe0
+ 496 0048 0000 0000 		.long	.LFB7
+ 497 004c 2E00 0000 		.long	.LFE7-.LFB7
+ 498               		.p2align	2
+ 499               	.LEFDE6:
+ 500               	.LSFDE8:
+ 501 0050 0C00 0000 		.long	.LEFDE8-.LASFDE8
+ 502               	.LASFDE8:
+ 503 0054 0000 0000 		.long	.Lframe0
+ 504 0058 0000 0000 		.long	.LFB8
+ 505 005c 1600 0000 		.long	.LFE8-.LFB8
+ 506               		.p2align	2
+ 507               	.LEFDE8:
+ 508               	.LSFDE10:
+ 509 0060 0C00 0000 		.long	.LEFDE10-.LASFDE10
+ 510               	.LASFDE10:
+ 511 0064 0000 0000 		.long	.Lframe0
+ 512 0068 0000 0000 		.long	.LFB9
+ 513 006c D200 0000 		.long	.LFE9-.LFB9
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 10
+
+
+ 514               		.p2align	2
+ 515               	.LEFDE10:
+ 516               	.LSFDE12:
+ 517 0070 0C00 0000 		.long	.LEFDE12-.LASFDE12
+ 518               	.LASFDE12:
+ 519 0074 0000 0000 		.long	.Lframe0
+ 520 0078 0000 0000 		.long	.LFB3
+ 521 007c 0E00 0000 		.long	.LFE3-.LFB3
+ 522               		.p2align	2
+ 523               	.LEFDE12:
+ 524               	.LSFDE14:
+ 525 0080 0C00 0000 		.long	.LEFDE14-.LASFDE14
+ 526               	.LASFDE14:
+ 527 0084 0000 0000 		.long	.Lframe0
+ 528 0088 0000 0000 		.long	.LFB2
+ 529 008c 7C00 0000 		.long	.LFE2-.LFB2
+ 530               		.p2align	2
+ 531               	.LEFDE14:
+ 532               		.text
+ 533               	.Letext0:
+ 534               		.section	.debug_loc,"",@progbits
+ 535               	.Ldebug_loc0:
+ 536               	.LLST1:
+ 537 0000 0000 0000 		.long	.LVL0-.Ltext0
+ 538 0004 0C00 0000 		.long	.LVL1-.Ltext0
+ 539 0008 0100      		.word	0x1
+ 540 000a 68        		.byte	0x68
+ 541 000b 0000 0000 		.long	0x0
+ 542 000f 0000 0000 		.long	0x0
+ 543               	.LLST3:
+ 544 0013 2600 0000 		.long	.LVL3-.Ltext0
+ 545 0017 2A00 0000 		.long	.LVL4-.Ltext0
+ 546 001b 0100      		.word	0x1
+ 547 001d 68        		.byte	0x68
+ 548 001e 2A00 0000 		.long	.LVL4-.Ltext0
+ 549 0022 6600 0000 		.long	.LFE5-.Ltext0
+ 550 0026 0100      		.word	0x1
+ 551 0028 62        		.byte	0x62
+ 552 0029 0000 0000 		.long	0x0
+ 553 002d 0000 0000 		.long	0x0
+ 554               	.LLST4:
+ 555 0031 2600 0000 		.long	.LVL3-.Ltext0
+ 556 0035 3400 0000 		.long	.LVL5-.Ltext0
+ 557 0039 0100      		.word	0x1
+ 558 003b 66        		.byte	0x66
+ 559 003c 0000 0000 		.long	0x0
+ 560 0040 0000 0000 		.long	0x0
+ 561               	.LLST6:
+ 562 0044 6600 0000 		.long	.LVL8-.Ltext0
+ 563 0048 6A00 0000 		.long	.LVL9-.Ltext0
+ 564 004c 0100      		.word	0x1
+ 565 004e 68        		.byte	0x68
+ 566 004f 6A00 0000 		.long	.LVL9-.Ltext0
+ 567 0053 9E00 0000 		.long	.LFE6-.Ltext0
+ 568 0057 0600      		.word	0x6
+ 569 0059 6E        		.byte	0x6e
+ 570 005a 93        		.byte	0x93
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 11
+
+
+ 571 005b 01        		.uleb128 0x1
+ 572 005c 6F        		.byte	0x6f
+ 573 005d 93        		.byte	0x93
+ 574 005e 01        		.uleb128 0x1
+ 575 005f 0000 0000 		.long	0x0
+ 576 0063 0000 0000 		.long	0x0
+ 577               	.LLST8:
+ 578 0067 9E00 0000 		.long	.LVL12-.Ltext0
+ 579 006b A200 0000 		.long	.LVL13-.Ltext0
+ 580 006f 0100      		.word	0x1
+ 581 0071 68        		.byte	0x68
+ 582 0072 A200 0000 		.long	.LVL13-.Ltext0
+ 583 0076 CC00 0000 		.long	.LFE7-.Ltext0
+ 584 007a 0100      		.word	0x1
+ 585 007c 64        		.byte	0x64
+ 586 007d 0000 0000 		.long	0x0
+ 587 0081 0000 0000 		.long	0x0
+ 588               	.LLST9:
+ 589 0085 9E00 0000 		.long	.LVL12-.Ltext0
+ 590 0089 A200 0000 		.long	.LVL13-.Ltext0
+ 591 008d 0600      		.word	0x6
+ 592 008f 66        		.byte	0x66
+ 593 0090 93        		.byte	0x93
+ 594 0091 01        		.uleb128 0x1
+ 595 0092 67        		.byte	0x67
+ 596 0093 93        		.byte	0x93
+ 597 0094 01        		.uleb128 0x1
+ 598 0095 A600 0000 		.long	.LVL14-.Ltext0
+ 599 0099 AC00 0000 		.long	.LVL15-.Ltext0
+ 600 009d 0600      		.word	0x6
+ 601 009f 66        		.byte	0x66
+ 602 00a0 93        		.byte	0x93
+ 603 00a1 01        		.uleb128 0x1
+ 604 00a2 67        		.byte	0x67
+ 605 00a3 93        		.byte	0x93
+ 606 00a4 01        		.uleb128 0x1
+ 607 00a5 AC00 0000 		.long	.LVL15-.Ltext0
+ 608 00a9 C200 0000 		.long	.LVL16-.Ltext0
+ 609 00ad 0600      		.word	0x6
+ 610 00af 66        		.byte	0x66
+ 611 00b0 93        		.byte	0x93
+ 612 00b1 01        		.uleb128 0x1
+ 613 00b2 67        		.byte	0x67
+ 614 00b3 93        		.byte	0x93
+ 615 00b4 01        		.uleb128 0x1
+ 616 00b5 C200 0000 		.long	.LVL16-.Ltext0
+ 617 00b9 CC00 0000 		.long	.LFE7-.Ltext0
+ 618 00bd 0600      		.word	0x6
+ 619 00bf 68        		.byte	0x68
+ 620 00c0 93        		.byte	0x93
+ 621 00c1 01        		.uleb128 0x1
+ 622 00c2 69        		.byte	0x69
+ 623 00c3 93        		.byte	0x93
+ 624 00c4 01        		.uleb128 0x1
+ 625 00c5 0000 0000 		.long	0x0
+ 626 00c9 0000 0000 		.long	0x0
+ 627               	.LLST11:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 12
+
+
+ 628 00cd CC00 0000 		.long	.LVL18-.Ltext0
+ 629 00d1 DE00 0000 		.long	.LVL19-.Ltext0
+ 630 00d5 0100      		.word	0x1
+ 631 00d7 68        		.byte	0x68
+ 632 00d8 0000 0000 		.long	0x0
+ 633 00dc 0000 0000 		.long	0x0
+ 634               	.LLST13:
+ 635 00e0 5E01 0000 		.long	.LVL20-.Ltext0
+ 636 00e4 6001 0000 		.long	.LVL21-.Ltext0
+ 637 00e8 0600      		.word	0x6
+ 638 00ea 6E        		.byte	0x6e
+ 639 00eb 93        		.byte	0x93
+ 640 00ec 01        		.uleb128 0x1
+ 641 00ed 6F        		.byte	0x6f
+ 642 00ee 93        		.byte	0x93
+ 643 00ef 01        		.uleb128 0x1
+ 644 00f0 6801 0000 		.long	.LVL22-.Ltext0
+ 645 00f4 B401 0000 		.long	.LFE9-.Ltext0
+ 646 00f8 0600      		.word	0x6
+ 647 00fa 6E        		.byte	0x6e
+ 648 00fb 93        		.byte	0x93
+ 649 00fc 01        		.uleb128 0x1
+ 650 00fd 6F        		.byte	0x6f
+ 651 00fe 93        		.byte	0x93
+ 652 00ff 01        		.uleb128 0x1
+ 653 0100 0000 0000 		.long	0x0
+ 654 0104 0000 0000 		.long	0x0
+ 655               	.LLST14:
+ 656 0108 8001 0000 		.long	.LVL23-.Ltext0
+ 657 010c 9001 0000 		.long	.LVL25-.Ltext0
+ 658 0110 0600      		.word	0x6
+ 659 0112 68        		.byte	0x68
+ 660 0113 93        		.byte	0x93
+ 661 0114 01        		.uleb128 0x1
+ 662 0115 69        		.byte	0x69
+ 663 0116 93        		.byte	0x93
+ 664 0117 01        		.uleb128 0x1
+ 665 0118 0000 0000 		.long	0x0
+ 666 011c 0000 0000 		.long	0x0
+ 667               		.section	.debug_info
+ 668 0000 F802 0000 		.long	0x2f8
+ 669 0004 0200      		.word	0x2
+ 670 0006 0000 0000 		.long	.Ldebug_abbrev0
+ 671 000a 04        		.byte	0x4
+ 672 000b 01        		.uleb128 0x1
+ 673 000c 0000 0000 		.long	.LASF26
+ 674 0010 01        		.byte	0x1
+ 675 0011 0000 0000 		.long	.LASF27
+ 676 0015 0000 0000 		.long	.Ltext0
+ 677 0019 0000 0000 		.long	.Letext0
+ 678 001d 0000 0000 		.long	.Ldebug_line0
+ 679 0021 02        		.uleb128 0x2
+ 680 0022 01        		.byte	0x1
+ 681 0023 06        		.byte	0x6
+ 682 0024 0000 0000 		.long	.LASF0
+ 683 0028 02        		.uleb128 0x2
+ 684 0029 01        		.byte	0x1
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 13
+
+
+ 685 002a 08        		.byte	0x8
+ 686 002b 0000 0000 		.long	.LASF1
+ 687 002f 03        		.uleb128 0x3
+ 688 0030 02        		.byte	0x2
+ 689 0031 05        		.byte	0x5
+ 690 0032 696E 7400 		.string	"int"
+ 691 0036 02        		.uleb128 0x2
+ 692 0037 02        		.byte	0x2
+ 693 0038 07        		.byte	0x7
+ 694 0039 0000 0000 		.long	.LASF2
+ 695 003d 02        		.uleb128 0x2
+ 696 003e 04        		.byte	0x4
+ 697 003f 05        		.byte	0x5
+ 698 0040 0000 0000 		.long	.LASF3
+ 699 0044 02        		.uleb128 0x2
+ 700 0045 04        		.byte	0x4
+ 701 0046 07        		.byte	0x7
+ 702 0047 0000 0000 		.long	.LASF4
+ 703 004b 02        		.uleb128 0x2
+ 704 004c 08        		.byte	0x8
+ 705 004d 05        		.byte	0x5
+ 706 004e 0000 0000 		.long	.LASF5
+ 707 0052 02        		.uleb128 0x2
+ 708 0053 08        		.byte	0x8
+ 709 0054 07        		.byte	0x7
+ 710 0055 0000 0000 		.long	.LASF6
+ 711 0059 04        		.uleb128 0x4
+ 712 005a 7530 3800 		.string	"u08"
+ 713 005e 02        		.byte	0x2
+ 714 005f 20        		.byte	0x20
+ 715 0060 2800 0000 		.long	0x28
+ 716 0064 04        		.uleb128 0x4
+ 717 0065 7531 3600 		.string	"u16"
+ 718 0069 02        		.byte	0x2
+ 719 006a 22        		.byte	0x22
+ 720 006b 6F00 0000 		.long	0x6f
+ 721 006f 02        		.uleb128 0x2
+ 722 0070 02        		.byte	0x2
+ 723 0071 07        		.byte	0x7
+ 724 0072 0000 0000 		.long	.LASF7
+ 725 0076 02        		.uleb128 0x2
+ 726 0077 02        		.byte	0x2
+ 727 0078 05        		.byte	0x5
+ 728 0079 0000 0000 		.long	.LASF8
+ 729 007d 02        		.uleb128 0x2
+ 730 007e 01        		.byte	0x1
+ 731 007f 06        		.byte	0x6
+ 732 0080 0000 0000 		.long	.LASF9
+ 733 0084 05        		.uleb128 0x5
+ 734 0085 0000 0000 		.long	.LASF28
+ 735 0089 04        		.byte	0x4
+ 736 008a 03        		.byte	0x3
+ 737 008b 48        		.byte	0x48
+ 738 008c BB00 0000 		.long	0xbb
+ 739 0090 06        		.uleb128 0x6
+ 740 0091 0000 0000 		.long	.LASF10
+ 741 0095 03        		.byte	0x3
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 14
+
+
+ 742 0096 4A        		.byte	0x4a
+ 743 0097 5900 0000 		.long	0x59
+ 744 009b 02        		.byte	0x2
+ 745 009c 23        		.byte	0x23
+ 746 009d 00        		.uleb128 0x0
+ 747 009e 07        		.uleb128 0x7
+ 748 009f 7069 6E00 		.string	"pin"
+ 749 00a3 03        		.byte	0x3
+ 750 00a4 4B        		.byte	0x4b
+ 751 00a5 5900 0000 		.long	0x59
+ 752 00a9 02        		.byte	0x2
+ 753 00aa 23        		.byte	0x23
+ 754 00ab 01        		.uleb128 0x1
+ 755 00ac 06        		.uleb128 0x6
+ 756 00ad 0000 0000 		.long	.LASF11
+ 757 00b1 03        		.byte	0x3
+ 758 00b2 4D        		.byte	0x4d
+ 759 00b3 6400 0000 		.long	0x64
+ 760 00b7 02        		.byte	0x2
+ 761 00b8 23        		.byte	0x23
+ 762 00b9 02        		.uleb128 0x2
+ 763 00ba 00        		.byte	0x0
+ 764 00bb 08        		.uleb128 0x8
+ 765 00bc 0000 0000 		.long	.LASF12
+ 766 00c0 03        		.byte	0x3
+ 767 00c1 4E        		.byte	0x4e
+ 768 00c2 8400 0000 		.long	0x84
+ 769 00c6 09        		.uleb128 0x9
+ 770 00c7 01        		.byte	0x1
+ 771 00c8 0000 0000 		.long	.LASF29
+ 772 00cc 01        		.byte	0x1
+ 773 00cd 70        		.byte	0x70
+ 774 00ce 01        		.byte	0x1
+ 775 00cf 01        		.byte	0x1
+ 776 00d0 EB00 0000 		.long	0xeb
+ 777 00d4 0A        		.uleb128 0xa
+ 778 00d5 0000 0000 		.long	.LASF13
+ 779 00d9 01        		.byte	0x1
+ 780 00da 6F        		.byte	0x6f
+ 781 00db 5900 0000 		.long	0x59
+ 782 00df 0A        		.uleb128 0xa
+ 783 00e0 0000 0000 		.long	.LASF14
+ 784 00e4 01        		.byte	0x1
+ 785 00e5 6F        		.byte	0x6f
+ 786 00e6 6400 0000 		.long	0x64
+ 787 00ea 00        		.byte	0x0
+ 788 00eb 0B        		.uleb128 0xb
+ 789 00ec 01        		.byte	0x1
+ 790 00ed 0000 0000 		.long	.LASF30
+ 791 00f1 01        		.byte	0x1
+ 792 00f2 7A        		.byte	0x7a
+ 793 00f3 01        		.byte	0x1
+ 794 00f4 6400 0000 		.long	0x64
+ 795 00f8 01        		.byte	0x1
+ 796 00f9 0901 0000 		.long	0x109
+ 797 00fd 0A        		.uleb128 0xa
+ 798 00fe 0000 0000 		.long	.LASF13
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 15
+
+
+ 799 0102 01        		.byte	0x1
+ 800 0103 79        		.byte	0x79
+ 801 0104 5900 0000 		.long	0x59
+ 802 0108 00        		.byte	0x0
+ 803 0109 0C        		.uleb128 0xc
+ 804 010a 01        		.byte	0x1
+ 805 010b 0000 0000 		.long	.LASF15
+ 806 010f 01        		.byte	0x1
+ 807 0110 58        		.byte	0x58
+ 808 0111 01        		.byte	0x1
+ 809 0112 0000 0000 		.long	.LFB4
+ 810 0116 0000 0000 		.long	.LFE4
+ 811 011a 02        		.byte	0x2
+ 812 011b 90        		.byte	0x90
+ 813 011c 20        		.uleb128 0x20
+ 814 011d 4B01 0000 		.long	0x14b
+ 815 0121 0D        		.uleb128 0xd
+ 816 0122 0000 0000 		.long	.LASF13
+ 817 0126 01        		.byte	0x1
+ 818 0127 57        		.byte	0x57
+ 819 0128 5900 0000 		.long	0x59
+ 820 012c 0000 0000 		.long	.LLST1
+ 821 0130 0E        		.uleb128 0xe
+ 822 0131 0000 0000 		.long	.LASF10
+ 823 0135 01        		.byte	0x1
+ 824 0136 57        		.byte	0x57
+ 825 0137 5900 0000 		.long	0x59
+ 826 013b 01        		.byte	0x1
+ 827 013c 66        		.byte	0x66
+ 828 013d 0F        		.uleb128 0xf
+ 829 013e 7069 6E00 		.string	"pin"
+ 830 0142 01        		.byte	0x1
+ 831 0143 57        		.byte	0x57
+ 832 0144 5900 0000 		.long	0x59
+ 833 0148 01        		.byte	0x1
+ 834 0149 64        		.byte	0x64
+ 835 014a 00        		.byte	0x0
+ 836 014b 0C        		.uleb128 0xc
+ 837 014c 01        		.byte	0x1
+ 838 014d 0000 0000 		.long	.LASF16
+ 839 0151 01        		.byte	0x1
+ 840 0152 5F        		.byte	0x5f
+ 841 0153 01        		.byte	0x1
+ 842 0154 0000 0000 		.long	.LFB5
+ 843 0158 0000 0000 		.long	.LFE5
+ 844 015c 02        		.byte	0x2
+ 845 015d 90        		.byte	0x90
+ 846 015e 20        		.uleb128 0x20
+ 847 015f AE01 0000 		.long	0x1ae
+ 848 0163 0D        		.uleb128 0xd
+ 849 0164 0000 0000 		.long	.LASF13
+ 850 0168 01        		.byte	0x1
+ 851 0169 5E        		.byte	0x5e
+ 852 016a 5900 0000 		.long	0x59
+ 853 016e 0000 0000 		.long	.LLST3
+ 854 0172 0D        		.uleb128 0xd
+ 855 0173 0000 0000 		.long	.LASF14
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 16
+
+
+ 856 0177 01        		.byte	0x1
+ 857 0178 5E        		.byte	0x5e
+ 858 0179 5900 0000 		.long	0x59
+ 859 017d 0000 0000 		.long	.LLST4
+ 860 0181 10        		.uleb128 0x10
+ 861 0182 0000 0000 		.long	.LASF21
+ 862 0186 01        		.byte	0x1
+ 863 0187 61        		.byte	0x61
+ 864 0188 6400 0000 		.long	0x64
+ 865 018c 11        		.uleb128 0x11
+ 866 018d C600 0000 		.long	0xc6
+ 867 0191 0000 0000 		.long	.LBB6
+ 868 0195 0000 0000 		.long	.LBE6
+ 869 0199 01        		.byte	0x1
+ 870 019a 65        		.byte	0x65
+ 871 019b 12        		.uleb128 0x12
+ 872 019c DF00 0000 		.long	0xdf
+ 873 01a0 06        		.byte	0x6
+ 874 01a1 66        		.byte	0x66
+ 875 01a2 93        		.byte	0x93
+ 876 01a3 01        		.uleb128 0x1
+ 877 01a4 67        		.byte	0x67
+ 878 01a5 93        		.byte	0x93
+ 879 01a6 01        		.uleb128 0x1
+ 880 01a7 13        		.uleb128 0x13
+ 881 01a8 D400 0000 		.long	0xd4
+ 882 01ac 00        		.byte	0x0
+ 883 01ad 00        		.byte	0x0
+ 884 01ae 14        		.uleb128 0x14
+ 885 01af 01        		.byte	0x1
+ 886 01b0 0000 0000 		.long	.LASF31
+ 887 01b4 01        		.byte	0x1
+ 888 01b5 6A        		.byte	0x6a
+ 889 01b6 01        		.byte	0x1
+ 890 01b7 5900 0000 		.long	0x59
+ 891 01bb 0000 0000 		.long	.LFB6
+ 892 01bf 0000 0000 		.long	.LFE6
+ 893 01c3 02        		.byte	0x2
+ 894 01c4 90        		.byte	0x90
+ 895 01c5 20        		.uleb128 0x20
+ 896 01c6 DA01 0000 		.long	0x1da
+ 897 01ca 0D        		.uleb128 0xd
+ 898 01cb 0000 0000 		.long	.LASF13
+ 899 01cf 01        		.byte	0x1
+ 900 01d0 69        		.byte	0x69
+ 901 01d1 5900 0000 		.long	0x59
+ 902 01d5 0000 0000 		.long	.LLST6
+ 903 01d9 00        		.byte	0x0
+ 904 01da 15        		.uleb128 0x15
+ 905 01db C600 0000 		.long	0xc6
+ 906 01df 0000 0000 		.long	.LFB7
+ 907 01e3 0000 0000 		.long	.LFE7
+ 908 01e7 02        		.byte	0x2
+ 909 01e8 90        		.byte	0x90
+ 910 01e9 20        		.uleb128 0x20
+ 911 01ea 0102 0000 		.long	0x201
+ 912 01ee 16        		.uleb128 0x16
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 17
+
+
+ 913 01ef D400 0000 		.long	0xd4
+ 914 01f3 0000 0000 		.long	.LLST8
+ 915 01f7 16        		.uleb128 0x16
+ 916 01f8 DF00 0000 		.long	0xdf
+ 917 01fc 0000 0000 		.long	.LLST9
+ 918 0200 00        		.byte	0x0
+ 919 0201 15        		.uleb128 0x15
+ 920 0202 EB00 0000 		.long	0xeb
+ 921 0206 0000 0000 		.long	.LFB8
+ 922 020a 0000 0000 		.long	.LFE8
+ 923 020e 02        		.byte	0x2
+ 924 020f 90        		.byte	0x90
+ 925 0210 20        		.uleb128 0x20
+ 926 0211 1F02 0000 		.long	0x21f
+ 927 0215 16        		.uleb128 0x16
+ 928 0216 FD00 0000 		.long	0xfd
+ 929 021a 0000 0000 		.long	.LLST11
+ 930 021e 00        		.byte	0x0
+ 931 021f 0C        		.uleb128 0xc
+ 932 0220 01        		.byte	0x1
+ 933 0221 0000 0000 		.long	.LASF17
+ 934 0225 01        		.byte	0x1
+ 935 0226 7F        		.byte	0x7f
+ 936 0227 01        		.byte	0x1
+ 937 0228 0000 0000 		.long	.LFB9
+ 938 022c 0000 0000 		.long	.LFE9
+ 939 0230 02        		.byte	0x2
+ 940 0231 90        		.byte	0x90
+ 941 0232 20        		.uleb128 0x20
+ 942 0233 5602 0000 		.long	0x256
+ 943 0237 17        		.uleb128 0x17
+ 944 0238 0000 0000 		.long	.LASF18
+ 945 023c 01        		.byte	0x1
+ 946 023d 80        		.byte	0x80
+ 947 023e 6400 0000 		.long	0x64
+ 948 0242 0000 0000 		.long	.LLST13
+ 949 0246 17        		.uleb128 0x17
+ 950 0247 0000 0000 		.long	.LASF19
+ 951 024b 01        		.byte	0x1
+ 952 024c 9C        		.byte	0x9c
+ 953 024d 6400 0000 		.long	0x64
+ 954 0251 0000 0000 		.long	.LLST14
+ 955 0255 00        		.byte	0x0
+ 956 0256 18        		.uleb128 0x18
+ 957 0257 01        		.byte	0x1
+ 958 0258 0000 0000 		.long	.LASF32
+ 959 025c 01        		.byte	0x1
+ 960 025d 4F        		.byte	0x4f
+ 961 025e 01        		.byte	0x1
+ 962 025f 0000 0000 		.long	.LFB3
+ 963 0263 0000 0000 		.long	.LFE3
+ 964 0267 02        		.byte	0x2
+ 965 0268 90        		.byte	0x90
+ 966 0269 20        		.uleb128 0x20
+ 967 026a 0C        		.uleb128 0xc
+ 968 026b 01        		.byte	0x1
+ 969 026c 0000 0000 		.long	.LASF20
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 18
+
+
+ 970 0270 01        		.byte	0x1
+ 971 0271 26        		.byte	0x26
+ 972 0272 01        		.byte	0x1
+ 973 0273 0000 0000 		.long	.LFB2
+ 974 0277 0000 0000 		.long	.LFE2
+ 975 027b 02        		.byte	0x2
+ 976 027c 90        		.byte	0x90
+ 977 027d 20        		.uleb128 0x20
+ 978 027e A002 0000 		.long	0x2a0
+ 979 0282 10        		.uleb128 0x10
+ 980 0283 0000 0000 		.long	.LASF13
+ 981 0287 01        		.byte	0x1
+ 982 0288 27        		.byte	0x27
+ 983 0289 5900 0000 		.long	0x59
+ 984 028d 19        		.uleb128 0x19
+ 985 028e 0000 0000 		.long	.LASF19
+ 986 0292 01        		.byte	0x1
+ 987 0293 40        		.byte	0x40
+ 988 0294 6400 0000 		.long	0x64
+ 989 0298 06        		.byte	0x6
+ 990 0299 62        		.byte	0x62
+ 991 029a 93        		.byte	0x93
+ 992 029b 01        		.uleb128 0x1
+ 993 029c 63        		.byte	0x63
+ 994 029d 93        		.byte	0x93
+ 995 029e 01        		.uleb128 0x1
+ 996 029f 00        		.byte	0x0
+ 997 02a0 1A        		.uleb128 0x1a
+ 998 02a1 0000 0000 		.long	.LASF22
+ 999 02a5 01        		.byte	0x1
+ 1000 02a6 1D        		.byte	0x1d
+ 1001 02a7 6400 0000 		.long	0x64
+ 1002 02ab 01        		.byte	0x1
+ 1003 02ac 05        		.byte	0x5
+ 1004 02ad 03        		.byte	0x3
+ 1005 02ae 0000 0000 		.long	ServoPosTics
+ 1006 02b2 1A        		.uleb128 0x1a
+ 1007 02b3 0000 0000 		.long	.LASF23
+ 1008 02b7 01        		.byte	0x1
+ 1009 02b8 1E        		.byte	0x1e
+ 1010 02b9 6400 0000 		.long	0x64
+ 1011 02bd 01        		.byte	0x1
+ 1012 02be 05        		.byte	0x5
+ 1013 02bf 03        		.byte	0x3
+ 1014 02c0 0000 0000 		.long	ServoPeriodTics
+ 1015 02c4 1A        		.uleb128 0x1a
+ 1016 02c5 0000 0000 		.long	.LASF24
+ 1017 02c9 01        		.byte	0x1
+ 1018 02ca 1F        		.byte	0x1f
+ 1019 02cb 5900 0000 		.long	0x59
+ 1020 02cf 01        		.byte	0x1
+ 1021 02d0 05        		.byte	0x5
+ 1022 02d1 03        		.byte	0x3
+ 1023 02d2 0000 0000 		.long	ServoChannel
+ 1024 02d6 1B        		.uleb128 0x1b
+ 1025 02d7 BB00 0000 		.long	0xbb
+ 1026 02db E602 0000 		.long	0x2e6
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 19
+
+
+ 1027 02df 1C        		.uleb128 0x1c
+ 1028 02e0 E602 0000 		.long	0x2e6
+ 1029 02e4 03        		.byte	0x3
+ 1030 02e5 00        		.byte	0x0
+ 1031 02e6 1D        		.uleb128 0x1d
+ 1032 02e7 02        		.byte	0x2
+ 1033 02e8 07        		.byte	0x7
+ 1034 02e9 1A        		.uleb128 0x1a
+ 1035 02ea 0000 0000 		.long	.LASF25
+ 1036 02ee 01        		.byte	0x1
+ 1037 02ef 20        		.byte	0x20
+ 1038 02f0 D602 0000 		.long	0x2d6
+ 1039 02f4 01        		.byte	0x1
+ 1040 02f5 05        		.byte	0x5
+ 1041 02f6 03        		.byte	0x3
+ 1042 02f7 0000 0000 		.long	ServoChannels
+ 1043 02fb 00        		.byte	0x0
+ 1044               		.section	.debug_abbrev
+ 1045 0000 01        		.uleb128 0x1
+ 1046 0001 11        		.uleb128 0x11
+ 1047 0002 01        		.byte	0x1
+ 1048 0003 25        		.uleb128 0x25
+ 1049 0004 0E        		.uleb128 0xe
+ 1050 0005 13        		.uleb128 0x13
+ 1051 0006 0B        		.uleb128 0xb
+ 1052 0007 03        		.uleb128 0x3
+ 1053 0008 0E        		.uleb128 0xe
+ 1054 0009 11        		.uleb128 0x11
+ 1055 000a 01        		.uleb128 0x1
+ 1056 000b 12        		.uleb128 0x12
+ 1057 000c 01        		.uleb128 0x1
+ 1058 000d 10        		.uleb128 0x10
+ 1059 000e 06        		.uleb128 0x6
+ 1060 000f 00        		.byte	0x0
+ 1061 0010 00        		.byte	0x0
+ 1062 0011 02        		.uleb128 0x2
+ 1063 0012 24        		.uleb128 0x24
+ 1064 0013 00        		.byte	0x0
+ 1065 0014 0B        		.uleb128 0xb
+ 1066 0015 0B        		.uleb128 0xb
+ 1067 0016 3E        		.uleb128 0x3e
+ 1068 0017 0B        		.uleb128 0xb
+ 1069 0018 03        		.uleb128 0x3
+ 1070 0019 0E        		.uleb128 0xe
+ 1071 001a 00        		.byte	0x0
+ 1072 001b 00        		.byte	0x0
+ 1073 001c 03        		.uleb128 0x3
+ 1074 001d 24        		.uleb128 0x24
+ 1075 001e 00        		.byte	0x0
+ 1076 001f 0B        		.uleb128 0xb
+ 1077 0020 0B        		.uleb128 0xb
+ 1078 0021 3E        		.uleb128 0x3e
+ 1079 0022 0B        		.uleb128 0xb
+ 1080 0023 03        		.uleb128 0x3
+ 1081 0024 08        		.uleb128 0x8
+ 1082 0025 00        		.byte	0x0
+ 1083 0026 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 20
+
+
+ 1084 0027 04        		.uleb128 0x4
+ 1085 0028 16        		.uleb128 0x16
+ 1086 0029 00        		.byte	0x0
+ 1087 002a 03        		.uleb128 0x3
+ 1088 002b 08        		.uleb128 0x8
+ 1089 002c 3A        		.uleb128 0x3a
+ 1090 002d 0B        		.uleb128 0xb
+ 1091 002e 3B        		.uleb128 0x3b
+ 1092 002f 0B        		.uleb128 0xb
+ 1093 0030 49        		.uleb128 0x49
+ 1094 0031 13        		.uleb128 0x13
+ 1095 0032 00        		.byte	0x0
+ 1096 0033 00        		.byte	0x0
+ 1097 0034 05        		.uleb128 0x5
+ 1098 0035 13        		.uleb128 0x13
+ 1099 0036 01        		.byte	0x1
+ 1100 0037 03        		.uleb128 0x3
+ 1101 0038 0E        		.uleb128 0xe
+ 1102 0039 0B        		.uleb128 0xb
+ 1103 003a 0B        		.uleb128 0xb
+ 1104 003b 3A        		.uleb128 0x3a
+ 1105 003c 0B        		.uleb128 0xb
+ 1106 003d 3B        		.uleb128 0x3b
+ 1107 003e 0B        		.uleb128 0xb
+ 1108 003f 01        		.uleb128 0x1
+ 1109 0040 13        		.uleb128 0x13
+ 1110 0041 00        		.byte	0x0
+ 1111 0042 00        		.byte	0x0
+ 1112 0043 06        		.uleb128 0x6
+ 1113 0044 0D        		.uleb128 0xd
+ 1114 0045 00        		.byte	0x0
+ 1115 0046 03        		.uleb128 0x3
+ 1116 0047 0E        		.uleb128 0xe
+ 1117 0048 3A        		.uleb128 0x3a
+ 1118 0049 0B        		.uleb128 0xb
+ 1119 004a 3B        		.uleb128 0x3b
+ 1120 004b 0B        		.uleb128 0xb
+ 1121 004c 49        		.uleb128 0x49
+ 1122 004d 13        		.uleb128 0x13
+ 1123 004e 38        		.uleb128 0x38
+ 1124 004f 0A        		.uleb128 0xa
+ 1125 0050 00        		.byte	0x0
+ 1126 0051 00        		.byte	0x0
+ 1127 0052 07        		.uleb128 0x7
+ 1128 0053 0D        		.uleb128 0xd
+ 1129 0054 00        		.byte	0x0
+ 1130 0055 03        		.uleb128 0x3
+ 1131 0056 08        		.uleb128 0x8
+ 1132 0057 3A        		.uleb128 0x3a
+ 1133 0058 0B        		.uleb128 0xb
+ 1134 0059 3B        		.uleb128 0x3b
+ 1135 005a 0B        		.uleb128 0xb
+ 1136 005b 49        		.uleb128 0x49
+ 1137 005c 13        		.uleb128 0x13
+ 1138 005d 38        		.uleb128 0x38
+ 1139 005e 0A        		.uleb128 0xa
+ 1140 005f 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 21
+
+
+ 1141 0060 00        		.byte	0x0
+ 1142 0061 08        		.uleb128 0x8
+ 1143 0062 16        		.uleb128 0x16
+ 1144 0063 00        		.byte	0x0
+ 1145 0064 03        		.uleb128 0x3
+ 1146 0065 0E        		.uleb128 0xe
+ 1147 0066 3A        		.uleb128 0x3a
+ 1148 0067 0B        		.uleb128 0xb
+ 1149 0068 3B        		.uleb128 0x3b
+ 1150 0069 0B        		.uleb128 0xb
+ 1151 006a 49        		.uleb128 0x49
+ 1152 006b 13        		.uleb128 0x13
+ 1153 006c 00        		.byte	0x0
+ 1154 006d 00        		.byte	0x0
+ 1155 006e 09        		.uleb128 0x9
+ 1156 006f 2E        		.uleb128 0x2e
+ 1157 0070 01        		.byte	0x1
+ 1158 0071 3F        		.uleb128 0x3f
+ 1159 0072 0C        		.uleb128 0xc
+ 1160 0073 03        		.uleb128 0x3
+ 1161 0074 0E        		.uleb128 0xe
+ 1162 0075 3A        		.uleb128 0x3a
+ 1163 0076 0B        		.uleb128 0xb
+ 1164 0077 3B        		.uleb128 0x3b
+ 1165 0078 0B        		.uleb128 0xb
+ 1166 0079 27        		.uleb128 0x27
+ 1167 007a 0C        		.uleb128 0xc
+ 1168 007b 20        		.uleb128 0x20
+ 1169 007c 0B        		.uleb128 0xb
+ 1170 007d 01        		.uleb128 0x1
+ 1171 007e 13        		.uleb128 0x13
+ 1172 007f 00        		.byte	0x0
+ 1173 0080 00        		.byte	0x0
+ 1174 0081 0A        		.uleb128 0xa
+ 1175 0082 05        		.uleb128 0x5
+ 1176 0083 00        		.byte	0x0
+ 1177 0084 03        		.uleb128 0x3
+ 1178 0085 0E        		.uleb128 0xe
+ 1179 0086 3A        		.uleb128 0x3a
+ 1180 0087 0B        		.uleb128 0xb
+ 1181 0088 3B        		.uleb128 0x3b
+ 1182 0089 0B        		.uleb128 0xb
+ 1183 008a 49        		.uleb128 0x49
+ 1184 008b 13        		.uleb128 0x13
+ 1185 008c 00        		.byte	0x0
+ 1186 008d 00        		.byte	0x0
+ 1187 008e 0B        		.uleb128 0xb
+ 1188 008f 2E        		.uleb128 0x2e
+ 1189 0090 01        		.byte	0x1
+ 1190 0091 3F        		.uleb128 0x3f
+ 1191 0092 0C        		.uleb128 0xc
+ 1192 0093 03        		.uleb128 0x3
+ 1193 0094 0E        		.uleb128 0xe
+ 1194 0095 3A        		.uleb128 0x3a
+ 1195 0096 0B        		.uleb128 0xb
+ 1196 0097 3B        		.uleb128 0x3b
+ 1197 0098 0B        		.uleb128 0xb
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 22
+
+
+ 1198 0099 27        		.uleb128 0x27
+ 1199 009a 0C        		.uleb128 0xc
+ 1200 009b 49        		.uleb128 0x49
+ 1201 009c 13        		.uleb128 0x13
+ 1202 009d 20        		.uleb128 0x20
+ 1203 009e 0B        		.uleb128 0xb
+ 1204 009f 01        		.uleb128 0x1
+ 1205 00a0 13        		.uleb128 0x13
+ 1206 00a1 00        		.byte	0x0
+ 1207 00a2 00        		.byte	0x0
+ 1208 00a3 0C        		.uleb128 0xc
+ 1209 00a4 2E        		.uleb128 0x2e
+ 1210 00a5 01        		.byte	0x1
+ 1211 00a6 3F        		.uleb128 0x3f
+ 1212 00a7 0C        		.uleb128 0xc
+ 1213 00a8 03        		.uleb128 0x3
+ 1214 00a9 0E        		.uleb128 0xe
+ 1215 00aa 3A        		.uleb128 0x3a
+ 1216 00ab 0B        		.uleb128 0xb
+ 1217 00ac 3B        		.uleb128 0x3b
+ 1218 00ad 0B        		.uleb128 0xb
+ 1219 00ae 27        		.uleb128 0x27
+ 1220 00af 0C        		.uleb128 0xc
+ 1221 00b0 11        		.uleb128 0x11
+ 1222 00b1 01        		.uleb128 0x1
+ 1223 00b2 12        		.uleb128 0x12
+ 1224 00b3 01        		.uleb128 0x1
+ 1225 00b4 40        		.uleb128 0x40
+ 1226 00b5 0A        		.uleb128 0xa
+ 1227 00b6 01        		.uleb128 0x1
+ 1228 00b7 13        		.uleb128 0x13
+ 1229 00b8 00        		.byte	0x0
+ 1230 00b9 00        		.byte	0x0
+ 1231 00ba 0D        		.uleb128 0xd
+ 1232 00bb 05        		.uleb128 0x5
+ 1233 00bc 00        		.byte	0x0
+ 1234 00bd 03        		.uleb128 0x3
+ 1235 00be 0E        		.uleb128 0xe
+ 1236 00bf 3A        		.uleb128 0x3a
+ 1237 00c0 0B        		.uleb128 0xb
+ 1238 00c1 3B        		.uleb128 0x3b
+ 1239 00c2 0B        		.uleb128 0xb
+ 1240 00c3 49        		.uleb128 0x49
+ 1241 00c4 13        		.uleb128 0x13
+ 1242 00c5 02        		.uleb128 0x2
+ 1243 00c6 06        		.uleb128 0x6
+ 1244 00c7 00        		.byte	0x0
+ 1245 00c8 00        		.byte	0x0
+ 1246 00c9 0E        		.uleb128 0xe
+ 1247 00ca 05        		.uleb128 0x5
+ 1248 00cb 00        		.byte	0x0
+ 1249 00cc 03        		.uleb128 0x3
+ 1250 00cd 0E        		.uleb128 0xe
+ 1251 00ce 3A        		.uleb128 0x3a
+ 1252 00cf 0B        		.uleb128 0xb
+ 1253 00d0 3B        		.uleb128 0x3b
+ 1254 00d1 0B        		.uleb128 0xb
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 23
+
+
+ 1255 00d2 49        		.uleb128 0x49
+ 1256 00d3 13        		.uleb128 0x13
+ 1257 00d4 02        		.uleb128 0x2
+ 1258 00d5 0A        		.uleb128 0xa
+ 1259 00d6 00        		.byte	0x0
+ 1260 00d7 00        		.byte	0x0
+ 1261 00d8 0F        		.uleb128 0xf
+ 1262 00d9 05        		.uleb128 0x5
+ 1263 00da 00        		.byte	0x0
+ 1264 00db 03        		.uleb128 0x3
+ 1265 00dc 08        		.uleb128 0x8
+ 1266 00dd 3A        		.uleb128 0x3a
+ 1267 00de 0B        		.uleb128 0xb
+ 1268 00df 3B        		.uleb128 0x3b
+ 1269 00e0 0B        		.uleb128 0xb
+ 1270 00e1 49        		.uleb128 0x49
+ 1271 00e2 13        		.uleb128 0x13
+ 1272 00e3 02        		.uleb128 0x2
+ 1273 00e4 0A        		.uleb128 0xa
+ 1274 00e5 00        		.byte	0x0
+ 1275 00e6 00        		.byte	0x0
+ 1276 00e7 10        		.uleb128 0x10
+ 1277 00e8 34        		.uleb128 0x34
+ 1278 00e9 00        		.byte	0x0
+ 1279 00ea 03        		.uleb128 0x3
+ 1280 00eb 0E        		.uleb128 0xe
+ 1281 00ec 3A        		.uleb128 0x3a
+ 1282 00ed 0B        		.uleb128 0xb
+ 1283 00ee 3B        		.uleb128 0x3b
+ 1284 00ef 0B        		.uleb128 0xb
+ 1285 00f0 49        		.uleb128 0x49
+ 1286 00f1 13        		.uleb128 0x13
+ 1287 00f2 00        		.byte	0x0
+ 1288 00f3 00        		.byte	0x0
+ 1289 00f4 11        		.uleb128 0x11
+ 1290 00f5 1D        		.uleb128 0x1d
+ 1291 00f6 01        		.byte	0x1
+ 1292 00f7 31        		.uleb128 0x31
+ 1293 00f8 13        		.uleb128 0x13
+ 1294 00f9 11        		.uleb128 0x11
+ 1295 00fa 01        		.uleb128 0x1
+ 1296 00fb 12        		.uleb128 0x12
+ 1297 00fc 01        		.uleb128 0x1
+ 1298 00fd 58        		.uleb128 0x58
+ 1299 00fe 0B        		.uleb128 0xb
+ 1300 00ff 59        		.uleb128 0x59
+ 1301 0100 0B        		.uleb128 0xb
+ 1302 0101 00        		.byte	0x0
+ 1303 0102 00        		.byte	0x0
+ 1304 0103 12        		.uleb128 0x12
+ 1305 0104 05        		.uleb128 0x5
+ 1306 0105 00        		.byte	0x0
+ 1307 0106 31        		.uleb128 0x31
+ 1308 0107 13        		.uleb128 0x13
+ 1309 0108 02        		.uleb128 0x2
+ 1310 0109 0A        		.uleb128 0xa
+ 1311 010a 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 24
+
+
+ 1312 010b 00        		.byte	0x0
+ 1313 010c 13        		.uleb128 0x13
+ 1314 010d 05        		.uleb128 0x5
+ 1315 010e 00        		.byte	0x0
+ 1316 010f 31        		.uleb128 0x31
+ 1317 0110 13        		.uleb128 0x13
+ 1318 0111 00        		.byte	0x0
+ 1319 0112 00        		.byte	0x0
+ 1320 0113 14        		.uleb128 0x14
+ 1321 0114 2E        		.uleb128 0x2e
+ 1322 0115 01        		.byte	0x1
+ 1323 0116 3F        		.uleb128 0x3f
+ 1324 0117 0C        		.uleb128 0xc
+ 1325 0118 03        		.uleb128 0x3
+ 1326 0119 0E        		.uleb128 0xe
+ 1327 011a 3A        		.uleb128 0x3a
+ 1328 011b 0B        		.uleb128 0xb
+ 1329 011c 3B        		.uleb128 0x3b
+ 1330 011d 0B        		.uleb128 0xb
+ 1331 011e 27        		.uleb128 0x27
+ 1332 011f 0C        		.uleb128 0xc
+ 1333 0120 49        		.uleb128 0x49
+ 1334 0121 13        		.uleb128 0x13
+ 1335 0122 11        		.uleb128 0x11
+ 1336 0123 01        		.uleb128 0x1
+ 1337 0124 12        		.uleb128 0x12
+ 1338 0125 01        		.uleb128 0x1
+ 1339 0126 40        		.uleb128 0x40
+ 1340 0127 0A        		.uleb128 0xa
+ 1341 0128 01        		.uleb128 0x1
+ 1342 0129 13        		.uleb128 0x13
+ 1343 012a 00        		.byte	0x0
+ 1344 012b 00        		.byte	0x0
+ 1345 012c 15        		.uleb128 0x15
+ 1346 012d 2E        		.uleb128 0x2e
+ 1347 012e 01        		.byte	0x1
+ 1348 012f 31        		.uleb128 0x31
+ 1349 0130 13        		.uleb128 0x13
+ 1350 0131 11        		.uleb128 0x11
+ 1351 0132 01        		.uleb128 0x1
+ 1352 0133 12        		.uleb128 0x12
+ 1353 0134 01        		.uleb128 0x1
+ 1354 0135 40        		.uleb128 0x40
+ 1355 0136 0A        		.uleb128 0xa
+ 1356 0137 01        		.uleb128 0x1
+ 1357 0138 13        		.uleb128 0x13
+ 1358 0139 00        		.byte	0x0
+ 1359 013a 00        		.byte	0x0
+ 1360 013b 16        		.uleb128 0x16
+ 1361 013c 05        		.uleb128 0x5
+ 1362 013d 00        		.byte	0x0
+ 1363 013e 31        		.uleb128 0x31
+ 1364 013f 13        		.uleb128 0x13
+ 1365 0140 02        		.uleb128 0x2
+ 1366 0141 06        		.uleb128 0x6
+ 1367 0142 00        		.byte	0x0
+ 1368 0143 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 25
+
+
+ 1369 0144 17        		.uleb128 0x17
+ 1370 0145 34        		.uleb128 0x34
+ 1371 0146 00        		.byte	0x0
+ 1372 0147 03        		.uleb128 0x3
+ 1373 0148 0E        		.uleb128 0xe
+ 1374 0149 3A        		.uleb128 0x3a
+ 1375 014a 0B        		.uleb128 0xb
+ 1376 014b 3B        		.uleb128 0x3b
+ 1377 014c 0B        		.uleb128 0xb
+ 1378 014d 49        		.uleb128 0x49
+ 1379 014e 13        		.uleb128 0x13
+ 1380 014f 02        		.uleb128 0x2
+ 1381 0150 06        		.uleb128 0x6
+ 1382 0151 00        		.byte	0x0
+ 1383 0152 00        		.byte	0x0
+ 1384 0153 18        		.uleb128 0x18
+ 1385 0154 2E        		.uleb128 0x2e
+ 1386 0155 00        		.byte	0x0
+ 1387 0156 3F        		.uleb128 0x3f
+ 1388 0157 0C        		.uleb128 0xc
+ 1389 0158 03        		.uleb128 0x3
+ 1390 0159 0E        		.uleb128 0xe
+ 1391 015a 3A        		.uleb128 0x3a
+ 1392 015b 0B        		.uleb128 0xb
+ 1393 015c 3B        		.uleb128 0x3b
+ 1394 015d 0B        		.uleb128 0xb
+ 1395 015e 27        		.uleb128 0x27
+ 1396 015f 0C        		.uleb128 0xc
+ 1397 0160 11        		.uleb128 0x11
+ 1398 0161 01        		.uleb128 0x1
+ 1399 0162 12        		.uleb128 0x12
+ 1400 0163 01        		.uleb128 0x1
+ 1401 0164 40        		.uleb128 0x40
+ 1402 0165 0A        		.uleb128 0xa
+ 1403 0166 00        		.byte	0x0
+ 1404 0167 00        		.byte	0x0
+ 1405 0168 19        		.uleb128 0x19
+ 1406 0169 34        		.uleb128 0x34
+ 1407 016a 00        		.byte	0x0
+ 1408 016b 03        		.uleb128 0x3
+ 1409 016c 0E        		.uleb128 0xe
+ 1410 016d 3A        		.uleb128 0x3a
+ 1411 016e 0B        		.uleb128 0xb
+ 1412 016f 3B        		.uleb128 0x3b
+ 1413 0170 0B        		.uleb128 0xb
+ 1414 0171 49        		.uleb128 0x49
+ 1415 0172 13        		.uleb128 0x13
+ 1416 0173 02        		.uleb128 0x2
+ 1417 0174 0A        		.uleb128 0xa
+ 1418 0175 00        		.byte	0x0
+ 1419 0176 00        		.byte	0x0
+ 1420 0177 1A        		.uleb128 0x1a
+ 1421 0178 34        		.uleb128 0x34
+ 1422 0179 00        		.byte	0x0
+ 1423 017a 03        		.uleb128 0x3
+ 1424 017b 0E        		.uleb128 0xe
+ 1425 017c 3A        		.uleb128 0x3a
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 26
+
+
+ 1426 017d 0B        		.uleb128 0xb
+ 1427 017e 3B        		.uleb128 0x3b
+ 1428 017f 0B        		.uleb128 0xb
+ 1429 0180 49        		.uleb128 0x49
+ 1430 0181 13        		.uleb128 0x13
+ 1431 0182 3F        		.uleb128 0x3f
+ 1432 0183 0C        		.uleb128 0xc
+ 1433 0184 02        		.uleb128 0x2
+ 1434 0185 0A        		.uleb128 0xa
+ 1435 0186 00        		.byte	0x0
+ 1436 0187 00        		.byte	0x0
+ 1437 0188 1B        		.uleb128 0x1b
+ 1438 0189 01        		.uleb128 0x1
+ 1439 018a 01        		.byte	0x1
+ 1440 018b 49        		.uleb128 0x49
+ 1441 018c 13        		.uleb128 0x13
+ 1442 018d 01        		.uleb128 0x1
+ 1443 018e 13        		.uleb128 0x13
+ 1444 018f 00        		.byte	0x0
+ 1445 0190 00        		.byte	0x0
+ 1446 0191 1C        		.uleb128 0x1c
+ 1447 0192 21        		.uleb128 0x21
+ 1448 0193 00        		.byte	0x0
+ 1449 0194 49        		.uleb128 0x49
+ 1450 0195 13        		.uleb128 0x13
+ 1451 0196 2F        		.uleb128 0x2f
+ 1452 0197 0B        		.uleb128 0xb
+ 1453 0198 00        		.byte	0x0
+ 1454 0199 00        		.byte	0x0
+ 1455 019a 1D        		.uleb128 0x1d
+ 1456 019b 24        		.uleb128 0x24
+ 1457 019c 00        		.byte	0x0
+ 1458 019d 0B        		.uleb128 0xb
+ 1459 019e 0B        		.uleb128 0xb
+ 1460 019f 3E        		.uleb128 0x3e
+ 1461 01a0 0B        		.uleb128 0xb
+ 1462 01a1 00        		.byte	0x0
+ 1463 01a2 00        		.byte	0x0
+ 1464 01a3 00        		.byte	0x0
+ 1465               		.section	.debug_pubnames,"",@progbits
+ 1466 0000 F200 0000 		.long	0xf2
+ 1467 0004 0200      		.word	0x2
+ 1468 0006 0000 0000 		.long	.Ldebug_info0
+ 1469 000a FC02 0000 		.long	0x2fc
+ 1470 000e 0901 0000 		.long	0x109
+ 1471 0012 7365 7276 		.string	"servoSetChannelIO"
+ 1471      6F53 6574 
+ 1471      4368 616E 
+ 1471      6E65 6C49 
+ 1471      4F00 
+ 1472 0024 4B01 0000 		.long	0x14b
+ 1473 0028 7365 7276 		.string	"servoSetPosition"
+ 1473      6F53 6574 
+ 1473      506F 7369 
+ 1473      7469 6F6E 
+ 1473      00
+ 1474 0039 AE01 0000 		.long	0x1ae
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 27
+
+
+ 1475 003d 7365 7276 		.string	"servoGetPosition"
+ 1475      6F47 6574 
+ 1475      506F 7369 
+ 1475      7469 6F6E 
+ 1475      00
+ 1476 004e DA01 0000 		.long	0x1da
+ 1477 0052 7365 7276 		.string	"servoSetPositionRaw"
+ 1477      6F53 6574 
+ 1477      506F 7369 
+ 1477      7469 6F6E 
+ 1477      5261 7700 
+ 1478 0066 0102 0000 		.long	0x201
+ 1479 006a 7365 7276 		.string	"servoGetPositionRaw"
+ 1479      6F47 6574 
+ 1479      506F 7369 
+ 1479      7469 6F6E 
+ 1479      5261 7700 
+ 1480 007e 1F02 0000 		.long	0x21f
+ 1481 0082 7365 7276 		.string	"servoService"
+ 1481      6F53 6572 
+ 1481      7669 6365 
+ 1481      00
+ 1482 008f 5602 0000 		.long	0x256
+ 1483 0093 7365 7276 		.string	"servoOff"
+ 1483      6F4F 6666 
+ 1483      00
+ 1484 009c 6A02 0000 		.long	0x26a
+ 1485 00a0 7365 7276 		.string	"servoInit"
+ 1485      6F49 6E69 
+ 1485      7400 
+ 1486 00aa A002 0000 		.long	0x2a0
+ 1487 00ae 5365 7276 		.string	"ServoPosTics"
+ 1487      6F50 6F73 
+ 1487      5469 6373 
+ 1487      00
+ 1488 00bb B202 0000 		.long	0x2b2
+ 1489 00bf 5365 7276 		.string	"ServoPeriodTics"
+ 1489      6F50 6572 
+ 1489      696F 6454 
+ 1489      6963 7300 
+ 1490 00cf C402 0000 		.long	0x2c4
+ 1491 00d3 5365 7276 		.string	"ServoChannel"
+ 1491      6F43 6861 
+ 1491      6E6E 656C 
+ 1491      00
+ 1492 00e0 E902 0000 		.long	0x2e9
+ 1493 00e4 5365 7276 		.string	"ServoChannels"
+ 1493      6F43 6861 
+ 1493      6E6E 656C 
+ 1493      7300 
+ 1494 00f2 0000 0000 		.long	0x0
+ 1495               		.section	.debug_aranges,"",@progbits
+ 1496 0000 1C00 0000 		.long	0x1c
+ 1497 0004 0200      		.word	0x2
+ 1498 0006 0000 0000 		.long	.Ldebug_info0
+ 1499 000a 04        		.byte	0x4
+ 1500 000b 00        		.byte	0x0
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 28
+
+
+ 1501 000c 0000      		.word	0x0
+ 1502 000e 0000      		.word	0x0
+ 1503 0010 0000 0000 		.long	.Ltext0
+ 1504 0014 3E02 0000 		.long	.Letext0-.Ltext0
+ 1505 0018 0000 0000 		.long	0x0
+ 1506 001c 0000 0000 		.long	0x0
+ 1507               		.section	.debug_line
+ 1508 0000 3002 0000 		.long	.LELT0-.LSLT0
+ 1509               	.LSLT0:
+ 1510 0004 0200      		.word	0x2
+ 1511 0006 4900 0000 		.long	.LELTP0-.LASLTP0
+ 1512               	.LASLTP0:
+ 1513 000a 01        		.byte	0x1
+ 1514 000b 01        		.byte	0x1
+ 1515 000c F6        		.byte	0xf6
+ 1516 000d F5        		.byte	0xf5
+ 1517 000e 0A        		.byte	0xa
+ 1518 000f 00        		.byte	0x0
+ 1519 0010 01        		.byte	0x1
+ 1520 0011 01        		.byte	0x1
+ 1521 0012 01        		.byte	0x1
+ 1522 0013 01        		.byte	0x1
+ 1523 0014 00        		.byte	0x0
+ 1524 0015 00        		.byte	0x0
+ 1525 0016 00        		.byte	0x0
+ 1526 0017 01        		.byte	0x1
+ 1527 0018 433A 5C41 		.ascii	"C:\\AVRCode\\AVRlib"
+ 1527      5652 436F 
+ 1527      6465 5C41 
+ 1527      5652 6C69 
+ 1527      62
+ 1528 0029 00        		.byte	0
+ 1529 002a 00        		.byte	0x0
+ 1530 002b 7365 7276 		.string	"servo.c"
+ 1530      6F2E 6300 
+ 1531 0033 01        		.uleb128 0x1
+ 1532 0034 00        		.uleb128 0x0
+ 1533 0035 00        		.uleb128 0x0
+ 1534 0036 6176 726C 		.string	"avrlibtypes.h"
+ 1534      6962 7479 
+ 1534      7065 732E 
+ 1534      6800 
+ 1535 0044 01        		.uleb128 0x1
+ 1536 0045 00        		.uleb128 0x0
+ 1537 0046 00        		.uleb128 0x0
+ 1538 0047 7365 7276 		.string	"servo.h"
+ 1538      6F2E 6800 
+ 1539 004f 01        		.uleb128 0x1
+ 1540 0050 00        		.uleb128 0x0
+ 1541 0051 00        		.uleb128 0x0
+ 1542 0052 00        		.byte	0x0
+ 1543               	.LELTP0:
+ 1544 0053 00        		.byte	0x0
+ 1545 0054 05        		.uleb128 0x5
+ 1546 0055 02        		.byte	0x2
+ 1547 0056 0000 0000 		.long	.LM1
+ 1548 005a 6B        		.byte	0x6b
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 29
+
+
+ 1549 005b 00        		.byte	0x0
+ 1550 005c 05        		.uleb128 0x5
+ 1551 005d 02        		.byte	0x2
+ 1552 005e 0000 0000 		.long	.LM2
+ 1553 0062 15        		.byte	0x15
+ 1554 0063 00        		.byte	0x0
+ 1555 0064 05        		.uleb128 0x5
+ 1556 0065 02        		.byte	0x2
+ 1557 0066 0000 0000 		.long	.LM3
+ 1558 006a 15        		.byte	0x15
+ 1559 006b 00        		.byte	0x0
+ 1560 006c 05        		.uleb128 0x5
+ 1561 006d 02        		.byte	0x2
+ 1562 006e 0000 0000 		.long	.LM4
+ 1563 0072 15        		.byte	0x15
+ 1564 0073 00        		.byte	0x0
+ 1565 0074 05        		.uleb128 0x5
+ 1566 0075 02        		.byte	0x2
+ 1567 0076 0000 0000 		.long	.LM5
+ 1568 007a 18        		.byte	0x18
+ 1569 007b 00        		.byte	0x0
+ 1570 007c 05        		.uleb128 0x5
+ 1571 007d 02        		.byte	0x2
+ 1572 007e 0000 0000 		.long	.LM6
+ 1573 0082 27        		.byte	0x27
+ 1574 0083 00        		.byte	0x0
+ 1575 0084 05        		.uleb128 0x5
+ 1576 0085 02        		.byte	0x2
+ 1577 0086 0000 0000 		.long	.LM7
+ 1578 008a 17        		.byte	0x17
+ 1579 008b 00        		.byte	0x0
+ 1580 008c 05        		.uleb128 0x5
+ 1581 008d 02        		.byte	0x2
+ 1582 008e 0000 0000 		.long	.LM8
+ 1583 0092 03        		.byte	0x3
+ 1584 0093 71        		.sleb128 -15
+ 1585 0094 01        		.byte	0x1
+ 1586 0095 00        		.byte	0x0
+ 1587 0096 05        		.uleb128 0x5
+ 1588 0097 02        		.byte	0x2
+ 1589 0098 0000 0000 		.long	.LM9
+ 1590 009c 18        		.byte	0x18
+ 1591 009d 00        		.byte	0x0
+ 1592 009e 05        		.uleb128 0x5
+ 1593 009f 02        		.byte	0x2
+ 1594 00a0 0000 0000 		.long	.LM10
+ 1595 00a4 01        		.byte	0x1
+ 1596 00a5 00        		.byte	0x0
+ 1597 00a6 05        		.uleb128 0x5
+ 1598 00a7 02        		.byte	0x2
+ 1599 00a8 0000 0000 		.long	.LM11
+ 1600 00ac 16        		.byte	0x16
+ 1601 00ad 00        		.byte	0x0
+ 1602 00ae 05        		.uleb128 0x5
+ 1603 00af 02        		.byte	0x2
+ 1604 00b0 0000 0000 		.long	.LM12
+ 1605 00b4 18        		.byte	0x18
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 30
+
+
+ 1606 00b5 00        		.byte	0x0
+ 1607 00b6 05        		.uleb128 0x5
+ 1608 00b7 02        		.byte	0x2
+ 1609 00b8 0000 0000 		.long	.LM13
+ 1610 00bc 16        		.byte	0x16
+ 1611 00bd 00        		.byte	0x0
+ 1612 00be 05        		.uleb128 0x5
+ 1613 00bf 02        		.byte	0x2
+ 1614 00c0 0000 0000 		.long	.LM14
+ 1615 00c4 17        		.byte	0x17
+ 1616 00c5 00        		.byte	0x0
+ 1617 00c6 05        		.uleb128 0x5
+ 1618 00c7 02        		.byte	0x2
+ 1619 00c8 0000 0000 		.long	.LM15
+ 1620 00cc 15        		.byte	0x15
+ 1621 00cd 00        		.byte	0x0
+ 1622 00ce 05        		.uleb128 0x5
+ 1623 00cf 02        		.byte	0x2
+ 1624 00d0 0000 0000 		.long	.LM16
+ 1625 00d4 18        		.byte	0x18
+ 1626 00d5 00        		.byte	0x0
+ 1627 00d6 05        		.uleb128 0x5
+ 1628 00d7 02        		.byte	0x2
+ 1629 00d8 0000 0000 		.long	.LM17
+ 1630 00dc 01        		.byte	0x1
+ 1631 00dd 00        		.byte	0x0
+ 1632 00de 05        		.uleb128 0x5
+ 1633 00df 02        		.byte	0x2
+ 1634 00e0 0000 0000 		.long	.LM18
+ 1635 00e4 16        		.byte	0x16
+ 1636 00e5 00        		.byte	0x0
+ 1637 00e6 05        		.uleb128 0x5
+ 1638 00e7 02        		.byte	0x2
+ 1639 00e8 0000 0000 		.long	.LM19
+ 1640 00ec 17        		.byte	0x17
+ 1641 00ed 00        		.byte	0x0
+ 1642 00ee 05        		.uleb128 0x5
+ 1643 00ef 02        		.byte	0x2
+ 1644 00f0 0000 0000 		.long	.LM20
+ 1645 00f4 17        		.byte	0x17
+ 1646 00f5 00        		.byte	0x0
+ 1647 00f6 05        		.uleb128 0x5
+ 1648 00f7 02        		.byte	0x2
+ 1649 00f8 0000 0000 		.long	.LM21
+ 1650 00fc 17        		.byte	0x17
+ 1651 00fd 00        		.byte	0x0
+ 1652 00fe 05        		.uleb128 0x5
+ 1653 00ff 02        		.byte	0x2
+ 1654 0100 0000 0000 		.long	.LM22
+ 1655 0104 18        		.byte	0x18
+ 1656 0105 00        		.byte	0x0
+ 1657 0106 05        		.uleb128 0x5
+ 1658 0107 02        		.byte	0x2
+ 1659 0108 0000 0000 		.long	.LM23
+ 1660 010c 16        		.byte	0x16
+ 1661 010d 00        		.byte	0x0
+ 1662 010e 05        		.uleb128 0x5
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 31
+
+
+ 1663 010f 02        		.byte	0x2
+ 1664 0110 0000 0000 		.long	.LM24
+ 1665 0114 17        		.byte	0x17
+ 1666 0115 00        		.byte	0x0
+ 1667 0116 05        		.uleb128 0x5
+ 1668 0117 02        		.byte	0x2
+ 1669 0118 0000 0000 		.long	.LM25
+ 1670 011c 16        		.byte	0x16
+ 1671 011d 00        		.byte	0x0
+ 1672 011e 05        		.uleb128 0x5
+ 1673 011f 02        		.byte	0x2
+ 1674 0120 0000 0000 		.long	.LM26
+ 1675 0124 16        		.byte	0x16
+ 1676 0125 00        		.byte	0x0
+ 1677 0126 05        		.uleb128 0x5
+ 1678 0127 02        		.byte	0x2
+ 1679 0128 0000 0000 		.long	.LM27
+ 1680 012c 1A        		.byte	0x1a
+ 1681 012d 00        		.byte	0x0
+ 1682 012e 05        		.uleb128 0x5
+ 1683 012f 02        		.byte	0x2
+ 1684 0130 0000 0000 		.long	.LM28
+ 1685 0134 1A        		.byte	0x1a
+ 1686 0135 00        		.byte	0x0
+ 1687 0136 05        		.uleb128 0x5
+ 1688 0137 02        		.byte	0x2
+ 1689 0138 0000 0000 		.long	.LM29
+ 1690 013c 15        		.byte	0x15
+ 1691 013d 00        		.byte	0x0
+ 1692 013e 05        		.uleb128 0x5
+ 1693 013f 02        		.byte	0x2
+ 1694 0140 0000 0000 		.long	.LM30
+ 1695 0144 16        		.byte	0x16
+ 1696 0145 00        		.byte	0x0
+ 1697 0146 05        		.uleb128 0x5
+ 1698 0147 02        		.byte	0x2
+ 1699 0148 0000 0000 		.long	.LM31
+ 1700 014c 17        		.byte	0x17
+ 1701 014d 00        		.byte	0x0
+ 1702 014e 05        		.uleb128 0x5
+ 1703 014f 02        		.byte	0x2
+ 1704 0150 0000 0000 		.long	.LM32
+ 1705 0154 15        		.byte	0x15
+ 1706 0155 00        		.byte	0x0
+ 1707 0156 05        		.uleb128 0x5
+ 1708 0157 02        		.byte	0x2
+ 1709 0158 0000 0000 		.long	.LM33
+ 1710 015c 16        		.byte	0x16
+ 1711 015d 00        		.byte	0x0
+ 1712 015e 05        		.uleb128 0x5
+ 1713 015f 02        		.byte	0x2
+ 1714 0160 0000 0000 		.long	.LM34
+ 1715 0164 15        		.byte	0x15
+ 1716 0165 00        		.byte	0x0
+ 1717 0166 05        		.uleb128 0x5
+ 1718 0167 02        		.byte	0x2
+ 1719 0168 0000 0000 		.long	.LM35
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 32
+
+
+ 1720 016c 03        		.byte	0x3
+ 1721 016d A77F      		.sleb128 -89
+ 1722 016f 01        		.byte	0x1
+ 1723 0170 00        		.byte	0x0
+ 1724 0171 05        		.uleb128 0x5
+ 1725 0172 02        		.byte	0x2
+ 1726 0173 0000 0000 		.long	.LM36
+ 1727 0177 16        		.byte	0x16
+ 1728 0178 00        		.byte	0x0
+ 1729 0179 05        		.uleb128 0x5
+ 1730 017a 02        		.byte	0x2
+ 1731 017b 0000 0000 		.long	.LM37
+ 1732 017f 16        		.byte	0x16
+ 1733 0180 00        		.byte	0x0
+ 1734 0181 05        		.uleb128 0x5
+ 1735 0182 02        		.byte	0x2
+ 1736 0183 0000 0000 		.long	.LM38
+ 1737 0187 15        		.byte	0x15
+ 1738 0188 00        		.byte	0x0
+ 1739 0189 05        		.uleb128 0x5
+ 1740 018a 02        		.byte	0x2
+ 1741 018b 0000 0000 		.long	.LM39
+ 1742 018f 03        		.byte	0x3
+ 1743 0190 52        		.sleb128 -46
+ 1744 0191 01        		.byte	0x1
+ 1745 0192 00        		.byte	0x0
+ 1746 0193 05        		.uleb128 0x5
+ 1747 0194 02        		.byte	0x2
+ 1748 0195 0000 0000 		.long	.LM40
+ 1749 0199 17        		.byte	0x17
+ 1750 019a 00        		.byte	0x0
+ 1751 019b 05        		.uleb128 0x5
+ 1752 019c 02        		.byte	0x2
+ 1753 019d 0000 0000 		.long	.LM41
+ 1754 01a1 16        		.byte	0x16
+ 1755 01a2 00        		.byte	0x0
+ 1756 01a3 05        		.uleb128 0x5
+ 1757 01a4 02        		.byte	0x2
+ 1758 01a5 0000 0000 		.long	.LM42
+ 1759 01a9 16        		.byte	0x16
+ 1760 01aa 00        		.byte	0x0
+ 1761 01ab 05        		.uleb128 0x5
+ 1762 01ac 02        		.byte	0x2
+ 1763 01ad 0000 0000 		.long	.LM43
+ 1764 01b1 19        		.byte	0x19
+ 1765 01b2 00        		.byte	0x0
+ 1766 01b3 05        		.uleb128 0x5
+ 1767 01b4 02        		.byte	0x2
+ 1768 01b5 0000 0000 		.long	.LM44
+ 1769 01b9 16        		.byte	0x16
+ 1770 01ba 00        		.byte	0x0
+ 1771 01bb 05        		.uleb128 0x5
+ 1772 01bc 02        		.byte	0x2
+ 1773 01bd 0000 0000 		.long	.LM45
+ 1774 01c1 16        		.byte	0x16
+ 1775 01c2 00        		.byte	0x0
+ 1776 01c3 05        		.uleb128 0x5
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 33
+
+
+ 1777 01c4 02        		.byte	0x2
+ 1778 01c5 0000 0000 		.long	.LM46
+ 1779 01c9 10        		.byte	0x10
+ 1780 01ca 00        		.byte	0x0
+ 1781 01cb 05        		.uleb128 0x5
+ 1782 01cc 02        		.byte	0x2
+ 1783 01cd 0000 0000 		.long	.LM47
+ 1784 01d1 16        		.byte	0x16
+ 1785 01d2 00        		.byte	0x0
+ 1786 01d3 05        		.uleb128 0x5
+ 1787 01d4 02        		.byte	0x2
+ 1788 01d5 0000 0000 		.long	.LM48
+ 1789 01d9 16        		.byte	0x16
+ 1790 01da 00        		.byte	0x0
+ 1791 01db 05        		.uleb128 0x5
+ 1792 01dc 02        		.byte	0x2
+ 1793 01dd 0000 0000 		.long	.LM49
+ 1794 01e1 0D        		.byte	0xd
+ 1795 01e2 00        		.byte	0x0
+ 1796 01e3 05        		.uleb128 0x5
+ 1797 01e4 02        		.byte	0x2
+ 1798 01e5 0000 0000 		.long	.LM50
+ 1799 01e9 21        		.byte	0x21
+ 1800 01ea 00        		.byte	0x0
+ 1801 01eb 05        		.uleb128 0x5
+ 1802 01ec 02        		.byte	0x2
+ 1803 01ed 0000 0000 		.long	.LM51
+ 1804 01f1 16        		.byte	0x16
+ 1805 01f2 00        		.byte	0x0
+ 1806 01f3 05        		.uleb128 0x5
+ 1807 01f4 02        		.byte	0x2
+ 1808 01f5 0000 0000 		.long	.LM52
+ 1809 01f9 18        		.byte	0x18
+ 1810 01fa 00        		.byte	0x0
+ 1811 01fb 05        		.uleb128 0x5
+ 1812 01fc 02        		.byte	0x2
+ 1813 01fd 0000 0000 		.long	.LM53
+ 1814 0201 15        		.byte	0x15
+ 1815 0202 00        		.byte	0x0
+ 1816 0203 05        		.uleb128 0x5
+ 1817 0204 02        		.byte	0x2
+ 1818 0205 0000 0000 		.long	.LM54
+ 1819 0209 16        		.byte	0x16
+ 1820 020a 00        		.byte	0x0
+ 1821 020b 05        		.uleb128 0x5
+ 1822 020c 02        		.byte	0x2
+ 1823 020d 0000 0000 		.long	.LM55
+ 1824 0211 16        		.byte	0x16
+ 1825 0212 00        		.byte	0x0
+ 1826 0213 05        		.uleb128 0x5
+ 1827 0214 02        		.byte	0x2
+ 1828 0215 0000 0000 		.long	.LM56
+ 1829 0219 15        		.byte	0x15
+ 1830 021a 00        		.byte	0x0
+ 1831 021b 05        		.uleb128 0x5
+ 1832 021c 02        		.byte	0x2
+ 1833 021d 0000 0000 		.long	.LM57
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 34
+
+
+ 1834 0221 16        		.byte	0x16
+ 1835 0222 00        		.byte	0x0
+ 1836 0223 05        		.uleb128 0x5
+ 1837 0224 02        		.byte	0x2
+ 1838 0225 0000 0000 		.long	.LM58
+ 1839 0229 15        		.byte	0x15
+ 1840 022a 00        		.byte	0x0
+ 1841 022b 05        		.uleb128 0x5
+ 1842 022c 02        		.byte	0x2
+ 1843 022d 0000 0000 		.long	.Letext0
+ 1844 0231 00        		.byte	0x0
+ 1845 0232 01        		.uleb128 0x1
+ 1846 0233 01        		.byte	0x1
+ 1847               	.LELT0:
+ 1848 0234 1900 0000 		.section	.debug_str,"MS",@progbits,1
+ 1848      0200 1300 
+ 1848      0000 0101 
+ 1848      FB0E 0D00 
+ 1848      0101 0101 
+ 1849               	.LASF23:
+ 1850 0000 5365 7276 		.string	"ServoPeriodTics"
+ 1850      6F50 6572 
+ 1850      696F 6454 
+ 1850      6963 7300 
+ 1851               	.LASF28:
+ 1852 0010 7374 7275 		.string	"struct_ServoChannel"
+ 1852      6374 5F53 
+ 1852      6572 766F 
+ 1852      4368 616E 
+ 1852      6E65 6C00 
+ 1853               	.LASF13:
+ 1854 0024 6368 616E 		.string	"channel"
+ 1854      6E65 6C00 
+ 1855               	.LASF16:
+ 1856 002c 7365 7276 		.string	"servoSetPosition"
+ 1856      6F53 6574 
+ 1856      506F 7369 
+ 1856      7469 6F6E 
+ 1856      00
+ 1857               	.LASF17:
+ 1858 003d 7365 7276 		.string	"servoService"
+ 1858      6F53 6572 
+ 1858      7669 6365 
+ 1858      00
+ 1859               	.LASF15:
+ 1860 004a 7365 7276 		.string	"servoSetChannelIO"
+ 1860      6F53 6574 
+ 1860      4368 616E 
+ 1860      6E65 6C49 
+ 1860      4F00 
+ 1861               	.LASF18:
+ 1862 005c 6E65 7874 		.string	"nextTics"
+ 1862      5469 6373 
+ 1862      00
+ 1863               	.LASF21:
+ 1864 0065 706F 735F 		.string	"pos_scaled"
+ 1864      7363 616C 
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 35
+
+
+ 1864      6564 00
+ 1865               	.LASF27:
+ 1866 0070 433A 5C41 		.string	"C:\\AVRCode\\AVRlib/servo.c"
+ 1866      5652 436F 
+ 1866      6465 5C41 
+ 1866      5652 6C69 
+ 1866      622F 7365 
+ 1867               	.LASF32:
+ 1868 008a 7365 7276 		.string	"servoOff"
+ 1868      6F4F 6666 
+ 1868      00
+ 1869               	.LASF22:
+ 1870 0093 5365 7276 		.string	"ServoPosTics"
+ 1870      6F50 6F73 
+ 1870      5469 6373 
+ 1870      00
+ 1871               	.LASF1:
+ 1872 00a0 756E 7369 		.string	"unsigned char"
+ 1872      676E 6564 
+ 1872      2063 6861 
+ 1872      7200 
+ 1873               	.LASF4:
+ 1874 00ae 6C6F 6E67 		.string	"long unsigned int"
+ 1874      2075 6E73 
+ 1874      6967 6E65 
+ 1874      6420 696E 
+ 1874      7400 
+ 1875               	.LASF26:
+ 1876 00c0 474E 5520 		.string	"GNU C 4.3.0"
+ 1876      4320 342E 
+ 1876      332E 3000 
+ 1877               	.LASF7:
+ 1878 00cc 7368 6F72 		.string	"short unsigned int"
+ 1878      7420 756E 
+ 1878      7369 676E 
+ 1878      6564 2069 
+ 1878      6E74 00
+ 1879               	.LASF11:
+ 1880 00df 6475 7479 		.string	"duty"
+ 1880      00
+ 1881               	.LASF20:
+ 1882 00e4 7365 7276 		.string	"servoInit"
+ 1882      6F49 6E69 
+ 1882      7400 
+ 1883               	.LASF14:
+ 1884 00ee 706F 7369 		.string	"position"
+ 1884      7469 6F6E 
+ 1884      00
+ 1885               	.LASF12:
+ 1886 00f7 5365 7276 		.string	"ServoChannelType"
+ 1886      6F43 6861 
+ 1886      6E6E 656C 
+ 1886      5479 7065 
+ 1886      00
+ 1887               	.LASF2:
+ 1888 0108 756E 7369 		.string	"unsigned int"
+ 1888      676E 6564 
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 36
+
+
+ 1888      2069 6E74 
+ 1888      00
+ 1889               	.LASF30:
+ 1890 0115 7365 7276 		.string	"servoGetPositionRaw"
+ 1890      6F47 6574 
+ 1890      506F 7369 
+ 1890      7469 6F6E 
+ 1890      5261 7700 
+ 1891               	.LASF25:
+ 1892 0129 5365 7276 		.string	"ServoChannels"
+ 1892      6F43 6861 
+ 1892      6E6E 656C 
+ 1892      7300 
+ 1893               	.LASF6:
+ 1894 0137 6C6F 6E67 		.string	"long long unsigned int"
+ 1894      206C 6F6E 
+ 1894      6720 756E 
+ 1894      7369 676E 
+ 1894      6564 2069 
+ 1895               	.LASF5:
+ 1896 014e 6C6F 6E67 		.string	"long long int"
+ 1896      206C 6F6E 
+ 1896      6720 696E 
+ 1896      7400 
+ 1897               	.LASF9:
+ 1898 015c 6368 6172 		.string	"char"
+ 1898      00
+ 1899               	.LASF31:
+ 1900 0161 7365 7276 		.string	"servoGetPosition"
+ 1900      6F47 6574 
+ 1900      506F 7369 
+ 1900      7469 6F6E 
+ 1900      00
+ 1901               	.LASF10:
+ 1902 0172 706F 7274 		.string	"port"
+ 1902      00
+ 1903               	.LASF8:
+ 1904 0177 7368 6F72 		.string	"short int"
+ 1904      7420 696E 
+ 1904      7400 
+ 1905               	.LASF24:
+ 1906 0181 5365 7276 		.string	"ServoChannel"
+ 1906      6F43 6861 
+ 1906      6E6E 656C 
+ 1906      00
+ 1907               	.LASF3:
+ 1908 018e 6C6F 6E67 		.string	"long int"
+ 1908      2069 6E74 
+ 1908      00
+ 1909               	.LASF0:
+ 1910 0197 7369 676E 		.string	"signed char"
+ 1910      6564 2063 
+ 1910      6861 7200 
+ 1911               	.LASF19:
+ 1912 01a3 4F43 5661 		.string	"OCValue"
+ 1912      6C75 6500 
+ 1913               	.LASF29:
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 37
+
+
+ 1914 01ab 7365 7276 		.string	"servoSetPositionRaw"
+ 1914      6F53 6574 
+ 1914      506F 7369 
+ 1914      7469 6F6E 
+ 1914      5261 7700 
+GAS LISTING C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s 			page 38
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 servo.c
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:5      *ABS*:00000034 __CCP__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:20     .text:00000000 servoSetChannelIO
+                            *COM*:00000010 ServoChannels
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:55     .text:00000026 servoSetPosition
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:110    .text:00000066 servoGetPosition
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:153    .text:0000009e servoSetPositionRaw
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:197    .text:000000cc servoGetPositionRaw
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:222    .text:000000e2 servoService
+                            *COM*:00000001 ServoChannel
+                            *COM*:00000002 ServoPeriodTics
+                            *COM*:00000002 ServoPosTics
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:344    .text:000001b4 servoOff
+C:\DOCUME~1\hut\LOCALS~1\Temp/cc06sZDR.s:363    .text:000001c2 servoInit
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+__udivmodhi4
+timerDetach
+timer1SetPrescaler
+timerAttach
